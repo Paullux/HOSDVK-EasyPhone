@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteY="1842dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/app_name"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#FFFFFF"
+                android:textSize="60sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="293dp"
+                app:srcCompat="@drawable/bannerface" />
+
+            <Button
+                android:id="@+id/appel"
+                android:layout_width="match_parent"
+                android:layout_height="293dp"
+                android:background="#29b647"
+                android:text="@string/module_appel"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                android:onClick="APPEL"
+                app:backgroundTint="#29b647"
+                app:icon="@drawable/ic_appels"
+                app:iconSize="60sp"
+                app:iconTintMode="src_in" />
+
+            <Button
+                android:id="@+id/contacts"
+                android:layout_width="match_parent"
+                android:layout_height="294dp"
+                android:background="#f07850"
+                android:onClick="CONTACTS"
+                android:text="@string/module_contacts"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                app:backgroundTint="#f07850"
+                app:icon="@drawable/ic_contacts"
+                app:iconSize="60sp"
+                app:iconTintMode="src_in" />
+
+
+            <Button
+                android:id="@+id/sms"
+                android:layout_width="match_parent"
+                android:layout_height="293dp"
+                android:background="	#584637"
+                android:text="@string/module_sms"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                android:onClick="SMS"
+                app:backgroundTint="#584637"
+                app:icon="@drawable/ic_sms"
+                app:iconSize="60sp"
+                app:iconTintMode="src_in" />
+
+
+            <Button
+                android:id="@+id/emails"
+                android:layout_width="match_parent"
+                android:layout_height="294dp"
+                android:background="#d473d4"
+                android:text="@string/module_emails"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                android:onClick="EMAILS"
+                app:backgroundTint="#d473d4"
+                app:icon="@drawable/ic_emails"
+                app:iconSize="60sp"
+                app:iconTintMode="src_in" />
+
+
+            <Button
+                android:id="@+id/photos"
+                android:layout_width="match_parent"
+                android:layout_height="293dp"
+                android:background="#005884"
+                android:text="@string/module_photo"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                android:onClick="PHOTOS"
+                app:backgroundTint="#005884"
+                app:icon="@drawable/ic_photos"
+                app:iconSize="60sp"
+                app:iconTintMode="src_in" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

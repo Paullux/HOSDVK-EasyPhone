@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Easy-Phone</string>
+    <!-- MODULES -->
+    <string name="module_appel">APPEL</string>
+    <string name="module_contacts">CONTACTS</string>
+    <string name="module_sms">SMS</string>
+    <string name="module_emails">E-MAIL</string>
+    <string name="module_photo">PHOTOS</string>
+</resources>
