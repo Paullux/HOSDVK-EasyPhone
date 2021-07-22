@@ -50,14 +50,6 @@ class MainActivity : AppCompatActivity() {
         val liste_contacts = findViewById<ListView>(R.id.liste_contacts)
 
         liste_contacts.adapter = simple
-
-        var imageView = findViewById<ShapeableImageView>(R.id.image_de_profil)
-        //val imgUri = Uri.parse("android.resource://com.hos_dvk.easyphone/drawable/R.drawable.ic_photo_name")
-        for (imageView in liste_contacts) {
-            if (imageView != null) {
-                imageView.setBackgroundResource(R.drawable.ic_photo_name)
-            }
-        }
     }
 
 public fun EMAILS(view: View) {

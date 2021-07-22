@@ -6,4 +6,6 @@
     <string name="module_sms">SMS</string>
     <string name="module_emails">E-MAIL</string>
     <string name="module_photo">PHOTOS</string>
+    <string name="nom_test">First Last</string>
+    <string name="numero_test">06 78 90 12 34</string>
 </resources>
