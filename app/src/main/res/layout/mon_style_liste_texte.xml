@@ -5,17 +5,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:background="@color/black">
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/image_de_profil"
+    <RelativeLayout
+        android:id="@+id/relative"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_weight="1"
-        android:padding="15dp"
-        android:src="@drawable/ic_photos"
-        android:scaleType="centerCrop"
-        app:shapeAppearanceOverlay="@style/coin_arrondi" />
-
+        xmlns:android="http://schemas.android.com/apk/res/android" >
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/default_image_de_profil"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:padding="15dp"
+                android:src="@drawable/ic_photo_name"
+                android:scaleType="centerCrop"
+                android:elevation="10dp"
+                app:shapeAppearanceOverlay="@style/coin_arrondi" />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/image_de_profil"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:padding="15dp"
+                android:src="@drawable/ic_photo_name"
+                android:scaleType="centerCrop"
+                android:elevation="10dp"
+                app:shapeAppearanceOverlay="@style/coin_arrondi" />
+    </RelativeLayout>
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="match_parent"
@@ -24,7 +39,7 @@
         <TextView
             android:id="@+id/nom_personne"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50sp"
             android:text="Paul"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/white"
@@ -34,7 +49,7 @@
         <TextView
             android:id="@+id/numero_personne"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40sp"
             android:text="06 15 17 73 00"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/white"

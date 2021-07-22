@@ -1,14 +1,19 @@
 package com.hos_dvk.easyphone
 
-import android.R.string
+import android.content.Context
 import android.database.Cursor
+import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.view.View
 import android.widget.*
+import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.get
+import androidx.core.view.iterator
 import java.util.*
-
+import com.google.android.material.imageview.ShapeableImageView
 
 class MainActivity : AppCompatActivity() {
     protected override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,9 +50,17 @@ class MainActivity : AppCompatActivity() {
         val liste_contacts = findViewById<ListView>(R.id.liste_contacts)
 
         liste_contacts.adapter = simple
+
+        var imageView = findViewById<ShapeableImageView>(R.id.image_de_profil)
+        //val imgUri = Uri.parse("android.resource://com.hos_dvk.easyphone/drawable/R.drawable.ic_photo_name")
+        for (imageView in liste_contacts) {
+            if (imageView != null) {
+                imageView.setBackgroundResource(R.drawable.ic_photo_name)
+            }
+        }
     }
 
-    public fun EMAILS(view: View) {
+public fun EMAILS(view: View) {
         Toast.makeText(this, "EMAILS", Toast.LENGTH_LONG).show()
     }
     public fun PHOTOS(view: View) {
