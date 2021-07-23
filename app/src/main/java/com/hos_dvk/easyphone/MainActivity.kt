@@ -33,7 +33,23 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.module_contacts)
         read()
     }
-
+    public fun choix_appeler(view: View) {
+        var nom_a_appeler = findViewById<Button>(R.id.choix_appeler).text.toString()
+        Toast.makeText(this, nom_a_appeler, Toast.LENGTH_LONG).show()
+    }
+    public fun choix_envoyer_sms(view: View) {
+        var sms_envoyer = findViewById<Button>(R.id.choix_envoyer_sms).text.toString()
+        Toast.makeText(this, sms_envoyer, Toast.LENGTH_LONG).show()
+    }
+    public fun bouton_appel(view: View) {
+        var mon_nom_a_appeler = findViewById<TextView>(R.id.numero)
+        val str: String = mon_nom_a_appeler.text.toString()
+        setContentView(R.layout.module_choix_sms_appel)
+        var nom_a_appeler = findViewById<TextView>(R.id.choix_appeler)
+        nom_a_appeler.setText("Appeler " + str)
+        var sms_envoyer = findViewById<TextView>(R.id.choix_envoyer_sms)
+        sms_envoyer.setText("Envoyer un SMS à " + str)
+    }
     fun read() {
         var cursor : Cursor? = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null, null, null, null)
         startManagingCursor(cursor)
@@ -51,8 +67,19 @@ class MainActivity : AppCompatActivity() {
 
         liste_contacts.adapter = simple
     }
+    public fun aller_appeler(view: View) {
+        var mon_nom_a_appeler = view.findViewById<TextView>(R.id.nom_personne)
+        var mon_numero_sms = view.findViewById<TextView>(R.id.numero_personne)
+        val str1: String = mon_nom_a_appeler.text.toString()
+        val str2: String = mon_numero_sms.text.toString()
+        setContentView(R.layout.module_choix_sms_appel)
+        var nom_a_appeler = findViewById<TextView>(R.id.choix_appeler)
+        nom_a_appeler.setText("Appeler " + str1)
+        var sms_envoyer = findViewById<TextView>(R.id.choix_envoyer_sms)
+        sms_envoyer.setText("Envoyer un SMS à " + str2)
 
-public fun EMAILS(view: View) {
+    }
+    public fun EMAILS(view: View) {
         Toast.makeText(this, "EMAILS", Toast.LENGTH_LONG).show()
     }
     public fun PHOTOS(view: View) {

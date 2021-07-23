@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <Button
+        android:id="@+id/retour"
+        android:layout_width="100dp"
+        android:layout_height="78dp"
+        android:onClick="Retour"
+        app:backgroundTint="#000000"
+        app:icon="@drawable/ic_action_name"
+        app:iconGravity="textStart"
+        app:iconSize="80sp"
+        app:iconTint="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/white" />
+
+    <TextView
+        android:id="@+id/choix"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/choix"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FFFFFF"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        android:id="@+id/choix_appeler"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:onClick="choix_appeler"
+        android:text="appeler_X"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        app:backgroundTint="@color/orange"
+        app:icon="@drawable/ic_appels"
+        app:iconGravity="textTop"
+        app:iconSize="80sp"
+        app:iconTint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/retour"
+        app:tint="@color/white" />
+
+    <Button
+        android:id="@+id/choix_envoyer_sms"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:onClick="choix_envoyer_sms"
+        android:text="envoyer_un_sms_a_X"
+        android:textAlignment="inherit"
+        android:textAllCaps="false"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:backgroundTint="@color/bleu"
+        app:icon="@drawable/ic_sms"
+        app:iconGravity="textTop"
+        app:iconSize="80sp"
+        app:iconTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/choix_appeler"
+        app:tint="@color/white" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

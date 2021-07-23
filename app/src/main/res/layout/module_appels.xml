@@ -282,7 +282,7 @@
                     android:id="@+id/bouton_call"
                     android:layout_width="90dp"
                     android:layout_height="115dp"
-                    android:onClick="button_call"
+                    android:onClick="bouton_appel"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="60sp"
                     android:textStyle="bold"
