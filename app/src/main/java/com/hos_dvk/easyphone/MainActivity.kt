@@ -34,12 +34,14 @@ class MainActivity : AppCompatActivity() {
         read()
     }
     public fun choix_appeler(view: View) {
-        var nom_a_appeler = findViewById<Button>(R.id.choix_appeler).text.toString()
-        Toast.makeText(this, nom_a_appeler, Toast.LENGTH_LONG).show()
+        var numero_a_appeler = findViewById<Button>(R.id.choix_envoyer_sms).text.toString()
+        numero_a_appeler  = numero_a_appeler .replace("Envoyer un SMS à ", "")
+        Toast.makeText(this, "Appel de " + numero_a_appeler, Toast.LENGTH_LONG).show()
     }
     public fun choix_envoyer_sms(view: View) {
         var sms_envoyer = findViewById<Button>(R.id.choix_envoyer_sms).text.toString()
-        Toast.makeText(this, sms_envoyer, Toast.LENGTH_LONG).show()
+        sms_envoyer  = sms_envoyer.replace("Envoyer un SMS à ", "")
+        Toast.makeText(this, "sms à " + sms_envoyer, Toast.LENGTH_LONG).show()
     }
     public fun bouton_appel(view: View) {
         var mon_nom_a_appeler = findViewById<TextView>(R.id.numero)
