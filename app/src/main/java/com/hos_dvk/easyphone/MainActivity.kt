@@ -1,13 +1,12 @@
 package com.hos_dvk.easyphone
 
-import android.R.id
+import android.content.Context
 import android.database.Cursor
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -15,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
-
+    var previousview = R.layout.activity_main
     public fun APPEL(view: View) {
         //Toast.makeText(this, "APPEL", Toast.LENGTH_LONG).show()
         setContentView(R.layout.module_appels)
@@ -39,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, "sms à " + sms_envoyer, Toast.LENGTH_LONG).show()
     }
     public fun bouton_appel(view: View) {
+        previousview = R.layout.module_appels
         var mon_nom_a_appeler = findViewById<TextView>(R.id.numero)
         val str: String = mon_nom_a_appeler.text.toString()
         setContentView(R.layout.module_choix_sms_appel)
@@ -67,14 +67,16 @@ class MainActivity : AppCompatActivity() {
 
         var to = intArrayOf(R.id.image_de_profil,R.id.nom_personne,R.id.numero_personne)
 
+
         var simple : SimpleCursorAdapter = SimpleCursorAdapter(this,R.layout.mon_style_liste_texte,cursor,from,to)
 
         val liste_contacts = findViewById<ListView>(R.id.liste_contacts)
 
         liste_contacts.adapter = simple
-
+        
     }
     public fun aller_appeler(view: View) {
+        previousview = R.layout.module_contacts
         var mon_nom_a_appeler = view.findViewById<TextView>(R.id.nom_personne)
         var mon_numero_sms = view.findViewById<TextView>(R.id.numero_personne)
         val str1: String = mon_nom_a_appeler.text.toString()
@@ -93,7 +95,12 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, "PHOTOS", Toast.LENGTH_LONG).show()
     }
     public fun Retour(view: View) {
-        setContentView(R.layout.activity_main)
+        setContentView(previousview)
+        if (previousview == R.layout.module_appels) { previousview = R.layout.activity_main }
+        if (previousview == R.layout.module_contacts) {
+            read()
+            previousview = R.layout.activity_main
+        }
     }
     public fun button_0(view: View) {
         val numero = findViewById<TextView>(R.id.numero)
@@ -187,3 +194,4 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, "Appel", Toast.LENGTH_LONG).show()
     }
 }
+
