@@ -6,51 +6,68 @@
     android:layout_height="match_parent"
     android:background="#000000">
 
-    <Button
-        android:id="@+id/retour"
-        android:layout_width="100dp"
-        android:layout_height="78dp"
-        android:onClick="Retour"
-        app:backgroundTint="#000000"
-        app:icon="@drawable/ic_action_name"
-        app:iconGravity="textStart"
-        app:iconSize="80sp"
-        app:iconTint="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/white" />
-
-    <TextView
-        android:id="@+id/choix"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/linearLayout10"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/choix"
-        android:textAllCaps="false"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#FFFFFF"
-        android:textSize="60sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        android:gravity="center|left|left"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/retour"
+            android:layout_width="100dp"
+            android:layout_height="78dp"
+            android:gravity="center|left|left"
+            android:onClick="Retour"
+            app:backgroundTint="#000000"
+            app:icon="@drawable/ic_action_name"
+            app:iconGravity="textStart"
+            app:iconSize="80sp"
+            app:iconTint="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/choix"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|left|left"
+            android:text="@string/choix"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FFFFFF"
+            android:textSize="60sp"
+            android:textStyle="bold"
+            android:autoSizeTextType="uniform"
+            android:maxLines="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.12"
+            app:layout_constraintStart_toEndOf="@+id/retour"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/choix_appeler"
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:autoSizeTextType="uniform"
+        android:maxLines="2"
         android:onClick="choix_appeler"
         android:text="appeler_X"
+        android:textAllCaps="false"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:textAllCaps="false"
         app:backgroundTint="@color/orange"
         app:icon="@drawable/ic_appels"
-        app:iconGravity="textTop"
+        app:iconGravity="top"
         app:iconSize="80sp"
         app:iconTint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/retour"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout10"
         app:tint="@color/white" />
 
     <Button
@@ -63,9 +80,11 @@
         android:textAllCaps="false"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:autoSizeTextType="uniform"
+        android:maxLines="2"
         app:backgroundTint="@color/bleu"
         app:icon="@drawable/ic_sms"
-        app:iconGravity="textTop"
+        app:iconGravity="top"
         app:iconSize="80sp"
         app:iconTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"

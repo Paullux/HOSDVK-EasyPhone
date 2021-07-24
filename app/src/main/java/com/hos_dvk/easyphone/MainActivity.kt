@@ -1,19 +1,14 @@
 package com.hos_dvk.easyphone
 
-import android.content.Context
+import android.R.id
 import android.database.Cursor
-import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.view.View
 import android.widget.*
-import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.get
-import androidx.core.view.iterator
 import java.util.*
-import com.google.android.material.imageview.ShapeableImageView
+
 
 class MainActivity : AppCompatActivity() {
     protected override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,8 +48,17 @@ class MainActivity : AppCompatActivity() {
         sms_envoyer.setText("Envoyer un SMS à " + str)
     }
     fun read() {
-        var cursor : Cursor? = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null, null, null, null)
+        //var cursor : Cursor? = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null, null, null, null)
+        val cursor : Cursor? = contentResolver.query(
+            ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+            null,
+            null,
+            null,
+            ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC"
+        )
+
         startManagingCursor(cursor)
+
 
         var from = arrayOf(ContactsContract.CommonDataKinds.Phone.PHOTO_URI,
             ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
@@ -68,6 +72,7 @@ class MainActivity : AppCompatActivity() {
         val liste_contacts = findViewById<ListView>(R.id.liste_contacts)
 
         liste_contacts.adapter = simple
+
     }
     public fun aller_appeler(view: View) {
         var mon_nom_a_appeler = view.findViewById<TextView>(R.id.nom_personne)
