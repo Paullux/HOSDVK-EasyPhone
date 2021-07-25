@@ -3,11 +3,14 @@ package com.hos_dvk.easyphone
 import android.content.Context
 import android.database.Cursor
 import android.os.Bundle
+import android.os.Handler
 import android.provider.ContactsContract
+import android.text.Layout
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-
+import androidx.core.view.forEach
+import androidx.core.view.iterator
 
 class MainActivity : AppCompatActivity() {
     protected override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
     var previousview = R.layout.activity_main
+    var first_click = true
     public fun APPEL(view: View) {
         //Toast.makeText(this, "APPEL", Toast.LENGTH_LONG).show()
         setContentView(R.layout.module_appels)
@@ -26,6 +30,14 @@ class MainActivity : AppCompatActivity() {
         //Toast.makeText(this, "CONTACTS", Toast.LENGTH_LONG).show()
         setContentView(R.layout.module_contacts)
         read()
+    }
+    public fun defiler(view: View) {
+        val nomPersonne = view.findViewById<TextView>(R.id.nom_personne)
+        if (nomPersonne.isSelected) {
+            aller_appeler(view)
+            nomPersonne.isSelected = false
+        }
+        nomPersonne.isSelected = true
     }
     public fun choix_appeler(view: View) {
         var numero_a_appeler = findViewById<Button>(R.id.choix_envoyer_sms).text.toString()
@@ -73,7 +85,6 @@ class MainActivity : AppCompatActivity() {
         val liste_contacts = findViewById<ListView>(R.id.liste_contacts)
 
         liste_contacts.adapter = simple
-        
     }
     public fun aller_appeler(view: View) {
         previousview = R.layout.module_contacts

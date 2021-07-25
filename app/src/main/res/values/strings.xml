@@ -10,4 +10,6 @@
     <string name="nom_test">First Last</string>
     <string name="numero_test">06 78 90 12 34</string>
     <string name="choix">CHOIX</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

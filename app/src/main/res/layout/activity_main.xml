@@ -124,6 +124,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textSize="60sp"
                 android:textStyle="bold"
+                android:onClick="PHOTOS"
                 app:iconGravity="top"
                 app:autoSizeMaxTextSize="100sp"
                 app:backgroundTint="#005884"
