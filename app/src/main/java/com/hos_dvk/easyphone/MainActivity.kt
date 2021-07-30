@@ -1,16 +1,14 @@
 package com.hos_dvk.easyphone
 
-import android.content.Context
 import android.database.Cursor
+import android.database.MatrixCursor
 import android.os.Bundle
-import android.os.Handler
 import android.provider.ContactsContract
-import android.text.Layout
+import android.provider.ContactsContract.CommonDataKinds.Phone
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.forEach
-import androidx.core.view.iterator
+
 
 class MainActivity : AppCompatActivity() {
     protected override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,15 +27,18 @@ class MainActivity : AppCompatActivity() {
     public fun CONTACTS(view: View) {
         //Toast.makeText(this, "CONTACTS", Toast.LENGTH_LONG).show()
         setContentView(R.layout.module_contacts)
-        read()
+        remplir_contact()
     }
     public fun defiler(view: View) {
         val nomPersonne = view.findViewById<TextView>(R.id.nom_personne)
+        val numPersonne = view.findViewById<TextView>(R.id.numero_personne)
         if (nomPersonne.isSelected) {
             aller_appeler(view)
             nomPersonne.isSelected = false
+            numPersonne.isSelected = false
         }
         nomPersonne.isSelected = true
+        numPersonne.isSelected = true
     }
     public fun choix_appeler(view: View) {
         var numero_a_appeler = findViewById<Button>(R.id.choix_envoyer_sms).text.toString()
@@ -59,32 +60,59 @@ class MainActivity : AppCompatActivity() {
         var sms_envoyer = findViewById<TextView>(R.id.choix_envoyer_sms)
         sms_envoyer.setText("Envoyer un SMS à " + str)
     }
-    fun read() {
-        //var cursor : Cursor? = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null, null, null, null)
-        val cursor : Cursor? = contentResolver.query(
-            ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+    fun remplir_contact() {
+
+         val cursor : Cursor? = contentResolver.query(
+            Phone.CONTENT_URI,
             null,
             null,
             null,
-            ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC"
+            Phone.DISPLAY_NAME + " ASC"
         )
 
-        startManagingCursor(cursor)
+        //startManagingCursor(cursor)
 
+        var mc: MatrixCursor? = MatrixCursor(
+            arrayOf(
+                Phone._ID,
+                Phone.PHOTO_URI,
+                Phone.DISPLAY_NAME_PRIMARY,
+                Phone.NUMBER,
+            ),16
+        )
+        var lastName = ""
+        var entry : Array<String?> = arrayOf("", "", "", "")
 
-        var from = arrayOf(ContactsContract.CommonDataKinds.Phone.PHOTO_URI,
-            ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
-            ContactsContract.CommonDataKinds.Phone.NUMBER,
-            ContactsContract.CommonDataKinds.Phone._ID)
+        if (cursor != null) {
+            while(cursor.moveToNext()){
+                var _id = cursor.getInt(cursor.getColumnIndex(Phone._ID))
+                var photo = cursor.getString(cursor.getColumnIndex(Phone.PHOTO_URI))
+                var name = cursor.getString(cursor.getColumnIndex(Phone.DISPLAY_NAME))
+                var number = cursor.getString(cursor.getColumnIndex(Phone.NUMBER))
+
+                //Some condition to check previous data is not matched and only then add row
+                if(lastName != name){
+                    if (lastName != "") mc?.addRow(entry)
+                    entry = arrayOf(_id.toString(), photo, name, number)
+                    lastName = name
+                    continue
+                }
+                entry.set(3,entry.get(3) + ", " + number)
+            }
+            if (lastName != "") mc?.addRow(entry)
+        }
+        var from = arrayOf(
+            Phone.PHOTO_URI,
+            Phone.DISPLAY_NAME_PRIMARY,
+            Phone.NUMBER)
 
         var to = intArrayOf(R.id.image_de_profil,R.id.nom_personne,R.id.numero_personne)
 
-
-        var simple : SimpleCursorAdapter = SimpleCursorAdapter(this,R.layout.mon_style_liste_texte,cursor,from,to)
-
-        val liste_contacts = findViewById<ListView>(R.id.liste_contacts)
-
+        var simple = SimpleCursorAdapter(this,R.layout.mon_style_liste_texte,mc,from,to,0)
+        var liste_contacts = findViewById<ListView>(R.id.liste_contacts)
         liste_contacts.adapter = simple
+        cursor?.close()
+
     }
     public fun aller_appeler(view: View) {
         previousview = R.layout.module_contacts
@@ -109,8 +137,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(previousview)
         if (previousview == R.layout.module_appels) { previousview = R.layout.activity_main }
         if (previousview == R.layout.module_contacts) {
-            read()
+            remplir_contact()
             previousview = R.layout.activity_main
+        }
+    }
+    public fun efface_texte(view: View) {
+        val numero = findViewById<TextView>(R.id.numero)
+        if (numero.text.toString() != null && numero.text.toString().trim() != "") {
+            numero.setText(numero.text.toString().substring(0, numero.text.toString().length - 1))
         }
     }
     public fun button_0(view: View) {

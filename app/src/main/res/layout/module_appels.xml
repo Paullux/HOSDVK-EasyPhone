@@ -54,24 +54,51 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/numero"
+        <LinearLayout
+            android:id="@+id/linearLayout50"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textAllCaps="false"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="#FFFFFF"
-            android:textSize="45sp"
-            android:textStyle="bold" />
+            android:gravity="center|left|left"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <TextView
+                android:id="@+id/numero"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:autoSizeTextType="uniform"
+                android:textSize="45sp"
+                app:autoSizeMaxTextSize="45sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/button_delete"/>
+
+            <Button
+                android:id="@+id/button_delete"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:onClick="efface_texte"
+                app:icon="@drawable/ic_efface_texte"
+                app:iconGravity="textStart"
+                app:iconSize="40sp"
+                app:layout_constraintStart_toStartOf="@id/numero"
+                app:layout_constraintStart_toEndOf="parent"/>
+
+
+        </LinearLayout>
 
         <Space
             android:layout_width="wrap_content"
             android:layout_height="15dp" />
 
         <TableLayout
-            android:layout_width="410dp"
+            android:layout_width="wrap_content"
             android:layout_height="570dp"
             android:stretchColumns="*"
             android:weightSum="1">
@@ -86,7 +113,7 @@
 
                 <Button
                     android:id="@+id/bouton_1"
-                    android:layout_width="90dp"
+                    android:layout_width="85dp"
                     android:layout_height="115dp"
                     android:onClick="button_1"
                     android:text="1"
@@ -104,7 +131,7 @@
 
                 <Button
                     android:id="@+id/bouton_2"
-                    android:layout_width="90dp"
+                    android:layout_width="85dp"
                     android:layout_height="115dp"
                     android:onClick="button_2"
                     android:text="2"
@@ -122,7 +149,7 @@
 
                 <Button
                     android:id="@+id/bouton_3"
-                    android:layout_width="90dp"
+                    android:layout_width="85dp"
                     android:layout_height="115dp"
                     android:onClick="button_3"
                     android:text="3"
@@ -150,7 +177,7 @@
 
                 <Button
                     android:id="@+id/bouton_4"
-                    android:layout_width="90dp"
+                    android:layout_width="85dp"
                     android:layout_height="115dp"
                     android:onClick="button_4"
                     android:text="4"
@@ -168,7 +195,7 @@
 
                 <Button
                     android:id="@+id/bouton_5"
-                    android:layout_width="90dp"
+                    android:layout_width="85dp"
                     android:layout_height="115dp"
                     android:onClick="button_5"
                     android:text="5"
@@ -186,7 +213,7 @@
 
                 <Button
                     android:id="@+id/bouton_6"
-                    android:layout_width="90dp"
+                    android:layout_width="85dp"
                     android:layout_height="115dp"
                     android:onClick="button_6"
                     android:text="6"
@@ -213,7 +240,7 @@
 
                 <Button
                     android:id="@+id/bouton_7"
-                    android:layout_width="90dp"
+                    android:layout_width="85dp"
                     android:layout_height="115dp"
                     android:onClick="button_7"
                     android:text="7"
@@ -231,7 +258,7 @@
 
                 <Button
                     android:id="@+id/bouton_8"
-                    android:layout_width="90dp"
+                    android:layout_width="85dp"
                     android:layout_height="115dp"
                     android:onClick="button_8"
                     android:text="8"
@@ -249,7 +276,7 @@
 
                 <Button
                     android:id="@+id/bouton_9"
-                    android:layout_width="90dp"
+                    android:layout_width="85dp"
                     android:layout_height="115dp"
                     android:onClick="button_9"
                     android:text="9"
@@ -276,7 +303,7 @@
 
                 <Button
                     android:id="@+id/bouton_sign"
-                    android:layout_width="90dp"
+                    android:layout_width="85dp"
                     android:layout_height="115dp"
                     android:onClick="button_sign"
                     android:text="*#"
@@ -294,7 +321,7 @@
 
                 <Button
                     android:id="@+id/bouton_0"
-                    android:layout_width="90dp"
+                    android:layout_width="85dp"
                     android:layout_height="115dp"
                     android:onClick="button_0"
                     android:text="0"
@@ -312,7 +339,7 @@
 
                 <Button
                     android:id="@+id/bouton_call"
-                    android:layout_width="90dp"
+                    android:layout_width="85dp"
                     android:layout_height="115dp"
                     android:onClick="bouton_appel"
                     android:autoSizeTextType="uniform"
@@ -331,7 +358,6 @@
                     android:layout_height="110dp" />
             </TableRow>
         </TableLayout>
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
