@@ -11,14 +11,6 @@
         android:layout_width="100dp"
         android:layout_height="100dp" >
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/default_image_de_profil"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:padding="15dp"
-                android:src="@drawable/ic_photo_name"
-                android:scaleType="centerCrop"
-                app:shapeAppearanceOverlay="@style/coin_arrondi" />
-            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/image_de_profil"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
