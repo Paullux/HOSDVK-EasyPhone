@@ -1,13 +1,19 @@
 package com.hos_dvk.easyphone
 
+import android.Manifest
+import android.app.AlertDialog
+import android.content.pm.PackageManager
 import android.database.Cursor
 import android.database.MatrixCursor
+import android.os.Build
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.provider.ContactsContract.CommonDataKinds.Phone
 import android.view.View
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +22,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
     var previousview = R.layout.activity_main
-    var first_click = true
+    val PERMISSIONS_REQUEST_READ_CONTACTS = 1
+    var first = true
+
     public fun APPEL(view: View) {
         //Toast.makeText(this, "APPEL", Toast.LENGTH_LONG).show()
         setContentView(R.layout.module_appels)
@@ -24,10 +32,56 @@ class MainActivity : AppCompatActivity() {
     public fun SMS(view: View) {
         Toast.makeText(this, "SMS", Toast.LENGTH_LONG).show()
     }
+    private fun requestContactPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.READ_CONTACTS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(
+                        this,
+                        Manifest.permission.READ_CONTACTS
+                    )
+                ) {
+                    val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+                    builder.setTitle("Permission d'accès aux contacts")
+                    builder.setPositiveButton(android.R.string.ok, null)
+                    builder.setMessage("Veuillez Autoriser l'accès aux contact du téléphone.")
+                    builder.setOnDismissListener {
+                        requestPermissions(
+                            arrayOf(
+                                Manifest.permission.READ_CONTACTS
+                            ), PERMISSIONS_REQUEST_READ_CONTACTS
+                        )
+                    }
+                    builder.show()
+                } else {
+                    ActivityCompat.requestPermissions(
+                        this, arrayOf(Manifest.permission.READ_CONTACTS),
+                        PERMISSIONS_REQUEST_READ_CONTACTS
+                    )
+                }
+            }
+        }
+    }
+    @RequiresApi(Build.VERSION_CODES.M)
     public fun CONTACTS(view: View) {
         //Toast.makeText(this, "CONTACTS", Toast.LENGTH_LONG).show()
-        setContentView(R.layout.module_contacts)
-        remplir_contact()
+        requestContactPermission()
+        val requiredPermission = Manifest.permission.READ_CONTACTS
+        val checkVal = checkSelfPermission(requiredPermission)
+        if (checkVal==PackageManager.PERMISSION_GRANTED) {
+            setContentView(R.layout.module_contacts)
+            remplir_contact()
+        } else if(!first) {
+            Toast.makeText(
+                this,
+                "Vous avez refusé à Easy-Phone l'accès aux contacts du téléphone",
+                Toast.LENGTH_LONG
+            ).show()
+        }
+        if(!first) first = true
     }
     public fun defiler(view: View) {
         val nomPersonne = view.findViewById<TextView>(R.id.nom_personne)
@@ -237,6 +291,30 @@ class MainActivity : AppCompatActivity() {
     }
     public fun button_call(view: View) {
         Toast.makeText(this, "Appel", Toast.LENGTH_LONG).show()
+    }
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            PERMISSIONS_REQUEST_READ_CONTACTS -> {
+                if (grantResults.isNotEmpty()
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                ) {
+                    setContentView(R.layout.module_contacts)
+                    remplir_contact()
+                } else {
+                    Toast.makeText(
+                        this,
+                        "Vous avez refusé à Easy-Phone l'accès aux contacts du téléphone",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                return
+            }
+        }
     }
 }
 
