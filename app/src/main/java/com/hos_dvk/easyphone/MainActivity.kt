@@ -2,6 +2,7 @@ package com.hos_dvk.easyphone
 
 import android.Manifest
 import android.app.AlertDialog
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
 import android.database.MatrixCursor
@@ -17,6 +18,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.iterator
+import java.util.*
+import kotlin.concurrent.timerTask
+import com.ddd.androidutils.DoubleClick
+import com.ddd.androidutils.DoubleClickListener
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,61 +30,102 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
-//--------Initialisation variable globale---------------
+
+    //--------Initialisation variable globale---------------
     var previousview = R.layout.activity_main
     val PERMISSIONS_REQUEST_READ_CONTACTS = 1
-    var first = true
-    private var isFirst = true
-//--------Fonction de Base------------------------------
+    val PERMISSIONS_REQUEST_CALL_PHONE = 42
+    var firstContacts = true
+    var firstCall = true
+
+    //--------Fonction de Base------------------------------
     fun APPEL(view: View) {
         //Toast.makeText(this, "APPEL", Toast.LENGTH_LONG).show()
         setContentView(R.layout.module_appels)
     }
+
     @RequiresApi(Build.VERSION_CODES.M)
     fun CONTACTS(view: View) {
         //Toast.makeText(this, "CONTACTS", Toast.LENGTH_LONG).show()
         requestContactPermission()
         val requiredPermission = Manifest.permission.READ_CONTACTS
         val checkVal = checkSelfPermission(requiredPermission)
-        if (checkVal==PackageManager.PERMISSION_GRANTED) {
+        if (checkVal == PackageManager.PERMISSION_GRANTED) {
             setContentView(R.layout.module_contacts)
             remplir_contact()
-        } else if(!first) {
+        } else if (!firstContacts) {
             Toast.makeText(
                 this,
                 "Vous avez refusé à Easy-Phone l'accès aux contacts du téléphone",
                 Toast.LENGTH_LONG
             ).show()
         }
-        if(!first) first = true
+        if (firstContacts) firstContacts = false
     }
+
     fun SMS(view: View) {
         Toast.makeText(this, "SMS", Toast.LENGTH_LONG).show()
     }
+
     fun EMAILS(view: View) {
         Toast.makeText(this, "EMAILS", Toast.LENGTH_LONG).show()
     }
+
     fun PHOTOS(view: View) {
         Toast.makeText(this, "PHOTOS", Toast.LENGTH_LONG).show()
     }
-//------------------Fonctions globales------------------------------
+
+    //------------------Fonctions globales------------------------------
     fun Retour(view: View) {
         setContentView(previousview)
-        if (previousview == R.layout.module_appels) { previousview = R.layout.activity_main }
+        if (previousview == R.layout.module_appels) {
+            previousview = R.layout.activity_main
+        }
         if (previousview == R.layout.module_contacts) {
             remplir_contact()
             previousview = R.layout.activity_main
         }
     }
+
     override fun onBackPressed() {
         setContentView(previousview)
-        if (previousview == R.layout.module_appels) { previousview = R.layout.activity_main }
+        if (previousview == R.layout.module_appels) {
+            previousview = R.layout.activity_main
+        }
         if (previousview == R.layout.module_contacts) {
             remplir_contact()
             previousview = R.layout.activity_main
         }
     }
-//------------------fonctions liées aux modules appels--------------
+    @RequiresApi(Build.VERSION_CODES.M)
+    fun choix_appeler(view: View) {
+        requestCallPermission()
+        var numero_a_appeler = findViewById<Button>(R.id.choix_envoyer_sms).text.toString()
+        numero_a_appeler  = numero_a_appeler .replace("Envoyer un SMS à ", "")
+        Toast.makeText(this, "Appel de " + numero_a_appeler, Toast.LENGTH_LONG).show()
+        val requiredPermission = Manifest.permission.CALL_PHONE
+        val checkVal = checkSelfPermission(requiredPermission)
+        if (checkVal == PackageManager.PERMISSION_GRANTED) {
+            passcall(numero_a_appeler)
+        } else if (!firstCall) {
+            Toast.makeText(
+                this,
+                "Vous avez refusé à Easy-Phone l'accès aux appels par le téléphone",
+                Toast.LENGTH_LONG
+            ).show()
+        }
+        if (firstCall) firstCall = false
+    }
+    fun passcall(numero_a_appeler : String) {
+        val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:" + numero_a_appeler))
+        startActivity(intent)
+    }
+    fun choix_envoyer_sms(view: View) {
+        var sms_envoyer = findViewById<Button>(R.id.choix_envoyer_sms).text.toString()
+        sms_envoyer  = sms_envoyer.replace("Envoyer un SMS à ", "")
+        Toast.makeText(this, "sms à " + sms_envoyer, Toast.LENGTH_LONG).show()
+    }
+    //------------------fonctions liées aux modules appels--------------
     fun bouton_appel(view: View) {
         previousview = R.layout.module_appels
         var mon_nom_a_appeler = findViewById<TextView>(R.id.numero)
@@ -92,46 +139,18 @@ class MainActivity : AppCompatActivity() {
     fun efface_texte(view: View) {
         val numero = findViewById<TextView>(R.id.numero)
         val efface = findViewById<Button>(R.id.button_delete)
-        if (numero.text.toString() != null && numero.text.toString().trim() != "") {
-            numero.text = numero.text.toString().substring(0, numero.text.toString().length - 1)
-            efface.clickWithDebounce {
-                numero.text = ""
+        val doubleClick = DoubleClick(object : DoubleClickListener {
+            override fun onSingleClickEvent(view: View?) {
+                if (numero.text.toString() != null && numero.text.toString().trim()!="")
+                numero.text = numero.text.toString().substring(0, numero.text.toString().length - 1)
             }
-        }
-    }
-    private fun View.clickWithDebounce(debounceTime: Long = 60, action: () -> Unit) {
-        this.setOnClickListener(object : View.OnClickListener {
-            private var lastClickTime: Long = 0
-
-            override fun onClick(v: View) {
-                if (SystemClock.elapsedRealtime() - lastClickTime < debounceTime) return
-                else action()
-
-                lastClickTime = SystemClock.elapsedRealtime()
+            override fun onDoubleClickEvent(view: View?) {
+                if (numero.text.toString() != null && numero.text.toString().trim()!="")
+                    numero.text = ""
             }
         })
+        efface.setOnClickListener(doubleClick)
     }
-    /**
-    fun efface_texte(view: View) {
-        val numero = findViewById<TextView>(R.id.numero)
-        val efface = findViewById<Button>(R.id.button_delete)
-        if (numero.text.toString() == null || numero.text.toString().trim() == "") {
-            numero.text = numero.text.toString().substring(0, numero.text.toString().length - 1)
-        }
-        var doubleTap = false
-        efface.setOnClickListener {
-            if (doubleTap!!) {
-                if (numero.text.toString() == null || numero.text.toString().trim() == "") {
-                    numero.text = ""
-                }
-            }
-        }
-        doubleTap = true
-        Handler(Looper.getMainLooper()).postDelayed({
-            var doubleTap = false
-        }, 1500)
-    }
-     **/
     fun button_0(view: View) {
         val numero = findViewById<TextView>(R.id.numero)
         if (numero.text.toString() == null || numero.text.toString().trim()==""){
@@ -343,16 +362,6 @@ class MainActivity : AppCompatActivity() {
         sms_envoyer.setText("Envoyer un SMS à " + str2)
 
     }
-    fun choix_appeler(view: View) {
-        var numero_a_appeler = findViewById<Button>(R.id.choix_envoyer_sms).text.toString()
-        numero_a_appeler  = numero_a_appeler .replace("Envoyer un SMS à ", "")
-        Toast.makeText(this, "Appel de " + numero_a_appeler, Toast.LENGTH_LONG).show()
-    }
-    fun choix_envoyer_sms(view: View) {
-        var sms_envoyer = findViewById<Button>(R.id.choix_envoyer_sms).text.toString()
-        sms_envoyer  = sms_envoyer.replace("Envoyer un SMS à ", "")
-        Toast.makeText(this, "sms à " + sms_envoyer, Toast.LENGTH_LONG).show()
-    }
 //-----------fonctions liées aux permissions------------------------
     private fun requestContactPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -387,6 +396,39 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+    private fun requestCallPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.CALL_PHONE
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(
+                        this,
+                        Manifest.permission.CALL_PHONE
+                    )
+                ) {
+                    val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+                    builder.setTitle("Permission d'accès aux appels")
+                    builder.setPositiveButton(android.R.string.ok, null)
+                    builder.setMessage("Veuillez Autoriser l'accès aux appels par le téléphone.")
+                    builder.setOnDismissListener {
+                        requestPermissions(
+                            arrayOf(
+                                Manifest.permission.CALL_PHONE
+                            ), PERMISSIONS_REQUEST_CALL_PHONE
+                        )
+                    }
+                    builder.show()
+                } else {
+                    ActivityCompat.requestPermissions(
+                        this, arrayOf(Manifest.permission.CALL_PHONE),
+                        PERMISSIONS_REQUEST_CALL_PHONE
+                    )
+                }
+            }
+        }
+    }
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -409,7 +451,25 @@ class MainActivity : AppCompatActivity() {
                 }
                 return
             }
+                PERMISSIONS_REQUEST_CALL_PHONE -> {
+                    if (grantResults.isNotEmpty()
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                    ) {
+                        var numero_a_appeler = findViewById<Button>(R.id.choix_envoyer_sms).text.toString()
+                        numero_a_appeler  = numero_a_appeler .replace("Envoyer un SMS à ", "")
+                        passcall(numero_a_appeler)
+                    } else {
+                        Toast.makeText(
+                            this,
+                            "Vous avez refusé à Easy-Phone l'accès aux appels par le téléphone",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                return
+            }
         }
     }
 }
+
+
 

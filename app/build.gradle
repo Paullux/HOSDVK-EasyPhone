@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.hos_dvk.easyphone"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -42,8 +42,10 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.20"
     //Dépendance pour les composants material
     implementation "com.google.android.material:material:1.2.1"
+    implementation 'com.gitlab.developerdeveloperdeveloper:androidutilslibrary:1.0.0'
 }
 
 repositories {
     mavenCentral()
+    maven { url 'https://jitpack.io' }
 }
