@@ -6,8 +6,7 @@ import android.content.pm.PackageManager
 import android.database.Cursor
 import android.database.MatrixCursor
 import android.net.Uri
-import android.os.Build
-import android.os.Bundle
+import android.os.*
 import android.provider.ContactsContract.CommonDataKinds.Phone
 import android.view.ContextThemeWrapper
 import android.view.MenuItem
@@ -18,9 +17,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.iterator
-import java.util.*
-import kotlin.concurrent.schedule
-import kotlin.concurrent.timerTask
 
 
 class MainActivity : AppCompatActivity() {
@@ -95,16 +91,47 @@ class MainActivity : AppCompatActivity() {
     }
     fun efface_texte(view: View) {
         val numero = findViewById<TextView>(R.id.numero)
-        if (numero.text.toString() != null && numero.text.toString().trim() != "" && isFirst) {
+        val efface = findViewById<Button>(R.id.button_delete)
+        if (numero.text.toString() != null && numero.text.toString().trim() != "") {
+            numero.text = numero.text.toString().substring(0, numero.text.toString().length - 1)
+            efface.clickWithDebounce {
+                numero.text = ""
+            }
+        }
+    }
+    private fun View.clickWithDebounce(debounceTime: Long = 60, action: () -> Unit) {
+        this.setOnClickListener(object : View.OnClickListener {
+            private var lastClickTime: Long = 0
+
+            override fun onClick(v: View) {
+                if (SystemClock.elapsedRealtime() - lastClickTime < debounceTime) return
+                else action()
+
+                lastClickTime = SystemClock.elapsedRealtime()
+            }
+        })
+    }
+    /**
+    fun efface_texte(view: View) {
+        val numero = findViewById<TextView>(R.id.numero)
+        val efface = findViewById<Button>(R.id.button_delete)
+        if (numero.text.toString() == null || numero.text.toString().trim() == "") {
             numero.text = numero.text.toString().substring(0, numero.text.toString().length - 1)
         }
-        if (numero.text.toString() != null && numero.text.toString().trim() != "" && !isFirst) {
-            Timer().schedule(timerTask {
-                numero.text = ""
-            }, 500)
+        var doubleTap = false
+        efface.setOnClickListener {
+            if (doubleTap!!) {
+                if (numero.text.toString() == null || numero.text.toString().trim() == "") {
+                    numero.text = ""
+                }
+            }
         }
-        isFirst = !isFirst
+        doubleTap = true
+        Handler(Looper.getMainLooper()).postDelayed({
+            var doubleTap = false
+        }, 1500)
     }
+     **/
     fun button_0(view: View) {
         val numero = findViewById<TextView>(R.id.numero)
         if (numero.text.toString() == null || numero.text.toString().trim()==""){
