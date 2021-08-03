@@ -307,7 +307,7 @@ class MainActivity : AppCompatActivity() {
                 var alreadyExistContactId: Int? = null
                 val iterator = contacts.iterator()
                 for ((index, contact) in iterator.withIndex()) {
-                    if (contact[2] == name) {
+                    if (contact[2].lowercase() == name.lowercase()) {
                         alreadyExistContactId = index
                         break
                     }
