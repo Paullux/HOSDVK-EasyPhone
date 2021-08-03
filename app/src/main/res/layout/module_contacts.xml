@@ -53,7 +53,20 @@
                 app:layout_constraintStart_toEndOf="@+id/retour"
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
-
+        <com.mancj.materialsearchbar.MaterialSearchBar
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:textColor="#FFFFFF"
+            style="@style/MaterialSearchBarDark"
+            app:mt_textColor="@color/white"
+            app:mt_hintColor="@color/white"
+            app:mt_textCursorTint="@color/white"
+            app:mt_searchBarColor="#111"
+            app:mt_speechMode="false"
+            app:mt_hint="Custom hint"
+            app:mt_navIconEnabled="true"
+            app:mt_maxSuggestionsCount="5"/>
         <ListView
             android:id="@+id/liste_contacts"
             android:layout_width="match_parent"

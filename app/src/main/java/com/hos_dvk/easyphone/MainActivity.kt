@@ -2,27 +2,37 @@ package com.hos_dvk.easyphone
 
 import android.Manifest
 import android.app.AlertDialog
+import android.content.ContentResolver
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
 import android.database.MatrixCursor
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.*
 import android.provider.ContactsContract.CommonDataKinds.Phone
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.TypedValue
 import android.view.ContextThemeWrapper
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatEditText
+import androidx.appcompat.widget.AppCompatTextView
+import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.iterator
-import java.util.*
-import kotlin.concurrent.timerTask
 import com.ddd.androidutils.DoubleClick
 import com.ddd.androidutils.DoubleClickListener
-
+import com.mancj.materialsearchbar.MaterialSearchBar
+import java.lang.reflect.Field
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -124,6 +134,14 @@ class MainActivity : AppCompatActivity() {
         var sms_envoyer = findViewById<Button>(R.id.choix_envoyer_sms).text.toString()
         sms_envoyer  = sms_envoyer.replace("Envoyer un SMS à ", "")
         Toast.makeText(this, "sms à " + sms_envoyer, Toast.LENGTH_LONG).show()
+    }
+    fun Context.resourceUri(resourceId: Int): Uri = with(resources) {
+        Uri.Builder()
+            .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
+            .authority(getResourcePackageName(resourceId))
+            .appendPath(getResourceTypeName(resourceId))
+            .appendPath(getResourceEntryName(resourceId))
+            .build()
     }
     //------------------fonctions liées aux modules appels--------------
     fun bouton_appel(view: View) {
@@ -260,7 +278,7 @@ class MainActivity : AppCompatActivity() {
         numPersonne.isSelected = true
     }
     fun remplir_contact() {
-        val cursor : Cursor? = contentResolver.query(
+        val cursor: Cursor? = contentResolver.query(
             Phone.CONTENT_URI,
             null,
             null,
@@ -268,17 +286,17 @@ class MainActivity : AppCompatActivity() {
             Phone.DISPLAY_NAME + " ASC"
         )
 
-        var mc: MatrixCursor? = MatrixCursor(
+        var mc: MatrixCursor = MatrixCursor(
             arrayOf(
                 Phone._ID,
                 Phone.PHOTO_URI,
                 Phone.DISPLAY_NAME_PRIMARY,
                 Phone.NUMBER,
-            ),16
+            ), 16
         )
-        var contacts : MutableList<Array<String>> = mutableListOf()
+        var contacts: MutableList<Array<String>> = mutableListOf()
         if (cursor != null) {
-            while(cursor.moveToNext()){
+            while (cursor.moveToNext()) {
                 var id = cursor.getInt(cursor.getColumnIndex(Phone._ID)).toString()
                 var photo = cursor.getString(cursor.getColumnIndex(Phone.PHOTO_URI))
                 var name = cursor.getString(cursor.getColumnIndex(Phone.DISPLAY_NAME))
@@ -286,23 +304,22 @@ class MainActivity : AppCompatActivity() {
 
                 number = number.replace(" ", "")
 
-                var alreadyExistContactId : Int? = null
+                var alreadyExistContactId: Int? = null
                 val iterator = contacts.iterator()
-                for((index,contact) in iterator.withIndex()) {
+                for ((index, contact) in iterator.withIndex()) {
                     if (contact[2] == name) {
                         alreadyExistContactId = index
                         break
                     }
                 }
-                var storedContact : Array<String>
+                var storedContact: Array<String>
                 if (alreadyExistContactId != null) {
                     storedContact = contacts[alreadyExistContactId]
-                    if (!storedContact[3].contains(number))
+                    if (!storedContact[3].replace("+33", "0").contains(number.replace("+33", "0")))
                         storedContact[3] += ", $number"
                 } else {
                     if (photo == null) {
-                        photo = Uri.parse(
-                            "android.resource://com.hos_dvk.easyphone/drawable/ic_photo_name")
+                        photo = resourceUri(R.drawable.ic_photo_name)
                             .toString()
                     }
                     storedContact = arrayOf(id, photo, name, number)
@@ -310,7 +327,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             for (contact in contacts) {
-                mc?.addRow(contact)
+                mc.addRow(contact)
             }
         }
         var from = arrayOf(
@@ -318,12 +335,65 @@ class MainActivity : AppCompatActivity() {
             Phone.DISPLAY_NAME_PRIMARY,
             Phone.NUMBER)
 
-        var to = intArrayOf(R.id.image_de_profil,R.id.nom_personne,R.id.numero_personne)
+        var to = intArrayOf(R.id.image_de_profil, R.id.nom_personne, R.id.numero_personne)
 
-        var simple = SimpleCursorAdapter(this,R.layout.mon_style_liste_texte,mc,from,to,0)
+        var simple = SimpleCursorAdapter(this, R.layout.mon_style_liste_texte, mc, from, to, 0)
         var liste_contacts = findViewById<ListView>(R.id.liste_contacts)
         liste_contacts.adapter = simple
         cursor?.close()
+        SeachBar(liste_contacts, contacts, from, to, simple)
+    }
+    fun SeachBar(liste_contacts : ListView, contacts : MutableList<Array<String>>, from : Array<String>, to : IntArray, simple : SimpleCursorAdapter) {
+        var mc: MatrixCursor
+        val searchBar = findViewById<MaterialSearchBar>(R.id.search_bar).also {
+            it.setHint("Rechercher...")
+            it.setSpeechMode(false)
+            it.addTextChangeListener(object : TextWatcher {
+                override fun beforeTextChanged(charSequence: CharSequence?, start: Int, count: Int, after: Int) {
+
+                }
+                override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
+
+                }
+                override fun afterTextChanged(editable: Editable?) {
+                    if (editable.toString() != "") {
+                        mc = MatrixCursor(
+                            arrayOf(
+                                Phone._ID,
+                                Phone.PHOTO_URI,
+                                Phone.DISPLAY_NAME_PRIMARY,
+                                Phone.NUMBER,
+                            ), 16
+                        )
+                        for (contact in contacts) {
+                            if (contact[2].lowercase().contains(editable.toString().lowercase())) { mc.addRow(contact) }
+                        }
+                    } else {
+                        mc = MatrixCursor(
+                            arrayOf(
+                                Phone._ID,
+                                Phone.PHOTO_URI,
+                                Phone.DISPLAY_NAME_PRIMARY,
+                                Phone.NUMBER,
+                            ), 16
+                        )
+                        for (contact in contacts) {
+                            mc.addRow(contact)
+                        }
+                    }
+
+                    var simple = SimpleCursorAdapter(this@MainActivity, R.layout.mon_style_liste_texte, mc, from, to, 0)
+                    liste_contacts.adapter = simple
+
+                }
+            })
+        }
+        val constraintLayout =
+            ((searchBar.getChildAt(0) as CardView)?.getChildAt(0) as? ConstraintLayout)
+        val placeholderTextView = constraintLayout?.getChildAt(1) as AppCompatTextView
+        val editTextView =
+            (constraintLayout?.getChildAt(2) as LinearLayout)?.getChildAt(1) as AppCompatEditText
+        editTextView.textSize = 35f
     }
     fun choix_numero(view: View) {
         var mon_nom_a_appeler = view.findViewById<TextView>(R.id.nom_personne)
@@ -432,7 +502,7 @@ class MainActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
-        grantResults: IntArray
+        grantResults: IntArray,
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {

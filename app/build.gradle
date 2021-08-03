@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
 }
 apply plugin: 'kotlin-android'
+apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 30
@@ -12,8 +13,9 @@ android {
         applicationId "com.hos_dvk.easyphone"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "0.1"
+        manifestPlaceholders = [hostName:"www.handy-open-source.org"]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -25,6 +27,49 @@ android {
 
     buildFeatures {
         viewBinding true
+    }
+    buildTypes {
+        getByName("release") {
+            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+        }
+
+        getByName("debug") {
+            applicationIdSuffix = ".debug"
+        }
+
+        /**
+         * The `initWith` property allows you to copy configurations from other build types,
+         * then configure only the settings you want to change. This one copies the debug build
+         * type, and then changes the manifest placeholder and application ID.
+         */
+        /**create("staging") {
+            initWith(getByName("debug"))
+            manifestPlaceholders["hostName"] = "www.handy-open-source.org"
+            applicationIdSuffix = ""
+        } **/
+    }
+    // Specifies one flavor dimension.
+    flavorDimensions "version"
+    productFlavors {
+        create("demo") {
+            // Assigns this product flavor to the "version" flavor dimension.
+            // If you are using only one dimension, this property is optional,
+            // and the plugin automatically assigns all the module's flavors to
+            // that dimension.
+            dimension = "version"
+            applicationIdSuffix = ".demo"
+            versionNameSuffix = ""
+        }
+        create("full") {
+            dimension = "version"
+            applicationIdSuffix = ".full"
+            versionNameSuffix = ""
+        }
+    }
+    lintOptions {
+
+        checkReleaseBuilds false
+
     }
 }
 
@@ -42,6 +87,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.20"
     //Dépendance pour les composants material
     implementation "com.google.android.material:material:1.2.1"
+    implementation 'com.github.mancj:MaterialSearchBar:0.8.5'
     implementation 'com.gitlab.developerdeveloperdeveloper:androidutilslibrary:1.0.0'
 }
 
@@ -49,3 +95,4 @@ repositories {
     mavenCentral()
     maven { url 'https://jitpack.io' }
 }
+
