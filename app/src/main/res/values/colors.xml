@@ -8,10 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <!-- Mes Couleurs -->
-    <color name="vert">#29b647</color>
-    <color name="orange">#f07850</color>
-    <color name="marron">#584637</color>
-    <color name="bleu">	#005884</color>
-    <color name="pourpre">#7289da</color>
-    <color name="rose">#d473d4</color>
+    <color name="hos_green">#29b647</color>
+    <color name="hos_orange">#f07850</color>
+    <color name="hos_brown">#584637</color>
+    <color name="hos_blue">#005884</color>
+    <color name="hos_purple">#7289da</color>
+    <color name="hos_rose">#d473d4</color>
 </resources>

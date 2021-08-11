@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hos_dvk.easyphone.widget.Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:name="com.hos_dvk.easyphone.Keyboard"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_a"
+            app:inputKey="65"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="A"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_z"
+            app:inputKey="90"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Z"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_e"
+            app:inputKey="69"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="E"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_r"
+            app:inputKey="82"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="R"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_t"
+            app:inputKey="84"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="T"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_y"
+            app:inputKey="89"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Y"
+            style="@style/keyboard_style_look"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_u"
+            app:inputKey="85"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="U"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_i"
+            app:inputKey="73"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="I"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_o"
+            app:inputKey="79"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="O"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_p"
+            app:inputKey="80"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="P"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_q"
+            app:inputKey="81"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Q"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_s"
+            app:inputKey="83"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="S"
+            style="@style/keyboard_style_look"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_d"
+            app:inputKey="68"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="D"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_f"
+            app:inputKey="70"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="F"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_g"
+            app:inputKey="71"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="G"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_h"
+            app:inputKey="72"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="H"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_j"
+            app:inputKey="74"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="J"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_k"
+            app:inputKey="75"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="K"
+            style="@style/keyboard_style_look"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_l"
+            app:inputKey="76"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="L"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_m"
+            app:inputKey="77"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="M"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_w"
+            app:inputKey="87"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="W"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_x"
+            app:inputKey="88"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="X"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_c"
+            app:inputKey="67"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="C"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_v"
+            app:inputKey="86"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="V"
+            style="@style/keyboard_style_look"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_maj"
+            app:inputKey="16"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="25dp"
+            android:drawableLeft="@drawable/ic_majuscule"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_b"
+            app:inputKey="66"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="B"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_n"
+            app:inputKey="78"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="N"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_strophe"
+            app:inputKey="222"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="'"
+            style="@style/keyboard_style_look"/> />
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_delete"
+            app:inputKey="8"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="25dp"
+            android:drawableLeft="@drawable/ic_delete_text"
+            style="@style/keyboard_style_look"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_space"
+            app:inputKey="32"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="espace"
+            style="@style/keyboard_style_look"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_emoji_symb"
+            app:inputKey="191"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="\?1🙂"
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_comma"
+            app:inputKey="188"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text=","
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_point"
+            app:inputKey="110"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="."
+            style="@style/keyboard_style_look"/>
+
+        <com.hos_dvk.easyphone.widget.RawKeyButton
+            android:id="@+id/button_send"
+            app:inputKey="13"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="40dp"
+            android:drawableLeft="@drawable/ic_send"
+            style="@style/keyboard_style_look"/>
+    </LinearLayout>
+</com.hos_dvk.easyphone.widget.Keyboard>

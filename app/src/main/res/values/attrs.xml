@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="com.hos_dvk.easyphone.widget.Keyboard">
+        <attr name="inputKey" format="integer"/>
+        <attr name="inputView" format="reference"/>
+        <attr name="strokeColor" format="color|reference"/>
+        <attr name="strokeWidth" format="dimension"/>
+    </declare-styleable>
+    <declare-styleable name="com.hos_dvk.easyphone.widget.SearchBar">
+        <attr name="inputText" format="reference"/>
+        <attr name="resultView" format="reference"/>
+        <attr name="elementView" format="reference"/>
+    </declare-styleable>
+</resources>

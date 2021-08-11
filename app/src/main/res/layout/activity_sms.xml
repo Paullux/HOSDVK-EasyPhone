@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".module_activity.SmsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center|left|left"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/back"
+                android:layout_width="100dp"
+                android:layout_height="78dp"
+                android:gravity="center|left|left"
+                android:onClick="goBack"
+                app:backgroundTint="#000000"
+                app:icon="@drawable/ic_action_name"
+                app:iconGravity="textStart"
+                app:iconSize="80sp"
+                app:iconTint="#FFFFFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/sms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|left|left"
+                android:text="@string/module_sms"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/white"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.12"
+                app:layout_constraintStart_toEndOf="@+id/back"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+            <TextView
+                android:id="@+id/recipient"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:text="@string/nom_contact_sms"
+                android:layout_weight="5"
+                android:textColor="@color/white"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                style="@style/my_stroke"/>
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_plus"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/white"
+                    android:textSize="60sp"
+                    android:onClick="addContact"
+                    app:iconGravity="textStart"
+                    app:iconSize="50dp"
+                    app:strokeColor="@color/hos_blue"
+                    app:strokeWidth="4dp" />
+
+            </LinearLayout>
+
+            <TextView
+            android:id="@+id/phone_number_to_send_sms"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:ems="10"
+            android:hint="@string/phone_number_send_sms"
+            android:textColorHint="#999"
+            android:inputType="phone"
+            android:textColor="@color/white"
+            android:textSize="60sp"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            style="@style/my_stroke" />
+
+        <EditText
+            android:id="@+id/message_to_send"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:hint="@string/phone_text_sms_send"
+            android:textColorHint="#999"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:textColor="@color/white"
+            android:textSize="60sp"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            style="@style/my_stroke"/>
+
+        <Button
+            android:id="@+id/send_sms"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:onClick="sendSms"
+            android:textSize="40sp"
+            android:text="@string/send"
+            android:textColor="@color/white"
+            app:iconGravity="start"
+            android:drawableEnd="@drawable/ic_send"
+            app:strokeColor="@color/hos_blue"
+            app:strokeWidth="4dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000">
+    android:background="#000000"
+    tools:context=".module_activity.RealCallActivity" >
 
     <LinearLayout
         android:id="@+id/linearLayout10"
@@ -16,11 +17,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/retour"
+            android:id="@+id/back"
             android:layout_width="100dp"
             android:layout_height="78dp"
             android:gravity="center|left|left"
-            android:onClick="Retour"
+            android:onClick="goBack"
             app:backgroundTint="#000000"
             app:icon="@drawable/ic_action_name"
             app:iconGravity="textStart"
@@ -31,11 +32,11 @@
             app:tint="@color/white" />
 
         <TextView
-            android:id="@+id/choix"
+            android:id="@+id/choice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|left|left"
-            android:text="@string/choix"
+            android:text="@string/module_real_call"
             android:textAllCaps="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="#FFFFFF"
@@ -45,23 +46,23 @@
             android:maxLines="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.12"
-            app:layout_constraintStart_toEndOf="@+id/retour"
+            app:layout_constraintStart_toEndOf="@+id/back"
             app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
 
     <Button
-        android:id="@+id/choix_appeler"
+        android:id="@+id/i_choice_call"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:autoSizeTextType="uniform"
         android:maxLines="2"
-        android:onClick="choix_appeler"
-        android:text="appeler_X"
+        android:onClick="callChoice"
+        android:text="Appeler X"
         android:textAllCaps="false"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:backgroundTint="@color/orange"
-        app:icon="@drawable/ic_appels"
+        app:backgroundTint="@color/hos_orange"
+        app:icon="@drawable/ic_call"
         app:iconGravity="top"
         app:iconSize="80sp"
         app:iconTint="#FFFFFF"
@@ -71,18 +72,18 @@
         app:tint="@color/white" />
 
     <Button
-        android:id="@+id/choix_envoyer_sms"
+        android:id="@+id/i_choice_sms"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:onClick="choix_envoyer_sms"
-        android:text="envoyer_un_sms_a_X"
+        android:onClick="sendSmsActivity"
+        android:text="Envoyer un SMS à X"
         android:textAlignment="inherit"
         android:textAllCaps="false"
         android:textSize="30sp"
         android:textStyle="bold"
         android:autoSizeTextType="uniform"
         android:maxLines="2"
-        app:backgroundTint="@color/bleu"
+        app:backgroundTint="@color/hos_blue"
         app:icon="@drawable/ic_sms"
         app:iconGravity="top"
         app:iconSize="80sp"
@@ -90,7 +91,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/choix_appeler"
+        app:layout_constraintTop_toBottomOf="@+id/i_choice_call"
         app:tint="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,16 +1,47 @@
 <resources>
     <string name="app_name">Easy-Phone</string>
     <!-- MODULES -->
-    <string name="module_appel">APPEL</string>
+    <string name="module_dialer">APPEL</string>
     <string name="module_contacts">CONTACTS</string>
     <string name="module_sms">SMS</string>
-    <string name="module_emails">E-MAIL</string>
+    <string name="module_email">E-MAIL</string>
     <string name="module_photo">PHOTOS</string>
+    <string name="module_real_call">CHOIX</string>
     <string name="module_empty">VIDE</string>
-    <string name="nom_test">First Last</string>
-    <string name="numero_test">06 78 90 12 34</string>
-    <string name="choix">CHOIX</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <!-- Variable -->
+    <string name="test_name">First Last</string>
+    <string name="test_number">06 78 90 12 34</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="search">Rechercher</string>
+    <string name="enter_number">Numérotez...</string>
+    <string name="call">Appel de %1$s</string>
+    <string name="sms">Envoi un SMS au %1$s</string>
+    <string name="search">Recherche...</string>
+    <!-- hint SMS-->
+    <string name="phone_number_send_sms">N° contact</string>
+    <string name="phone_text_sms_send">Votre Message...</string>
+    <string name="send">Envoyer</string>
+    <string name="nom_contact_sms">Inconnu</string>
+    <!-- Permission -->
+    <!-- CAL -->
+    <string name="refuse_call">Vous avez refusé à Easy-Phone l\'accès aux appels par le téléphone</string>
+    <string name="call_perm">Permission d\'accès aux appels</string>
+    <string name="could_call_perm">Veuillez Autoriser l\'accès aux appels par le téléphone.</string>
+    <string name="your_number">Numéro</string>
+    <!-- CONTACT -->
+    <string name="refuse_contact">Vous avez refusé à Easy-Phone l\'accès aux contacts du téléphone</string>
+    <string name="contact_perm">Permission d\'accès aux contacts</string>
+    <string name="could_contact_perm">Veuillez Autoriser l\'accès aux contact du téléphone.</string>
+    <!-- SMS -->
+    <string name="refuse_sms">Vous avez refusé à Easy-Phone l\'accès aux sms du téléphone</string>
+    <string name="sms_perm">Permission d\'accès aux sms</string>
+    <string name="could_call_sms">Veuillez Autoriser l\'accès aux sms du téléphone.</string>
+    <!-- ADD CONTACT -->
+    <string name="add_contact">AJOUTER CONTACT</string>
+    <string name="cancel">ANNULER</string>
+    <string name="add">AJOUTER</string>
+    <string name="first_name">Prénom</string>
+    <string name="last_name">Nom de Famille</string>
+    <string name="contact_added">Contact Ajouté</string>
+    <string name="accept_contact_write">Vous avez accepté d\'ajouter les contacts, appuyer à nouveau sur AJOUTER pour enregistrer votre contact.</string>
+    <string name="refuse_contact_write">Vous avec refusé l\'accès à l\'écriture.</string>
 </resources>

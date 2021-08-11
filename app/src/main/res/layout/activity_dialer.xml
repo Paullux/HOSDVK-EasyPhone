@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".module_activity.DialerActivity" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linearLayout10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center|left|left"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/back"
+                android:layout_width="100dp"
+                android:layout_height="78dp"
+                android:gravity="center|left|left"
+                android:onClick="goBack"
+                app:backgroundTint="#000000"
+                app:icon="@drawable/ic_action_name"
+                app:iconGravity="textStart"
+                app:iconSize="80sp"
+                app:iconTint="#FFFFFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/call"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|left|left"
+                android:text="@string/module_dialer"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#FFFFFF"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.12"
+                app:layout_constraintStart_toEndOf="@+id/back"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+        <LinearLayout
+            android:id="@+id/linearLayout50"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|left|left"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/write_number"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="4"
+                android:gravity="center"
+                android:hint="@string/your_number"
+                android:textColorHint="#999"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:autoSizeTextType="uniform"
+                android:textSize="45sp"
+                app:autoSizeMaxTextSize="45sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/call_button_delete"
+                style="@style/my_stroke"/>
+
+            <Button
+                android:id="@+id/call_button_delete"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:onClick="textToDelete"
+                app:icon="@drawable/ic_delete_text"
+                app:iconGravity="textStart"
+                app:iconSize="40sp"
+                app:strokeColor="@color/hos_blue"
+                app:strokeWidth="4dp" />
+            <Button
+                android:id="@+id/button"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:textSize="60sp"
+                android:textColor="@color/white"
+                android:onClick="addContact"
+                app:iconGravity="start"
+                app:iconSize="50dp"
+                android:drawableLeft="@drawable/ic_plus"
+                android:paddingLeft="20dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:strokeColor="@color/hos_blue"
+                app:strokeWidth="4dp"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="*"
+            android:weightSum="20">
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="">
+
+                <View
+                    android:id="@+id/divider9"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/listDivider" />
+
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autoSizeTextType="uniform"
+                    android:maxLines="1"
+                    android:onClick="button1"
+                    android:text="1"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="60sp"
+                    android:textStyle="bold"
+                    app:strokeColor="@color/hos_blue"
+                    app:strokeWidth="5dp" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/listDivider" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autoSizeTextType="uniform"
+                    android:maxLines="1"
+                    android:onClick="button2"
+                    android:text="2"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="60sp"
+                    android:textStyle="bold"
+                    app:strokeColor="@color/hos_blue"
+                    app:strokeWidth="5dp" />
+
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/listDivider" />
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autoSizeTextType="uniform"
+                    android:maxLines="1"
+                    android:onClick="button3"
+                    android:text="3"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="60sp"
+                    android:textStyle="bold"
+                    app:strokeColor="@color/hos_blue"
+                    app:strokeWidth="5dp" />
+
+                <View
+                    android:id="@+id/divider13"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/listDivider" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="">
+
+                <View
+                    android:id="@+id/divider10"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/listDivider" />
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autoSizeTextType="uniform"
+                    android:maxLines="1"
+                    android:onClick="button4"
+                    android:text="4"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="60sp"
+                    android:textStyle="bold"
+                    app:strokeColor="@color/hos_blue"
+                    app:strokeWidth="5dp" />
+
+                <View
+                    android:id="@+id/divider3"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/listDivider" />
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autoSizeTextType="uniform"
+                    android:maxLines="1"
+                    android:onClick="button5"
+                    android:text="5"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="60sp"
+                    android:textStyle="bold"
+                    app:strokeColor="@color/hos_blue"
+                    app:strokeWidth="5dp" />
+
+                <View
+                    android:id="@+id/divider4"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/listDivider" />
+
+                <Button
+                    android:id="@+id/button6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autoSizeTextType="uniform"
+                    android:maxLines="1"
+                    android:onClick="button6"
+                    android:text="6"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="60sp"
+                    android:textStyle="bold"
+                    app:strokeColor="@color/hos_blue"
+                    app:strokeWidth="5dp" />
+
+                <View
+                    android:id="@+id/divider14"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/listDivider" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="">
+
+                <View
+                    android:id="@+id/divider11"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/listDivider" />
+
+                <Button
+                    android:id="@+id/button7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autoSizeTextType="uniform"
+                    android:maxLines="1"
+                    android:onClick="button7"
+                    android:text="7"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="60sp"
+                    android:textStyle="bold"
+                    app:strokeColor="@color/hos_blue"
+                    app:strokeWidth="5dp" />
+
+                <View
+                    android:id="@+id/divider5"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/listDivider" />
+
+                <Button
+                    android:id="@+id/button8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autoSizeTextType="uniform"
+                    android:maxLines="1"
+                    android:onClick="button8"
+                    android:text="8"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="60sp"
+                    android:textStyle="bold"
+                    app:strokeColor="@color/hos_blue"
+                    app:strokeWidth="5dp" />
+
+
+                <View
+                    android:id="@+id/divider6"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/listDivider" />
+
+                <Button
+                    android:id="@+id/button9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autoSizeTextType="uniform"
+                    android:maxLines="1"
+                    android:onClick="button9"
+                    android:text="9"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="60sp"
+                    android:textStyle="bold"
+                    app:strokeColor="@color/hos_blue"
+                    app:strokeWidth="5dp" />
+
+                <View
+                    android:id="@+id/divider15"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/listDivider" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="">
+
+                <View
+                    android:id="@+id/divider12"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/listDivider" />
+
+                <Button
+                    android:id="@+id/button_sign"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autoSizeTextType="uniform"
+                    android:maxLines="1"
+                    android:onClick="buttonSign"
+                    android:text="*#"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="60sp"
+                    android:textStyle="bold"
+                    app:strokeColor="@color/hos_blue"
+                    app:strokeWidth="5dp" />
+
+                <View
+                    android:id="@+id/divider7"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/listDivider" />
+
+                <Button
+                    android:id="@+id/button0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autoSizeTextType="uniform"
+                    android:maxLines="1"
+                    android:onClick="button0"
+                    android:text="0"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="60sp"
+                    android:textStyle="bold"
+                    app:strokeColor="@color/hos_blue"
+                    app:strokeWidth="5dp" />
+
+                <View
+                    android:id="@+id/divider8"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/listDivider" />
+
+                <Button
+                    android:id="@+id/button_call"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autoSizeTextType="uniform"
+                    android:maxLines="1"
+                    android:onClick="chooseCall"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="60sp"
+                    android:textStyle="bold"
+                    app:icon="@drawable/ic_call"
+                    app:iconGravity="textStart"
+                    app:iconSize="50sp"
+                    app:strokeColor="@color/hos_blue"
+                    app:strokeWidth="5dp" />
+
+                <View
+                    android:id="@+id/divider16"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/listDivider" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

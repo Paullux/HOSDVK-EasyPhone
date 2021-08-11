@@ -21,11 +21,11 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <Button
-                android:id="@+id/retour"
+                android:id="@+id/back"
                 android:layout_width="100dp"
                 android:layout_height="78dp"
                 android:gravity="center|left|left"
-                android:onClick="Retour"
+                android:onClick="goBack"
                 app:backgroundTint="#000000"
                 app:icon="@drawable/ic_action_name"
                 app:iconGravity="textStart"
@@ -36,11 +36,11 @@
                 app:tint="@color/white" />
 
             <TextView
-                android:id="@+id/choix"
+                android:id="@+id/nom_nouveau_module"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|left|left"
-                android:text="@string/module_contacts"
+                android:text="@string/module_empty"
                 android:textAllCaps="false"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="#FFFFFF"
@@ -50,28 +50,21 @@
                 android:maxLines="1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.12"
-                app:layout_constraintStart_toEndOf="@+id/retour"
+                app:layout_constraintStart_toEndOf="@+id/back"
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
-        <com.mancj.materialsearchbar.MaterialSearchBar
-            android:id="@+id/search_bar"
-            android:layout_width="match_parent"
-            android:layout_height="78dp"
-            android:textColor="#FFFFFF"
-            style="@style/MaterialSearchBarDark"
-            app:mt_textColor="@color/white"
-            app:mt_hintColor="@color/white"
-            app:mt_textCursorTint="@color/white"
-            app:mt_searchBarColor="#111"
-            app:mt_speechMode="false"
-            app:mt_hint="Custom hint"
-            app:mt_navIconEnabled="true"
-            app:mt_maxSuggestionsCount="5"/>
-        <ListView
-            android:id="@+id/liste_contacts"
+
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/mon_style_liste_texte" />
+            android:gravity="center|center"
+            android:text="@string/module_empty"
+            android:textColor="@color/white"
+            android:textSize="60sp"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
 
     </LinearLayout>
 

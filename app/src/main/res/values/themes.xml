@@ -13,9 +13,11 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
     <style name="coin_arrondi">
         <item name="cornerSize">10%</item>
     </style>
+
     <style name="MyPopupMenu" parent="@android:style/Widget.PopupMenu">
         <item name="android:dividerHeight">1dp</item>
         <item name="android:itemBackground">#F33</item>
@@ -23,5 +25,14 @@
         <item name="android:textSize">35sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:popupBackground">@drawable/abc_popup_background_mtrl_mult</item>
+    </style>
+    <style name="keyboard_style_look">
+        <item name="android:textSize">@dimen/text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/keyboard_look</item>
+    </style>
+    <style name="my_stroke">
+        <item name="android:background">@drawable/keyboard_look</item>
     </style>
 </resources>
