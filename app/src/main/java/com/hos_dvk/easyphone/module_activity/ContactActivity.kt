@@ -1,10 +1,7 @@
 package com.hos_dvk.easyphone.module_activity
 
-import android.content.ContentResolver
-import android.content.Context
 import android.content.Intent
 import android.database.MatrixCursor
-import android.net.Uri
 import android.os.*
 import android.provider.ContactsContract.CommonDataKinds.Phone
 import android.text.Editable
@@ -37,7 +34,7 @@ class ContactActivity : AppCompatActivity() {
 
     private fun loadContacts() {
         val contactsListView = findViewById<ListView>(R.id.contacts_list)
-        var contactsList: MutableList<ContactDataClass> =
+        val contactsList: MutableList<ContactDataClass> =
             ContactQuery().getAll(contentResolver, this)
         val mc = MatrixCursor(
             arrayOf(
@@ -49,7 +46,7 @@ class ContactActivity : AppCompatActivity() {
         )
 
         for(contact in contactsList) {
-            var contactId: Int = (0..255).random()
+            val contactId: Int = (0..255).random()
             mc.addRow(arrayOf(contactId, contact.photoUri, contact.name, contact.number))
         }
         val from = arrayOf(
@@ -93,7 +90,7 @@ class ContactActivity : AppCompatActivity() {
                         )
                         for (contact in contactsArray) {
                             if (contact.name.lowercase().contains(editable.toString().lowercase())) {
-                                var contactId: Int = (0..255).random()
+                                val contactId: Int = (0..255).random()
                                 mc.addRow(arrayOf(contactId, contact.photoUri, contact.name, contact.number))
                             }
                         }
@@ -107,7 +104,7 @@ class ContactActivity : AppCompatActivity() {
                             ), 16
                         )
                         for (contact in contactsArray) {
-                            var contactId: Int = (0..255).random()
+                            val contactId: Int = (0..255).random()
                             mc.addRow(arrayOf(contactId, contact.photoUri, contact.name, contact.number))
                         }
                     }
@@ -176,7 +173,6 @@ class ContactActivity : AppCompatActivity() {
             }
             popupMenu.show()
         } else {
-            val numberToCall = view.findViewById<TextView>(R.id.person_number)
             lastActivity = "ContactActivity"
             val realCall = Intent(this, RealCallActivity::class.java).apply {
                 putExtra(NAME_TO_CALL, nameToCall.text.toString())
@@ -184,15 +180,6 @@ class ContactActivity : AppCompatActivity() {
             }
             startActivity(realCall)
         }
-    }
-
-    private fun Context.resourceUri(resourceId: Int): Uri = with(resources) {
-        Uri.Builder()
-            .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
-            .authority(getResourcePackageName(resourceId))
-            .appendPath(getResourceTypeName(resourceId))
-            .appendPath(getResourceEntryName(resourceId))
-            .build()
     }
 
     fun goBack(@Suppress("UNUSED_PARAMETER")view: View) {
