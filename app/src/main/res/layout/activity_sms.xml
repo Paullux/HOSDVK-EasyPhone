@@ -93,49 +93,65 @@
             </LinearLayout>
 
             <TextView
-            android:id="@+id/phone_number_to_send_sms"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:ems="10"
-            android:hint="@string/phone_number_send_sms"
-            android:textColorHint="#999"
-            android:inputType="phone"
-            android:textColor="@color/white"
-            android:textSize="60sp"
-            android:textStyle="bold"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            style="@style/my_stroke" />
+                android:id="@+id/phone_number_to_send_sms"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:ems="10"
+                android:hint="@string/phone_number_send_sms"
+                android:textColorHint="#999"
+                android:inputType="phone"
+                android:textColor="@color/white"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                style="@style/my_stroke" />
+            <TextView
+                android:id="@+id/history"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="6"
+                android:scrollbars = "vertical"
+                android:layout_gravity="bottom"
+                android:hint="@string/history_hint"
+                android:textColorHint="#999"
+                android:textColor="@color/white"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                style="@style/my_stroke"/>
 
-        <EditText
-            android:id="@+id/message_to_send"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="10"
-            android:hint="@string/phone_text_sms_send"
-            android:textColorHint="#999"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine"
-            android:textColor="@color/white"
-            android:textSize="60sp"
-            android:textStyle="bold"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            style="@style/my_stroke"/>
+            <EditText
+                android:id="@+id/message_to_send"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:scrollbars = "vertical"
+                android:layout_gravity="bottom"
+                android:hint="@string/phone_text_sms_send"
+                android:textColorHint="#999"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+                android:textColor="@color/white"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                style="@style/my_stroke"/>
 
-        <Button
-            android:id="@+id/send_sms"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:onClick="sendSms"
-            android:textSize="40sp"
-            android:text="@string/send"
-            android:textColor="@color/white"
-            app:iconGravity="start"
-            android:drawableEnd="@drawable/ic_send"
-            app:strokeColor="@color/hos_blue"
-            app:strokeWidth="4dp"/>
+            <Button
+                android:id="@+id/send_sms"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:onClick="sendSms"
+                android:textSize="40sp"
+                android:text="@string/send"
+                android:textColor="@color/white"
+                app:iconGravity="start"
+                android:drawableEnd="@drawable/ic_send"
+                app:strokeColor="@color/hos_blue"
+                app:strokeWidth="4dp"/>
 
         </LinearLayout>
     </LinearLayout>

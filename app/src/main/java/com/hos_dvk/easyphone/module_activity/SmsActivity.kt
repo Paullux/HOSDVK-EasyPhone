@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.provider.Telephony
 import android.telephony.SmsManager
+import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
@@ -35,9 +36,15 @@ class SmsActivity  : AppCompatActivity() {
             override fun onReceive(context: Context?, intent: Intent?) {
                 for (sms in Telephony.Sms.Intents.getMessagesFromIntent(intent)) {
                     val phoneToSms: TextView = findViewById(R.id.phone_number_to_send_sms)
-                    val messageToSms: EditText = findViewById(R.id.message_to_send)
+                    val messageToSms: TextView = findViewById(R.id.history)
                     phoneToSms.text = sms.originatingAddress
-                    messageToSms.setText(sms.displayMessageBody)
+                    findContactName()
+                    val contactName = findViewById<TextView>(R.id.recipient)
+                    messageToSms.text = getString(R.string.historic_message_other,messageToSms.text.toString(),contactName.text.toString(), sms.displayMessageBody.toString())
+                    messageToSms.movementMethod = ScrollingMovementMethod()
+                    contactName.movementMethod = ScrollingMovementMethod()
+                    val scrollAmount = messageToSms.layout.getLineTop(messageToSms.lineCount) - messageToSms.height
+                    messageToSms.scrollTo(0, scrollAmount)
                 }
             }
         }
@@ -61,10 +68,18 @@ class SmsActivity  : AppCompatActivity() {
 
     fun sendSms(@Suppress("UNUSED_PARAMETER")view: View) {
         number = findViewById<TextView>(R.id.phone_number_to_send_sms).text.toString()
-        val messageSms = findViewById<EditText>(R.id.message_to_send).text.toString()
+        val messageSms = findViewById<EditText>(R.id.message_to_send)
+        messageSms.movementMethod = ScrollingMovementMethod()
         val sms = SmsManager.getDefault()
-        sms.sendTextMessage(number, "ME", messageSms, null, null)
+        sms.sendTextMessage(number, "ME", messageSms.text.toString(), null, null)
+        val historyMessage = findViewById<TextView>(R.id.history)
+        historyMessage.movementMethod = ScrollingMovementMethod()
+        historyMessage.text = getString(R.string.historic_message_me,historyMessage.text.toString(), messageSms.text.toString())
+        val scrollAmount = historyMessage.layout.getLineTop(historyMessage.lineCount) - historyMessage.height
+        historyMessage.scrollTo(0, scrollAmount)
+        messageSms.text = null
     }
+
     private fun findContactName () {
         val contactName = findViewById<TextView>(R.id.recipient)
         number = findViewById<TextView>(R.id.phone_number_to_send_sms).text.toString()

@@ -22,6 +22,9 @@
     <string name="phone_text_sms_send">Votre Message&#8230;</string>
     <string name="send">Envoyer</string>
     <string name="nom_contact_sms">Inconnu</string>
+    <string name="history_hint">Historique</string>
+    <string name="historic_message_me">%1s\n ---Moi--- \n%2s</string>
+    <string name="historic_message_other">%1s\n---%2s--- \n%3s</string>
     <!-- Permission -->
     <!-- CAL -->
     <string name="refuse_call">Vous avez refusé à Easy-Phone l\'accès aux appels par le téléphone</string>
