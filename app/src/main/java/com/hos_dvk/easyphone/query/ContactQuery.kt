@@ -18,7 +18,7 @@ class ContactQuery {
             ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC"
         )
 
-        var listContacts: MutableList<ContactDataClass> = mutableListOf()
+        val listContacts: MutableList<ContactDataClass> = mutableListOf()
         var contactInfo: ContactDataClass? = null
         if (cursor?.moveToFirst()!!) {
             do {
@@ -26,7 +26,7 @@ class ContactQuery {
                     cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_URI))
                 if (cursorPhotoUri == null) cursorPhotoUri =
                     context.resourceUri(R.drawable.ic_photo_name).toString()
-                var cursorName =
+                val cursorName =
                     cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME_PRIMARY))
                 var cursorNumber =
                     cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))

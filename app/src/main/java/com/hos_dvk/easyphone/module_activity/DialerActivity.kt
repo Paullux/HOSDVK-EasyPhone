@@ -3,7 +3,6 @@ package com.hos_dvk.easyphone.module_activity
 import android.content.Intent
 import android.view.View
 import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.ddd.androidutils.DoubleClick
 import com.ddd.androidutils.DoubleClickListener
@@ -16,7 +15,7 @@ class DialerActivity : AppCompatActivity() {
         super.onStart()
         setContentView(R.layout.activity_dialer)
         lastActivity = "MainActivity"
-        numberToCall = findViewById<TextView>(R.id.write_number)
+        numberToCall = findViewById(R.id.write_number)
     }
     private var firstDeleteButtonPress = true
 
@@ -66,7 +65,9 @@ class DialerActivity : AppCompatActivity() {
     private fun pressButton(button: String) {
         if (numberToCall?.text.toString().trim() == "") {
             numberToCall?.text = button
-        } else { numberToCall?.text = numberToCall?.text.toString() + button }
+        } else {
+            numberToCall?.text = getString(R.string.add_number,numberToCall?.text.toString(), button)
+        }
     }
     fun button0(@Suppress("UNUSED_PARAMETER")view: View) {
         pressButton("0")

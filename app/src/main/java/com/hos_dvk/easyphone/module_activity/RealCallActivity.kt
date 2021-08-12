@@ -26,7 +26,7 @@ class RealCallActivity : AppCompatActivity() {
         name = realCall?.getStringExtra(NAME_TO_CALL).toString()
         number = realCall?.getStringExtra(NUMBER_TO_CALL).toString()
 
-        var contactsList: MutableList<ContactDataClass> =
+        val contactsList: MutableList<ContactDataClass> =
             ContactQuery().getAll(contentResolver, this)
         for (contact in contactsList) {
             if (contact.number.replace("+33","0") == number.replace("+33","0")) name = contact.name
@@ -66,7 +66,6 @@ class RealCallActivity : AppCompatActivity() {
         val requiredPermission = Manifest.permission.RECEIVE_SMS
         val checkVal = checkSelfPermission(requiredPermission)
         if (checkVal == PackageManager.PERMISSION_GRANTED) {
-            number = findViewById<TextView>(R.id.i_choice_sms).text.toString().replace("Envoi un SMS au ", "")
             val realSms = Intent(this, SmsActivity::class.java).apply {
                 putExtra(CONTACT_TO_SMS, number)
             }

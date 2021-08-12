@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.os.Build
 import android.provider.Telephony
 import android.telephony.SmsManager
 import android.view.View
@@ -27,20 +26,18 @@ class SmsActivity  : AppCompatActivity() {
         val realSms = intent
         number = realSms?.getStringExtra(CONTACT_TO_SMS).toString()
         receiveSMS()
-        var phoneToSms: TextView = findViewById(R.id.phone_number_to_send_sms)
-        phoneToSms.setText(number)
+        val phoneToSms: TextView = findViewById(R.id.phone_number_to_send_sms)
+        phoneToSms.text = number
         if (number != "") findContactName()
     }
     private fun receiveSMS() {
-        var br = object: BroadcastReceiver() {
+        val br = object: BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent?) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    for (sms in Telephony.Sms.Intents.getMessagesFromIntent(intent)) {
-                        var phoneToSms: TextView = findViewById(R.id.phone_number_to_send_sms)
-                        var messageToSms: EditText = findViewById(R.id.message_to_send)
-                        phoneToSms.setText(sms.originatingAddress)
-                        messageToSms.setText(sms.displayMessageBody)
-                    }
+                for (sms in Telephony.Sms.Intents.getMessagesFromIntent(intent)) {
+                    val phoneToSms: TextView = findViewById(R.id.phone_number_to_send_sms)
+                    val messageToSms: EditText = findViewById(R.id.message_to_send)
+                    phoneToSms.text = sms.originatingAddress
+                    messageToSms.setText(sms.displayMessageBody)
                 }
             }
         }
@@ -51,7 +48,7 @@ class SmsActivity  : AppCompatActivity() {
         number = findViewById<TextView>(R.id.phone_number_to_send_sms).text.toString()
         val contactName = findViewById<TextView>(R.id.recipient)
         println("---------------$number------------------")
-        if (number != "" && contactName.text.toString() == getString(com.hos_dvk.easyphone.R.string.nom_contact_sms)) {
+        if (number != "" && contactName.text.toString() == getString(R.string.nom_contact_sms)) {
             val addContact = Intent(this, AddContactActivity::class.java).apply {
                 putExtra(NUMBER_TO_CALL, number)
             }
@@ -65,16 +62,20 @@ class SmsActivity  : AppCompatActivity() {
     fun sendSms(@Suppress("UNUSED_PARAMETER")view: View) {
         number = findViewById<TextView>(R.id.phone_number_to_send_sms).text.toString()
         val messageSms = findViewById<EditText>(R.id.message_to_send).text.toString()
-        var sms = SmsManager.getDefault()
+        val sms = SmsManager.getDefault()
         sms.sendTextMessage(number, "ME", messageSms, null, null)
     }
     private fun findContactName () {
         val contactName = findViewById<TextView>(R.id.recipient)
         number = findViewById<TextView>(R.id.phone_number_to_send_sms).text.toString()
-        var contactsList: MutableList<ContactDataClass> =
+        val contactsList: MutableList<ContactDataClass> =
             ContactQuery().getAll(contentResolver, this)
         for (contact in contactsList) {
-            if (contact.number.replace("+33","0") == number.replace("+33","0")) contactName.text = contact.name
+            for (numberContact in contact.number.split(", ").toTypedArray()) {
+                if (numberContact.replace("+33", "0") == number.replace("+33",
+                        "0")
+                ) contactName.text = contact.name
+            }
         }
     }
     fun goBack(@Suppress("UNUSED_PARAMETER")view: View) {
