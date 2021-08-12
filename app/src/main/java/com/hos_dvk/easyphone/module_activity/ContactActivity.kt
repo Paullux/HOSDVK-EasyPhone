@@ -3,7 +3,6 @@ package com.hos_dvk.easyphone.module_activity
 import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
-import android.database.Cursor
 import android.database.MatrixCursor
 import android.net.Uri
 import android.os.*
@@ -21,6 +20,8 @@ import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.iterator
 import com.hos_dvk.easyphone.*
+import com.hos_dvk.easyphone.data_class.ContactDataClass
+import com.hos_dvk.easyphone.query.ContactQuery
 import com.hos_dvk.easyphone.widget.GoBack
 import com.mancj.materialsearchbar.MaterialSearchBar
 import java.util.*
@@ -35,14 +36,9 @@ class ContactActivity : AppCompatActivity() {
     }
 
     private fun loadContacts() {
-        val cursor: Cursor? = contentResolver.query(
-            Phone.CONTENT_URI,
-            null,
-            null,
-            null,
-            Phone.DISPLAY_NAME + " ASC"
-        )
-
+        val contactsListView = findViewById<ListView>(R.id.contacts_list)
+        var contactsList: MutableList<ContactDataClass> =
+            ContactQuery().getAll(contentResolver, this)
         val mc = MatrixCursor(
             arrayOf(
                 Phone._ID,
@@ -51,41 +47,10 @@ class ContactActivity : AppCompatActivity() {
                 Phone.NUMBER,
             ), 16
         )
-        val contacts: MutableList<Array<String>> = mutableListOf()
-        if (cursor != null) {
-            while (cursor.moveToNext()) {
-                val id = cursor.getInt(cursor.getColumnIndex(Phone._ID)).toString()
-                var photo = cursor.getString(cursor.getColumnIndex(Phone.PHOTO_URI))
-                val name = cursor.getString(cursor.getColumnIndex(Phone.DISPLAY_NAME))
-                var number = cursor.getString(cursor.getColumnIndex(Phone.NUMBER))
 
-                number = number.replace(" ", "")
-
-                var alreadyExistContactId: Int? = null
-                val iterator = contacts.iterator()
-                for ((index, contact) in iterator.withIndex()) {
-                    if (contact[2].lowercase() == name.lowercase()) {
-                        alreadyExistContactId = index
-                        break
-                    }
-                }
-                var storedContact: Array<String>
-                if (alreadyExistContactId != null) {
-                    storedContact = contacts[alreadyExistContactId]
-                    if (!storedContact[3].replace("+33", "0").contains(number.replace("+33", "0")))
-                        storedContact[3] += ", $number"
-                } else {
-                    if (photo == null) {
-                        photo = resourceUri(R.drawable.ic_photo_name)
-                            .toString()
-                    }
-                    storedContact = arrayOf(id, photo, name, number)
-                    contacts.add(storedContact)
-                }
-            }
-            for (contact in contacts) {
-                mc.addRow(contact)
-            }
+        for(contact in contactsList) {
+            var contactId: Int = (0..255).random()
+            mc.addRow(arrayOf(contactId, contact.photoUri, contact.name, contact.number))
         }
         val from = arrayOf(
             Phone.PHOTO_URI,
@@ -95,19 +60,13 @@ class ContactActivity : AppCompatActivity() {
         val to = intArrayOf(R.id.profile_picture, R.id.person_name, R.id.person_number)
 
         val simple = SimpleCursorAdapter(this, R.layout.style_of_text_list, mc, from, to, 0)
-        val contactsList = findViewById<ListView>(R.id.contacts_list)
-        contactsList.adapter = simple
-        cursor?.close()
-        searchBar(contactsList, contacts, from, to)
-        //val contactsListView = findViewById<ListView>(R.id.contacts_list)
-        //val contactsModel = findViewById<LinearLayout>(R.id.contact_model)
-        //var contactsList: MutableList<ContactDataClass> =
-        //    ContactQuery().getAll(contentResolver, this)
-        //ContactAdapter(this, contactsList).getView(R.id.contacts_list, contactsModel, contactsListView)
+        contactsListView.adapter = simple
+
+            searchBar(contactsListView, contactsList, from, to)
     }
     private fun searchBar(
         contactsList: ListView,
-        contactsArray: MutableList<Array<String>>,
+        contactsArray: MutableList<ContactDataClass>,
         from: Array<String>,
         to: IntArray,
     ) {
@@ -133,7 +92,10 @@ class ContactActivity : AppCompatActivity() {
                             ), 16
                         )
                         for (contact in contactsArray) {
-                            if (contact[2].lowercase().contains(editable.toString().lowercase())) { mc.addRow(contact) }
+                            if (contact.name.lowercase().contains(editable.toString().lowercase())) {
+                                var contactId: Int = (0..255).random()
+                                mc.addRow(arrayOf(contactId, contact.photoUri, contact.name, contact.number))
+                            }
                         }
                     } else {
                         mc = MatrixCursor(
@@ -145,14 +107,14 @@ class ContactActivity : AppCompatActivity() {
                             ), 16
                         )
                         for (contact in contactsArray) {
-                            mc.addRow(contact)
+                            var contactId: Int = (0..255).random()
+                            mc.addRow(arrayOf(contactId, contact.photoUri, contact.name, contact.number))
                         }
                     }
 
                     val simple = SimpleCursorAdapter(this@ContactActivity,
                         R.layout.style_of_text_list, mc, from, to, 0)
                     contactsList.adapter = simple
-
                 }
             })
         }
