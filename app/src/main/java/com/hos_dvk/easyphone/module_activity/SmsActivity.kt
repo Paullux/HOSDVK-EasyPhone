@@ -17,6 +17,7 @@ import com.hos_dvk.easyphone.R
 import com.hos_dvk.easyphone.data_class.ContactDataClass
 import com.hos_dvk.easyphone.number
 import com.hos_dvk.easyphone.query.ContactQuery
+import com.hos_dvk.easyphone.query.SmsQuery
 import com.hos_dvk.easyphone.widget.GoBack
 
 
@@ -30,6 +31,7 @@ class SmsActivity  : AppCompatActivity() {
         val phoneToSms: TextView = findViewById(R.id.phone_number_to_send_sms)
         phoneToSms.text = number
         if (number != "") findContactName()
+        SmsQuery().getAll(contentResolver)
     }
     private fun receiveSMS() {
         val br = object: BroadcastReceiver() {

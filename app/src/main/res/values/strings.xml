@@ -26,7 +26,7 @@
     <string name="historic_message_me">%1s\n ---Moi--- \n%2s</string>
     <string name="historic_message_other">%1s\n---%2s--- \n%3s</string>
     <!-- Permission -->
-    <!-- CAL -->
+    <!-- CALL -->
     <string name="refuse_call">Vous avez refusé à Easy-Phone l\'accès aux appels par le téléphone</string>
     <string name="call_perm">Permission d\'accès aux appels</string>
     <string name="could_call_perm">Veuillez Autoriser l\'accès aux appels par le téléphone.</string>
@@ -49,4 +49,6 @@
     <string name="contact_added">Contact Ajouté</string>
     <string name="accept_contact_write">Vous avez accepté d\'ajouter les contacts, appuyer à nouveau sur AJOUTER pour enregistrer votre contact.</string>
     <string name="refuse_contact_write">Vous avec refusé l\'accès à l\'écriture.</string>
+    <string name="accept_permission">Bravo, vous avez accepté les permissions</string>
+    <string name="refuse_permission">Relancer l\'application, vous avez refusé les permissions</string>
 </resources>
