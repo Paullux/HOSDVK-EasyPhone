@@ -2,42 +2,45 @@ package com.hos_dvk.easyphone.query
 
 import android.content.ContentResolver
 import android.database.Cursor
-import android.net.Uri
 import com.hos_dvk.easyphone.data_class.SmsDataClass
 import java.util.*
+import android.provider.Telephony
+
 
 class SmsQuery {
     fun getAll(contentResolver: ContentResolver): MutableList<SmsDataClass> {
-        var smsList: MutableList<SmsDataClass> = mutableListOf()
+        val smsList: MutableList<SmsDataClass> = mutableListOf()
         val cursor: Cursor =
-            contentResolver.query(Uri.parse("content://sms/inbox"), null, null, null, null)!!
-        println("****************************************")
+            contentResolver.query(Telephony.Sms.CONTENT_URI, null, null, null, null)!!
+        var smsData: SmsDataClass
         if (cursor.moveToFirst()) {
-            val name = cursor.getColumnIndex("address")
-            val messageData = cursor.getColumnIndex("body")
-            val dateID = cursor.getColumnIndex("date")
-            println(cursor.getColumnIndex("address").toString())
-            println(cursor.getColumnIndex("body").toString())
-            println(cursor.getColumnIndex("date").toString())
             do {
-                println("----------------------------------------")
-                val dateString = cursor.getString(dateID)
-                val smsData: SmsDataClass? = null
-                smsData?.name = cursor.getString(name)
-                smsData?.messageData = cursor.getString(messageData)
-                smsData?.date = Date(dateString.toLong())
-                if (smsData != null) {
-                    smsList.add(smsData)
+                val address: String =
+                    cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.ADDRESS)).toString()
+                val messageData: String =
+                    cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY)).toString()
+                val date =
+                    Date(cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.DATE)).toLong())
+
+                val type = when (Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.TYPE)))) {
+                    Telephony.Sms.MESSAGE_TYPE_INBOX -> {
+                        "inbox"
+                    }
+                    Telephony.Sms.MESSAGE_TYPE_SENT -> {
+                        "sent"
+                    }
+                    Telephony.Sms.MESSAGE_TYPE_OUTBOX -> {
+                        "outbox"
+                    }
+                    else -> {
+                        "null"
+                    }
                 }
-                println(smsData?.name)
-                println(smsData?.messageData)
-                println(smsData?.date)
-                println("----------------------------------------")
+                smsData = SmsDataClass(address, messageData, date, type)
+                smsList.add(smsData)
             } while (cursor.moveToNext())
-        println("****************************************")
-        }  else {
-            smsList = mutableListOf()// empty box, no SMS
         }
+        cursor.close()
         return smsList
     }
 }

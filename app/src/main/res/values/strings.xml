@@ -49,6 +49,6 @@
     <string name="contact_added">Contact Ajouté</string>
     <string name="accept_contact_write">Vous avez accepté d\'ajouter les contacts, appuyer à nouveau sur AJOUTER pour enregistrer votre contact.</string>
     <string name="refuse_contact_write">Vous avec refusé l\'accès à l\'écriture.</string>
-    <string name="accept_permission">Bravo, vous avez accepté les permissions</string>
+    <string name="accept_permission">Bienvenue sur l\'application</string>
     <string name="refuse_permission">Relancer l\'application, vous avez refusé les permissions</string>
 </resources>
