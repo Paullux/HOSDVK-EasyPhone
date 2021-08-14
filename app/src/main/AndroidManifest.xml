@@ -27,13 +27,24 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+
             </intent-filter>
         </activity>
         <activity android:name=".module_activity.ContactActivity"/>
         <activity android:name=".module_activity.DialerActivity"/>
         <activity android:name=".module_activity.RealCallActivity"/>
         <activity android:name=".module_activity.AddContactActivity"/>
-        <activity android:name=".module_activity.SmsActivity"
+        <activity android:name=".module_activity.SmsConversationActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+                <action android:name="android.provider.Telephony.SMS_SEND" />
+                <action android:name="android.provider.Telephony.SMS_READ" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".module_activity.SmsListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />

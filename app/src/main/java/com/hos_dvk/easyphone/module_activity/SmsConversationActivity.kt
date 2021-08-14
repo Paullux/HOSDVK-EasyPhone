@@ -11,40 +11,41 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.hos_dvk.easyphone.CONTACT_TO_SMS
-import com.hos_dvk.easyphone.NUMBER_TO_CALL
-import com.hos_dvk.easyphone.R
+import com.hos_dvk.easyphone.*
 import com.hos_dvk.easyphone.data_class.ContactDataClass
-import com.hos_dvk.easyphone.number
 import com.hos_dvk.easyphone.query.ContactQuery
-import com.hos_dvk.easyphone.query.SmsQuery
 import com.hos_dvk.easyphone.widget.GoBack
 
 
-class SmsActivity  : AppCompatActivity() {
+class SmsConversationActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
-        setContentView(R.layout.activity_sms)
+        setContentView(R.layout.activity_conversation_sms)
         val realSms = intent
-        number = realSms?.getStringExtra(CONTACT_TO_SMS).toString()
-        receiveSMS()
+        val numberSMS = realSms.getStringExtra(CONTACT_TO_SMS).toString()
+        val historySMS = realSms.getStringExtra(HISTORY_OF_SMS).toString()
         val phoneToSms: TextView = findViewById(R.id.phone_number_to_send_sms)
-        phoneToSms.text = number
+        val messageToSms: TextView = findViewById(R.id.history)
+        messageToSms.text = historySMS
+        phoneToSms.text = numberSMS
+        messageToSms.movementMethod = ScrollingMovementMethod()
+        phoneToSms.movementMethod = ScrollingMovementMethod()
+        messageToSms.post {
+            val scrollAmount =
+                messageToSms.layout.getLineTop(messageToSms.lineCount) - messageToSms.height
+            messageToSms.scrollTo(0, scrollAmount)
+        }
         if (number != "") findContactName()
-        SmsQuery().getAll(contentResolver)
+        receiveSMS()
     }
     private fun receiveSMS() {
         val br = object: BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent?) {
                 for (sms in Telephony.Sms.Intents.getMessagesFromIntent(intent)) {
-                    val phoneToSms: TextView = findViewById(R.id.phone_number_to_send_sms)
-                    val messageToSms: TextView = findViewById(R.id.history)
-                    phoneToSms.text = sms.originatingAddress
                     findContactName()
                     val contactName = findViewById<TextView>(R.id.recipient)
+                    val messageToSms = findViewById<TextView>(R.id.history)
                     messageToSms.text = getString(R.string.historic_message_other,messageToSms.text.toString(),contactName.text.toString(), sms.displayMessageBody.toString())
-                    messageToSms.movementMethod = ScrollingMovementMethod()
-                    contactName.movementMethod = ScrollingMovementMethod()
                     val scrollAmount = messageToSms.layout.getLineTop(messageToSms.lineCount) - messageToSms.height
                     messageToSms.scrollTo(0, scrollAmount)
                 }
@@ -56,7 +57,6 @@ class SmsActivity  : AppCompatActivity() {
     fun addContact(@Suppress("UNUSED_PARAMETER")view: View) {
         number = findViewById<TextView>(R.id.phone_number_to_send_sms).text.toString()
         val contactName = findViewById<TextView>(R.id.recipient)
-        println("---------------$number------------------")
         if (number != "" && contactName.text.toString() == getString(R.string.nom_contact_sms)) {
             val addContact = Intent(this, AddContactActivity::class.java).apply {
                 putExtra(NUMBER_TO_CALL, number)
@@ -89,9 +89,8 @@ class SmsActivity  : AppCompatActivity() {
             ContactQuery().getAll(contentResolver, this)
         for (contact in contactsList) {
             for (numberContact in contact.number.split(", ").toTypedArray()) {
-                if (numberContact.replace("+33", "0") == number.replace("+33",
-                        "0")
-                ) contactName.text = contact.name
+                if (numberContact.replaceFirst("0", "+33") == number.replaceFirst("0", "+33"))
+                    contactName.text = contact.name
             }
         }
     }

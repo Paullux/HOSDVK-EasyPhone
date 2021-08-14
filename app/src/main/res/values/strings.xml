@@ -40,6 +40,8 @@
     <string name="refuse_sms">Vous avez refusé à Easy-Phone l\'accès aux sms du téléphone</string>
     <string name="sms_perm">Permission d\'accès aux sms</string>
     <string name="could_call_sms">Veuillez Autoriser l\'accès aux sms du téléphone.</string>
+    <string name="me">Moi</string>
+    <string name="sms_preview">SMS Preview</string>
     <!-- ADD CONTACT -->
     <string name="add_contact">AJOUTER CONTACT</string>
     <string name="cancel">ANNULER</string>

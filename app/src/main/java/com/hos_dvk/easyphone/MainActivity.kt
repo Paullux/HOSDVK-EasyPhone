@@ -16,7 +16,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.hos_dvk.easyphone.module_activity.ContactActivity
 import com.hos_dvk.easyphone.module_activity.DialerActivity
-import com.hos_dvk.easyphone.module_activity.SmsActivity
+import com.hos_dvk.easyphone.module_activity.SmsConversationActivity
+import com.hos_dvk.easyphone.module_activity.SmsListActivity
 import com.hos_dvk.easyphone.widget.GoBack
 
 //--------------------MainActivity-------------------------
@@ -97,12 +98,12 @@ class MainActivity : AppCompatActivity() {
         val checkValReceived = checkSelfPermission(requiredPermissionReceive)
         val checkValSend = checkSelfPermission(requiredPermissionSend)
         if (checkValReceived == PackageManager.PERMISSION_GRANTED && checkValSend == PackageManager.PERMISSION_GRANTED) {
-            val intent = Intent(this, SmsActivity::class.java)
+            val intent = Intent(this, SmsListActivity::class.java)
             startActivity(intent)
-            val realSms = Intent(this, SmsActivity::class.java).apply {
+            /**val realSms = Intent(this, SmsConversationActivity::class.java).apply {
                 putExtra(CONTACT_TO_SMS, "")
             }
-            startActivity(realSms)
+            startActivity(realSms)**/
         } else if (!firstContacts) {
             Toast.makeText(
                 this,

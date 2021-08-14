@@ -13,13 +13,18 @@
         <entry key="..\:/Users/paulw/AndroidStudioProjects/HOSDVK-EasyPhone/app/src/main/res/drawable-anydpi/ic_plus.xml" value="0.2947916666666667" />
         <entry key="..\:/Users/paulw/AndroidStudioProjects/HOSDVK-EasyPhone/app/src/main/res/drawable-anydpi/ic_send.xml" value="0.2947916666666667" />
         <entry key="..\:/Users/paulw/AndroidStudioProjects/HOSDVK-EasyPhone/app/src/main/res/drawable-anydpi/ic_sms.xml" value="0.2947916666666667" />
+        <entry key="..\:/Users/paulw/AndroidStudioProjects/HOSDVK-EasyPhone/app/src/main/res/drawable/back.xml" value="0.371875" />
         <entry key="..\:/Users/paulw/AndroidStudioProjects/HOSDVK-EasyPhone/app/src/main/res/drawable/ic_appels_background.xml" value="0.309375" />
         <entry key="..\:/Users/paulw/AndroidStudioProjects/HOSDVK-EasyPhone/app/src/main/res/drawable/keyboard_look.xml" value="0.309375" />
+        <entry key="..\:/Users/paulw/AndroidStudioProjects/HOSDVK-EasyPhone/app/src/main/res/drawable/list_selector_background.xml" value="0.48333333333333334" />
+        <entry key="..\:/Users/paulw/AndroidStudioProjects/HOSDVK-EasyPhone/app/src/main/res/drawable/sms_listview.xml" value="0.371875" />
         <entry key="..\:/Users/paulw/AndroidStudioProjects/HOSDVK-EasyPhone/app/src/main/res/layout-v26/call_module.xml" value="0.21467391304347827" />
         <entry key="..\:/Users/paulw/AndroidStudioProjects/HOSDVK-EasyPhone/app/src/main/res/layout-v26/dialer_module.xml" value="0.23958333333333334" />
         <entry key="..\:/Users/paulw/AndroidStudioProjects/HOSDVK-EasyPhone/app/src/main/res/layout/activity_contact.xml" value="0.16530797101449277" />
+        <entry key="..\:/Users/paulw/AndroidStudioProjects/HOSDVK-EasyPhone/app/src/main/res/layout/activity_conversation_sms.xml" value="0.1" />
         <entry key="..\:/Users/paulw/AndroidStudioProjects/HOSDVK-EasyPhone/app/src/main/res/layout/activity_dialer.xml" value="0.18931159420289856" />
         <entry key="..\:/Users/paulw/AndroidStudioProjects/HOSDVK-EasyPhone/app/src/main/res/layout/activity_empty_model.xml" value="0.16530797101449277" />
+        <entry key="..\:/Users/paulw/AndroidStudioProjects/HOSDVK-EasyPhone/app/src/main/res/layout/activity_list_sms.xml" value="0.22" />
         <entry key="..\:/Users/paulw/AndroidStudioProjects/HOSDVK-EasyPhone/app/src/main/res/layout/activity_main.xml" value="0.13470205307961944" />
         <entry key="..\:/Users/paulw/AndroidStudioProjects/HOSDVK-EasyPhone/app/src/main/res/layout/activity_real_call.xml" value="0.12243365047571357" />
         <entry key="..\:/Users/paulw/AndroidStudioProjects/HOSDVK-EasyPhone/app/src/main/res/layout/activity_sms.xml" value="0.22" />
@@ -31,6 +36,7 @@
         <entry key="..\:/Users/paulw/AndroidStudioProjects/HOSDVK-EasyPhone/app/src/main/res/layout/hos_keyboard.xml" value="0.18931159420289856" />
         <entry key="..\:/Users/paulw/AndroidStudioProjects/HOSDVK-EasyPhone/app/src/main/res/layout/module_choix_sms_appel.xml" value="0.21467391304347827" />
         <entry key="..\:/Users/paulw/AndroidStudioProjects/HOSDVK-EasyPhone/app/src/main/res/layout/real_call_module.xml" value="0.2617753623188406" />
+        <entry key="..\:/Users/paulw/AndroidStudioProjects/HOSDVK-EasyPhone/app/src/main/res/layout/style_of_sms_list.xml" value="0.22" />
         <entry key="..\:/Users/paulw/AndroidStudioProjects/HOSDVK-EasyPhone/app/src/main/res/layout/style_of_text_list.xml" value="0.24635416666666668" />
       </map>
     </option>

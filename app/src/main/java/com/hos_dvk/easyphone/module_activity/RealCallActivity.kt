@@ -61,7 +61,7 @@ class RealCallActivity : AppCompatActivity() {
         val requiredPermission = Manifest.permission.RECEIVE_SMS
         val checkVal = checkSelfPermission(requiredPermission)
         if (checkVal == PackageManager.PERMISSION_GRANTED) {
-            val realSms = Intent(this, SmsActivity::class.java).apply {
+            val realSms = Intent(this, SmsConversationActivity::class.java).apply {
                 putExtra(CONTACT_TO_SMS, number)
             }
             startActivity(realSms)

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".module_activity.SmsActivity">
+    tools:context=".module_activity.SmsConversationActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -68,9 +68,9 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:text="@string/nom_contact_sms"
-                android:layout_weight="5"
+                android:layout_weight="7"
                 android:textColor="@color/white"
-                android:textSize="60sp"
+                android:textSize="40sp"
                 android:textStyle="bold"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 style="@style/my_stroke"/>
@@ -96,13 +96,13 @@
                 android:id="@+id/phone_number_to_send_sms"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"
+                android:layout_weight="1.5"
                 android:ems="10"
                 android:hint="@string/phone_number_send_sms"
                 android:textColorHint="#999"
                 android:inputType="phone"
                 android:textColor="@color/white"
-                android:textSize="60sp"
+                android:textSize="40sp"
                 android:textStyle="bold"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 style="@style/my_stroke" />
@@ -116,16 +116,15 @@
                 android:hint="@string/history_hint"
                 android:textColorHint="#999"
                 android:textColor="@color/white"
-                android:textSize="60sp"
+                android:textSize="40sp"
                 android:textStyle="bold"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 style="@style/my_stroke"/>
-
             <EditText
                 android:id="@+id/message_to_send"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="4"
+                android:layout_weight="3"
                 android:scrollbars = "vertical"
                 android:layout_gravity="bottom"
                 android:hint="@string/phone_text_sms_send"
@@ -134,7 +133,7 @@
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
                 android:textColor="@color/white"
-                android:textSize="60sp"
+                android:textSize="40sp"
                 android:textStyle="bold"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 style="@style/my_stroke"/>

@@ -19,7 +19,7 @@ class ContactQuery {
         )
 
         val listContacts: MutableList<ContactDataClass> = mutableListOf()
-        var contactInfo: ContactDataClass? = null
+        var contactInfo: ContactDataClass?
         if (cursor?.moveToFirst()!!) {
             do {
                 var cursorPhotoUri =
@@ -45,11 +45,10 @@ class ContactQuery {
                 var storedContact: ContactDataClass
                 if (alreadyExistContactId != null) {
                     storedContact = listContacts[alreadyExistContactId]
-                    if (!storedContact.number.replace("+33", "0").contains(cursorNumber.replace("+33", "0")))
+                    //TODO : Détecter le pays de la personne pour détecter le code pays
+                    if (!storedContact.number.replaceFirst("0", "+33").contains(cursorNumber.replaceFirst("0", "+33")))
                         storedContact.number += ", $cursorNumber"
                 } else {
-                    if (cursorPhotoUri == null) cursorPhotoUri =
-                        context.resourceUri(R.drawable.ic_photo_name).toString()
 
                     contactInfo = ContactDataClass(
                         cursorPhotoUri,
