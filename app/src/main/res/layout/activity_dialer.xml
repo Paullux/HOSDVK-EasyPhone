@@ -28,11 +28,12 @@
                 android:layout_height="78dp"
                 android:gravity="center|left|left"
                 android:onClick="goBack"
-                app:backgroundTint="#000000"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/black"
+                android:iconTint="@color/white"
                 app:icon="@drawable/ic_action_name"
                 app:iconGravity="textStart"
                 app:iconSize="80sp"
-                app:iconTint="#FFFFFF"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:tint="@color/white" />
@@ -63,7 +64,7 @@
             android:id="@+id/linearLayout50"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center|left|left"
+            android:gravity="center|left"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -73,7 +74,9 @@
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_weight="4"
-                android:gravity="center"
+                android:gravity="center|left"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:hint="@string/your_number"
                 android:textColorHint="#999"
                 android:textAllCaps="false"
@@ -95,6 +98,9 @@
                 android:layout_weight="1"
                 android:gravity="right"
                 android:onClick="textToDelete"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/black"
+                app:iconTint="@color/white"
                 app:icon="@drawable/ic_delete_text"
                 app:iconGravity="textStart"
                 app:iconSize="40sp"
@@ -106,8 +112,10 @@
                 android:layout_height="70dp"
                 android:layout_weight="1"
                 android:textSize="60sp"
-                android:textColor="@color/white"
                 android:onClick="addContact"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/black"
+                android:iconTint="@color/white"
                 app:iconGravity="start"
                 app:iconSize="50dp"
                 android:drawableLeft="@drawable/ic_plus"
@@ -135,7 +143,8 @@
                     android:id="@+id/divider9"
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="?android:attr/listDivider" />
+                    android:background="?android:attr/listDivider"
+                    android:backgroundTint="@color/black"/>
 
                 <Button
                     android:id="@+id/button1"
@@ -149,6 +158,9 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="60sp"
                     android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/black"
+                    android:iconTint="@color/white"
                     app:strokeColor="@color/hos_blue"
                     app:strokeWidth="5dp" />
 
@@ -156,7 +168,8 @@
                     android:id="@+id/divider"
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="?android:attr/listDivider" />
+                    android:background="?android:attr/listDivider"
+                    android:backgroundTint="@color/black"/>
 
                 <Button
                     android:id="@+id/button2"
@@ -170,6 +183,9 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="60sp"
                     android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/black"
+                    android:iconTint="@color/white"
                     app:strokeColor="@color/hos_blue"
                     app:strokeWidth="5dp" />
 
@@ -177,7 +193,8 @@
                     android:id="@+id/divider2"
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="?android:attr/listDivider" />
+                    android:background="?android:attr/listDivider"
+                    android:backgroundTint="@color/black"/>
 
                 <Button
                     android:id="@+id/button3"
@@ -191,6 +208,9 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="60sp"
                     android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/black"
+                    android:iconTint="@color/white"
                     app:strokeColor="@color/hos_blue"
                     app:strokeWidth="5dp" />
 
@@ -198,7 +218,8 @@
                     android:id="@+id/divider13"
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="?android:attr/listDivider" />
+                    android:background="?android:attr/listDivider"
+                    android:backgroundTint="@color/black"/>
             </TableRow>
 
             <TableRow
@@ -211,7 +232,8 @@
                     android:id="@+id/divider10"
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="?android:attr/listDivider" />
+                    android:background="?android:attr/listDivider"
+                    android:backgroundTint="@color/black"/>
 
                 <Button
                     android:id="@+id/button4"
@@ -225,6 +247,9 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="60sp"
                     android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/black"
+                    android:iconTint="@color/white"
                     app:strokeColor="@color/hos_blue"
                     app:strokeWidth="5dp" />
 
@@ -232,7 +257,8 @@
                     android:id="@+id/divider3"
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="?android:attr/listDivider" />
+                    android:background="?android:attr/listDivider"
+                    android:backgroundTint="@color/black"/>
 
                 <Button
                     android:id="@+id/button5"
@@ -246,6 +272,9 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="60sp"
                     android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/black"
+                    android:iconTint="@color/white"
                     app:strokeColor="@color/hos_blue"
                     app:strokeWidth="5dp" />
 
@@ -253,7 +282,8 @@
                     android:id="@+id/divider4"
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="?android:attr/listDivider" />
+                    android:background="?android:attr/listDivider"
+                    android:backgroundTint="@color/black"/>
 
                 <Button
                     android:id="@+id/button6"
@@ -267,6 +297,9 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="60sp"
                     android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/black"
+                    android:iconTint="@color/white"
                     app:strokeColor="@color/hos_blue"
                     app:strokeWidth="5dp" />
 
@@ -274,7 +307,8 @@
                     android:id="@+id/divider14"
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="?android:attr/listDivider" />
+                    android:background="?android:attr/listDivider"
+                    android:backgroundTint="@color/black"/>
             </TableRow>
 
             <TableRow
@@ -287,7 +321,8 @@
                     android:id="@+id/divider11"
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="?android:attr/listDivider" />
+                    android:background="?android:attr/listDivider"
+                    android:backgroundTint="@color/black"/>
 
                 <Button
                     android:id="@+id/button7"
@@ -301,6 +336,9 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="60sp"
                     android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/black"
+                    android:iconTint="@color/white"
                     app:strokeColor="@color/hos_blue"
                     app:strokeWidth="5dp" />
 
@@ -308,7 +346,8 @@
                     android:id="@+id/divider5"
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="?android:attr/listDivider" />
+                    android:background="?android:attr/listDivider"
+                    android:backgroundTint="@color/black"/>
 
                 <Button
                     android:id="@+id/button8"
@@ -322,6 +361,9 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="60sp"
                     android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/black"
+                    android:iconTint="@color/white"
                     app:strokeColor="@color/hos_blue"
                     app:strokeWidth="5dp" />
 
@@ -330,7 +372,8 @@
                     android:id="@+id/divider6"
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="?android:attr/listDivider" />
+                    android:background="?android:attr/listDivider"
+                    android:backgroundTint="@color/black"/>
 
                 <Button
                     android:id="@+id/button9"
@@ -344,6 +387,9 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="60sp"
                     android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/black"
+                    android:iconTint="@color/white"
                     app:strokeColor="@color/hos_blue"
                     app:strokeWidth="5dp" />
 
@@ -351,7 +397,8 @@
                     android:id="@+id/divider15"
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="?android:attr/listDivider" />
+                    android:background="?android:attr/listDivider"
+                    android:backgroundTint="@color/black"/>
             </TableRow>
 
             <TableRow
@@ -364,7 +411,8 @@
                     android:id="@+id/divider12"
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="?android:attr/listDivider" />
+                    android:background="?android:attr/listDivider"
+                    android:backgroundTint="@color/black"/>
 
                 <Button
                     android:id="@+id/button_sign"
@@ -374,10 +422,13 @@
                     android:autoSizeTextType="uniform"
                     android:maxLines="1"
                     android:onClick="buttonSign"
-                    android:text="*#"
+                    android:text="+"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="60sp"
                     android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/black"
+                    android:iconTint="@color/white"
                     app:strokeColor="@color/hos_blue"
                     app:strokeWidth="5dp" />
 
@@ -385,7 +436,8 @@
                     android:id="@+id/divider7"
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="?android:attr/listDivider" />
+                    android:background="?android:attr/listDivider"
+                    android:backgroundTint="@color/black"/>
 
                 <Button
                     android:id="@+id/button0"
@@ -399,6 +451,9 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="60sp"
                     android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/black"
+                    android:iconTint="@color/white"
                     app:strokeColor="@color/hos_blue"
                     app:strokeWidth="5dp" />
 
@@ -406,7 +461,8 @@
                     android:id="@+id/divider8"
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="?android:attr/listDivider" />
+                    android:background="?android:attr/listDivider"
+                    android:backgroundTint="@color/black"/>
 
                 <Button
                     android:id="@+id/button_call"
@@ -419,6 +475,9 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textSize="60sp"
                     android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/black"
+                    app:iconTint="@color/white"
                     app:icon="@drawable/ic_call"
                     app:iconGravity="textStart"
                     app:iconSize="50sp"
@@ -429,7 +488,8 @@
                     android:id="@+id/divider16"
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="?android:attr/listDivider" />
+                    android:background="?android:attr/listDivider"
+                    android:backgroundTint="@color/black"/>
             </TableRow>
         </TableLayout>
     </LinearLayout>

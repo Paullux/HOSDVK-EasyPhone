@@ -6,8 +6,11 @@
     <string name="module_sms">SMS</string>
     <string name="module_email">E-MAIL</string>
     <string name="module_photo">PHOTOS</string>
+    <string name="applications_in_phone">APPLICATIONS DANS LE TÉLÉPHONE</string>
     <string name="module_real_call">CHOIX</string>
+    <string name="module_gallery">GALLERIE</string>
     <string name="module_empty">VIDE</string>
+    <string name="button_gallery">Rechercher une Photo</string>
     <!-- Variable -->
     <string name="test_name">First Last</string>
     <string name="test_number">06 78 90 12 34</string>
@@ -30,8 +33,12 @@
     <string name="refuse_call">Vous avez refusé à Easy-Phone l\'accès aux appels par le téléphone</string>
     <string name="call_perm">Permission d\'accès aux appels</string>
     <string name="could_call_perm">Veuillez Autoriser l\'accès aux appels par le téléphone.</string>
+    <string name="could_read_external_storage_perm">Veuillez Autoriser l\'accès aux données sur le mémoire du téléphone.</string>
     <string name="your_number">Numéro</string>
     <string name="add_number">%1$s%2$s</string>
+    <!--CHOICE CAMERA-->
+    <string name="gallery">Gallerie</string>
+    <string name="camera">Appareil Photo</string>
     <!-- CONTACT -->
     <string name="refuse_contact">Vous avez refusé à Easy-Phone l\'accès aux contacts du téléphone</string>
     <string name="contact_perm">Permission d\'accès aux contacts</string>

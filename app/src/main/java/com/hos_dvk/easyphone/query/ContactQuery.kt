@@ -7,9 +7,11 @@ import android.net.Uri
 import android.provider.ContactsContract
 import com.hos_dvk.easyphone.R
 import com.hos_dvk.easyphone.data_class.ContactDataClass
+import io.michaelrocks.libphonenumber.android.PhoneNumberUtil
 
 class ContactQuery {
     fun getAll(contentResolver: ContentResolver, context: Context): MutableList<ContactDataClass> {
+        val locale: String = context.resources.configuration.locale.country
         val cursor: Cursor? = contentResolver.query(
             ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
             null,
@@ -20,6 +22,7 @@ class ContactQuery {
 
         val listContacts: MutableList<ContactDataClass> = mutableListOf()
         var contactInfo: ContactDataClass?
+        val phoneUtil: PhoneNumberUtil = PhoneNumberUtil.createInstance(context)
         if (cursor?.moveToFirst()!!) {
             do {
                 var cursorPhotoUri =
@@ -30,10 +33,9 @@ class ContactQuery {
                     cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME_PRIMARY))
                 var cursorNumber =
                     cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
-                cursorNumber = cursorNumber.replace(" ", "")
+                cursorNumber = ToInternationalNumberPhone().transform(cursorNumber, context)
 
-                cursorNumber = cursorNumber.replace(" ", "")
-
+//TODO : Détecter le pays de la personne pour détecter le code pays
                 var alreadyExistContactId: Int? = null
                 val iterator = listContacts.iterator()
                 for ((index, contactInfo) in iterator.withIndex()) {
@@ -45,8 +47,9 @@ class ContactQuery {
                 var storedContact: ContactDataClass
                 if (alreadyExistContactId != null) {
                     storedContact = listContacts[alreadyExistContactId]
-                    //TODO : Détecter le pays de la personne pour détecter le code pays
-                    if (!storedContact.number.replaceFirst("0", "+33").contains(cursorNumber.replaceFirst("0", "+33")))
+                    var number = storedContact.number
+                    number = number
+                    if (!number.contains(cursorNumber))
                         storedContact.number += ", $cursorNumber"
                 } else {
 

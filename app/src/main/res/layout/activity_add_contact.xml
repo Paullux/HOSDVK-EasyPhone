@@ -26,11 +26,12 @@
                 android:layout_height="78dp"
                 android:gravity="center|left|left"
                 android:onClick="goBack"
-                app:backgroundTint="#000000"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/black"
+                android:iconTint="@color/white"
                 app:icon="@drawable/ic_action_name"
                 app:iconGravity="textStart"
                 app:iconSize="80sp"
-                app:iconTint="#FFFFFF"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:tint="@color/white" />
@@ -68,6 +69,7 @@
                 android:autoSizeTextType="uniform"
                 android:text="Numero Contact"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:background="@color/black"
                 android:textColor="@color/white"
                 android:textSize="50sp"
                 android:textStyle="bold"
@@ -104,9 +106,11 @@
                 android:layout_weight="1"
                 android:text="@string/add"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/white"
                 android:textSize="50sp"
                 android:textStyle="bold"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/black"
+                android:iconTint="@color/white"
                 app:strokeColor="@color/hos_blue"
                 app:strokeWidth="4dp"/>
             <Button
@@ -116,9 +120,11 @@
                 android:layout_weight="1"
                 android:text="@string/cancel"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/white"
                 android:textSize="50sp"
                 android:textStyle="bold"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/black"
+                android:iconTint="@color/white"
                 app:strokeColor="@color/hos_blue"
                 app:strokeWidth="4dp"/>
         </LinearLayout>

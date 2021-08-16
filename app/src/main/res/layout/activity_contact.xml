@@ -29,11 +29,12 @@
                 android:layout_height="78dp"
                 android:gravity="center|left|left"
                 android:onClick="goBack"
-                app:backgroundTint="#000000"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/black"
+                android:iconTint="@color/white"
                 app:icon="@drawable/ic_action_name"
                 app:iconGravity="textStart"
                 app:iconSize="80sp"
-                app:iconTint="#FFFFFF"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:tint="@color/white" />
@@ -56,8 +57,7 @@
                 app:layout_constraintStart_toEndOf="@+id/back"
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
-
-        <com.mancj.materialsearchbar.MaterialSearchBar
+        <!--<com.mancj.materialsearchbar.MaterialSearchBar
             android:id="@+id/search_bar"
             android:layout_width="match_parent"
             android:layout_height="78dp"
@@ -69,7 +69,7 @@
             app:mt_navIconEnabled="true"
             app:mt_searchBarColor="#111"
             app:mt_speechMode="false"
-            app:mt_textColor="@color/white" />
+            app:mt_textColor="@color/white" />-->
 
         <ListView
             android:id="@+id/contacts_list"

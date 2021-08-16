@@ -13,7 +13,7 @@ android {
         applicationId "com.hos_dvk.easyphone"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 2
+        versionCode 3
         versionName "0.1"
         manifestPlaceholders = [hostName:"www.handy-open-source.org"]
 
@@ -75,20 +75,20 @@ android {
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.fragment:fragment-ktx:1.3.5'
-    testImplementation 'junit:junit:4.+'
+    implementation 'androidx.fragment:fragment-ktx:1.3.6'
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    implementation "androidx.core:core-ktx:+"
+    implementation "androidx.core:core-ktx:1.6.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.20"
-    //Dépendance pour les composants material
-    implementation "com.google.android.material:material:1.2.1"
-    implementation 'com.github.mancj:MaterialSearchBar:0.8.5'
+    implementation "com.google.android.material:material:1.4.0"
+    //implementation 'com.github.mancj:MaterialSearchBar:0.8.5'
     implementation 'com.gitlab.developerdeveloperdeveloper:androidutilslibrary:1.0.0'
+    implementation 'io.michaelrocks:libphonenumber-android:8.12.29'
 }
 
 repositories {

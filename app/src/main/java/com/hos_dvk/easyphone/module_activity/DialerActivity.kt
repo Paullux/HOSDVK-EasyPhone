@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.ddd.androidutils.DoubleClick
 import com.ddd.androidutils.DoubleClickListener
 import com.hos_dvk.easyphone.*
+import com.hos_dvk.easyphone.query.ToInternationalNumberPhone
 import com.hos_dvk.easyphone.widget.GoBack
 
 
@@ -21,16 +22,22 @@ class DialerActivity : AppCompatActivity() {
 
     fun chooseCall(@Suppress("UNUSED_PARAMETER")view: View) {
         lastActivity = "DialerActivity"
+
+        val number = ToInternationalNumberPhone().transform(numberToCall?.text.toString(), this)
+
         val realCall = Intent(this, RealCallActivity::class.java).apply {
-            putExtra(NAME_TO_CALL, numberToCall?.text.toString())
-            putExtra(NUMBER_TO_CALL, numberToCall?.text.toString())
+            putExtra(NAME_TO_CALL, number)
+            putExtra(NUMBER_TO_CALL, number)
         }
         startActivity(realCall)
     }
 
     fun addContact(@Suppress("UNUSED_PARAMETER")view: View) {
+
+        val number = ToInternationalNumberPhone().transform(numberToCall?.text.toString(), this)
+
         val addContact = Intent(this, AddContactActivity::class.java).apply {
-            putExtra(NUMBER_TO_CALL, numberToCall?.text.toString())
+            putExtra(NUMBER_TO_CALL, number)
         }
         startActivity(addContact)
     }

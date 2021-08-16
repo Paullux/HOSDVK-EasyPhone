@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".module_activity.PhotoChoiceActivity" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center|left|left"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="100dp"
+            android:layout_height="78dp"
+            android:gravity="center|left|left"
+            android:onClick="goBack"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/black"
+            android:iconTint="@color/white"
+            app:icon="@drawable/ic_action_name"
+            app:iconGravity="textStart"
+            app:iconSize="80sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/choice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|left|left"
+            android:text="@string/module_real_call"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FFFFFF"
+            android:textSize="60sp"
+            android:textStyle="bold"
+            android:autoSizeTextType="uniform"
+            android:maxLines="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.12"
+            app:layout_constraintStart_toEndOf="@+id/back"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/i_choice_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:autoSizeTextType="uniform"
+        android:maxLines="2"
+        android:onClick="chooseGallery"
+        android:text="@string/gallery"
+        android:textAllCaps="false"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/hos_orange"
+        app:icon="@drawable/ic_image"
+        app:iconGravity="top"
+        app:iconSize="80sp"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout10"
+        app:tint="@color/white" />
+
+    <Button
+        android:id="@+id/i_choice_camera"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:onClick="chooseCamera"
+        android:text="@string/camera"
+        android:textAlignment="inherit"
+        android:textAllCaps="false"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:autoSizeTextType="uniform"
+        android:maxLines="2"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/hos_blue"
+        app:iconTint="@color/white"
+        app:icon="@drawable/ic_photos"
+        app:iconGravity="top"
+        app:iconSize="80sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/i_choice_gallery"
+        app:tint="@color/white" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

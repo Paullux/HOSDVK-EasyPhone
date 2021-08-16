@@ -1,27 +1,27 @@
 package com.hos_dvk.easyphone.module_activity
 
+//import com.mancj.materialsearchbar.MaterialSearchBar
 import android.content.Intent
 import android.database.MatrixCursor
-import android.os.*
+import android.os.Build
 import android.provider.ContactsContract.CommonDataKinds.Phone
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.ContextThemeWrapper
 import android.view.MenuItem
 import android.view.View
-import android.widget.*
+import android.widget.ListView
+import android.widget.PopupMenu
+import android.widget.SimpleCursorAdapter
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatEditText
-import androidx.cardview.widget.CardView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.iterator
-import com.hos_dvk.easyphone.*
+import com.hos_dvk.easyphone.NAME_TO_CALL
+import com.hos_dvk.easyphone.NUMBER_TO_CALL
+import com.hos_dvk.easyphone.R
 import com.hos_dvk.easyphone.data_class.ContactDataClass
+import com.hos_dvk.easyphone.lastActivity
 import com.hos_dvk.easyphone.query.ContactQuery
 import com.hos_dvk.easyphone.widget.GoBack
-import com.mancj.materialsearchbar.MaterialSearchBar
-import java.util.*
 
 
 class ContactActivity : AppCompatActivity() {
@@ -59,9 +59,9 @@ class ContactActivity : AppCompatActivity() {
         val simple = SimpleCursorAdapter(this, R.layout.style_of_text_list, mc, from, to, 0)
         contactsListView.adapter = simple
 
-            searchBar(contactsListView, contactsList, from, to)
+            //searchBar(contactsListView, contactsList, from, to)
     }
-    private fun searchBar(
+    /**private fun searchBar(
         contactsList: ListView,
         contactsArray: MutableList<ContactDataClass>,
         from: Array<String>,
@@ -121,7 +121,7 @@ class ContactActivity : AppCompatActivity() {
             (constraintLayout?.getChildAt(2) as LinearLayout).getChildAt(1) as AppCompatEditText
         editTextView.textSize = 35f
         if (firstContacts) firstContacts = false
-    }
+    }**/
     @RequiresApi(Build.VERSION_CODES.M)
     fun defile(view: View) {
         val personName = view.findViewById<TextView>(R.id.person_name)

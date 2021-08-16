@@ -7,6 +7,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.provider.ContactsContract
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -19,6 +20,7 @@ import com.hos_dvk.easyphone.NUMBER_TO_CALL
 import com.hos_dvk.easyphone.PERMISSIONS_REQUEST_WRITE_CONTACTS
 import com.hos_dvk.easyphone.firstContacts
 import com.hos_dvk.easyphone.number
+import com.hos_dvk.easyphone.widget.GoBack
 
 
 class AddContactActivity : AppCompatActivity() {
@@ -119,6 +121,9 @@ class AddContactActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+    fun goBack(@Suppress("UNUSED_PARAMETER")view: View) {
+        GoBack().goBack(this)
     }
 
 }

@@ -27,9 +27,9 @@
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#FFFFFF"
                 android:textSize="60sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/white" />
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -50,8 +50,10 @@
                 android:textStyle="bold"
                 android:onClick="dialer"
                 android:drawablePadding="60sp"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/hos_green"
+                app:iconTint="@color/white"
                 app:iconGravity="top"
-                app:backgroundTint="#29b647"
                 app:icon="@drawable/ic_call"
                 app:iconSize="100sp"
                 app:iconTintMode="src_in" />
@@ -68,8 +70,10 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textSize="60sp"
                 android:textStyle="bold"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/hos_orange"
+                app:iconTint="@color/white"
                 app:iconGravity="top"
-                app:backgroundTint="#f07850"
                 app:icon="@drawable/ic_contacts"
                 app:iconSize="100sp"
                 app:iconTintMode="src_in" />
@@ -87,8 +91,10 @@
                 android:textSize="60sp"
                 android:textStyle="bold"
                 android:onClick="sms"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/hos_brown"
+                app:iconTint="@color/white"
                 app:iconGravity="top"
-                app:backgroundTint="#584637"
                 app:icon="@drawable/ic_sms"
                 app:iconSize="100sp"
                 app:iconTintMode="src_in" />
@@ -97,7 +103,7 @@
                 android:id="@+id/photos"
                 android:layout_width="match_parent"
                 android:layout_height="293dp"
-                android:background="@color/hos_purple"
+                android:background="@color/hos_blue"
                 android:text="@string/module_photo"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
@@ -105,13 +111,34 @@
                 android:textSize="60sp"
                 android:textStyle="bold"
                 android:onClick="photo"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/hos_blue"
+                app:iconTint="@color/white"
                 app:iconGravity="top"
                 app:autoSizeMaxTextSize="100sp"
-                app:backgroundTint="#005884"
                 app:icon="@drawable/ic_photos"
                 app:iconSize="100sp"
                 app:iconTintMode="src_in" />
-
+            <Button
+                android:id="@+id/applications_in_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/hos_purple"
+                android:text="@string/applications_in_phone"
+                android:autoSizeTextType="uniform"
+                android:maxLines="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                android:onClick="applicationsInPhone"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/hos_purple"
+                app:iconTint="@color/white"
+                app:iconGravity="top"
+                app:autoSizeMaxTextSize="100sp"
+                app:icon="@drawable/ic_settings"
+                app:iconSize="40sp"
+                app:iconTintMode="src_in" />
 
         </LinearLayout>
     </ScrollView>

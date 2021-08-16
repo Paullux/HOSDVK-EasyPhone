@@ -11,45 +11,49 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.iterator
 import com.hos_dvk.easyphone.*
-import com.hos_dvk.easyphone.data_class.ContactDataClass
 import com.hos_dvk.easyphone.data_class.SmsDataClass
-import com.hos_dvk.easyphone.query.ContactQuery
 import com.hos_dvk.easyphone.query.SmsQuery
+import com.hos_dvk.easyphone.widget.GoBack
 
 class SmsListActivity : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onResume() {
         super.onResume()
         setContentView(R.layout.activity_list_sms)
         loadSms()
     }
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun loadSms() {
         val smsListView = findViewById<ListView>(R.id.sms_list)
         val smsList: MutableList<SmsDataClass> =
-            SmsQuery().getAll(contentResolver, this)
+            SmsQuery().getAll(contentResolver, this, " DESC")
         val mc = MatrixCursor(
             arrayOf(
                 "_id",
                 "name",
                 "messageData",
+                "address"
             ), 16
         )
         for(sms in smsList) {
             val id = sms._id
             val name = sms.name
             val messageData = sms.messageData
-            mc.addRow(arrayOf(id, name, messageData))
+            val address = sms.address
+            mc.addRow(arrayOf(id, name, messageData, address))
         }
         val from = arrayOf(
             "name",
-            "messageData")
+            "messageData",
+            "address")
 
-        val to = intArrayOf(R.id.name_contact_sms, R.id.message_preview)
+        val to = intArrayOf(R.id.name_contact_sms, R.id.message_preview, R.id.message_number)
 
         val simple = SimpleCursorAdapter(this, R.layout.style_of_sms_list, mc, from, to, 0)
         smsListView.adapter = simple
     }
-    @RequiresApi(Build.VERSION_CODES.M)
-    fun defile(view: View) {
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun smsDefile(view: View) {
         val personName = view.findViewById<TextView>(R.id.name_contact_sms)
         val personMessage = view.findViewById<TextView>(R.id.message_preview)
         val allPerson = findViewById<ListView>(R.id.sms_list)
@@ -68,18 +72,12 @@ class SmsListActivity : AppCompatActivity() {
         personName.isSelected = true
         personMessage.isSelected = true
     }
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun smsChoice(view: View) {
-        number = view.findViewById<TextView>(R.id.name_contact_sms).text.toString()
-
-        val contactsList: MutableList<ContactDataClass> =
-            ContactQuery().getAll(contentResolver, this)
-
-        for (contact in contactsList) {
-            if (contact.name == number) number = contact.number
-        }
+        number = view.findViewById<TextView>(R.id.message_number).text.toString()
 
         val smsList: MutableList<SmsDataClass> =
-            SmsQuery().getAll(contentResolver, this)
+            SmsQuery().getAll(contentResolver, this, " DESC")
 
         history = ""
         for (sms in smsList) {
@@ -90,5 +88,8 @@ class SmsListActivity : AppCompatActivity() {
             putExtra(HISTORY_OF_SMS, history)
         }
         startActivity(realSms)
+    }
+    fun goBack(@Suppress("UNUSED_PARAMETER")view: View) {
+        GoBack().goBack(this)
     }
 }
