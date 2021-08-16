@@ -35,7 +35,6 @@ class ContactQuery {
                     cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
                 cursorNumber = ToInternationalNumberPhone().transform(cursorNumber, context)
 
-//TODO : Détecter le pays de la personne pour détecter le code pays
                 var alreadyExistContactId: Int? = null
                 val iterator = listContacts.iterator()
                 for ((index, contactInfo) in iterator.withIndex()) {

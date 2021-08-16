@@ -104,8 +104,6 @@ class SmsQuery {
 
                     val type = cursor.getInt(cursor.getColumnIndex(Telephony.Sms.TYPE))
 
-                    //TODO : Détecter le pays de la personne pour détecter le code pays
-
                     var name = address
                     for (contact in contactsList) {
                         for (numberContact in contact.number.split(", ").toTypedArray()) {
