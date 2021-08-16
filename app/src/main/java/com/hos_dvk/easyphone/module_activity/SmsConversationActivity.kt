@@ -62,10 +62,18 @@ class SmsConversationActivity : AppCompatActivity() {
                 for (sms in Telephony.Sms.Intents.getMessagesFromIntent(intent)) {
                     findContactName()
                     val contactName = findViewById<TextView>(R.id.recipient)
-                    val messageToSms = findViewById<TextView>(R.id.history)
-                    messageToSms.text = getString(R.string.historic_message_other,messageToSms.text.toString(),contactName.text.toString(), sms.displayMessageBody.toString())
-                    val scrollAmount = messageToSms.layout.getLineTop(messageToSms.lineCount) - messageToSms.height
-                    messageToSms.scrollTo(0, scrollAmount)
+                    val nameOfSms = findViewById<TextView>(R.id.phone_number_to_send_sms).text.toString()
+                    var address = ToInternationalNumberPhone().transform(sms.originatingAddress!!, context)
+                    if (nameOfSms == address) {
+                        val messageToSms = findViewById<TextView>(R.id.history)
+                        messageToSms.text = getString(R.string.historic_message_other,
+                            messageToSms.text.toString(),
+                            contactName.text.toString(),
+                            sms.displayMessageBody.toString())
+                        val scrollAmount =
+                            messageToSms.layout.getLineTop(messageToSms.lineCount) - messageToSms.height
+                        messageToSms.scrollTo(0, scrollAmount)
+                    }
                 }
             }
         }
@@ -105,11 +113,11 @@ class SmsConversationActivity : AppCompatActivity() {
         number = findViewById<TextView>(R.id.phone_number_to_send_sms).text.toString()
         val contactsList: MutableList<ContactDataClass> =
             ContactQuery().getAll(contentResolver, this)
-        ToInternationalNumberPhone().transform(number, this)
+        number = ToInternationalNumberPhone().transform(number, this)
         for (contact in contactsList) {
             for (numberContact in contact.number.split(", ").toTypedArray()) {
-                ToInternationalNumberPhone().transform(numberContact, this)
-            if (numberContact == number)
+                val numberContactHere = ToInternationalNumberPhone().transform(numberContact, this)
+            if (numberContactHere == number)
                     contactName.text = contact.name
             }
         }
