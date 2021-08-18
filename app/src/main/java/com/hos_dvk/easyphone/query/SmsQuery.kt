@@ -8,7 +8,6 @@ import android.provider.Telephony
 import androidx.annotation.RequiresApi
 import com.hos_dvk.easyphone.data_class.ContactDataClass
 import com.hos_dvk.easyphone.data_class.SmsDataClass
-import io.michaelrocks.libphonenumber.android.PhoneNumberUtil
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -39,14 +38,14 @@ class SmsQuery {
         var smsData: SmsDataClass
 
         val conversationsSms: MutableMap<String, MutableList<SmsDataClass>> = mutableMapOf()
-        var positionCursor: Int = cursor?.count?.minus(500)!!
+        val positionCursor: Int = cursor?.count?.minus(500)!!
 
         val contactsList: MutableList<ContactDataClass> =
             ContactQuery().getAll(contentResolver, context)
         when (order) {
             " ASC" -> {
-                val b = if (positionCursor > 0) {
-                    cursor?.move(positionCursor!!)!!
+                if (positionCursor > 0) {
+                    cursor.move(positionCursor)
                 } else {
                     cursor.moveToFirst()
                 }
@@ -85,7 +84,6 @@ class SmsQuery {
             }
             " DESC" -> {
                 cursor.moveToFirst()
-                val phoneUtil: PhoneNumberUtil = PhoneNumberUtil.createInstance(context)
                 do {
                     val id: Int =
                         cursor.getInt(cursor.getColumnIndex(Telephony.Sms._ID))

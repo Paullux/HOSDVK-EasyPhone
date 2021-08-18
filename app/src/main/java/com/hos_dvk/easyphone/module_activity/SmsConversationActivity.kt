@@ -24,7 +24,6 @@ import com.hos_dvk.easyphone.query.SmsQuery
 import com.hos_dvk.easyphone.query.ToInternationalNumberPhone
 import com.hos_dvk.easyphone.widget.GoBack
 
-
 class SmsConversationActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onResume() {
@@ -63,7 +62,7 @@ class SmsConversationActivity : AppCompatActivity() {
                     findContactName()
                     val contactName = findViewById<TextView>(R.id.recipient)
                     val nameOfSms = findViewById<TextView>(R.id.phone_number_to_send_sms).text.toString()
-                    var address = ToInternationalNumberPhone().transform(sms.originatingAddress!!, context)
+                    val address = ToInternationalNumberPhone().transform(sms.originatingAddress!!, context)
                     if (nameOfSms == address) {
                         val messageToSms = findViewById<TextView>(R.id.history)
                         messageToSms.text = getString(R.string.historic_message_other,

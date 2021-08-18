@@ -7,11 +7,9 @@ import android.net.Uri
 import android.provider.ContactsContract
 import com.hos_dvk.easyphone.R
 import com.hos_dvk.easyphone.data_class.ContactDataClass
-import io.michaelrocks.libphonenumber.android.PhoneNumberUtil
 
 class ContactQuery {
     fun getAll(contentResolver: ContentResolver, context: Context): MutableList<ContactDataClass> {
-        val locale: String = context.resources.configuration.locale.country
         val cursor: Cursor? = contentResolver.query(
             ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
             null,
@@ -22,7 +20,7 @@ class ContactQuery {
 
         val listContacts: MutableList<ContactDataClass> = mutableListOf()
         var contactInfo: ContactDataClass?
-        val phoneUtil: PhoneNumberUtil = PhoneNumberUtil.createInstance(context)
+
         if (cursor?.moveToFirst()!!) {
             do {
                 var cursorPhotoUri =
@@ -46,8 +44,7 @@ class ContactQuery {
                 var storedContact: ContactDataClass
                 if (alreadyExistContactId != null) {
                     storedContact = listContacts[alreadyExistContactId]
-                    var number = storedContact.number
-                    number = number
+                    val number = storedContact.number
                     if (!number.contains(cursorNumber))
                         storedContact.number += ", $cursorNumber"
                 } else {

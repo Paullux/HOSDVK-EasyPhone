@@ -24,7 +24,7 @@ class GalleryActivity : AppCompatActivity() {
     private fun loadPhoto() {
         val galleryListView = findViewById<ListView>(R.id.gallery_list)
         val galleryList: MutableList<PhotoDataClass> =
-            PhotoQuery().getAll(contentResolver, this)
+            PhotoQuery().getAll(contentResolver)
         val mc = MatrixCursor(
             arrayOf(
                 "_id",
@@ -44,6 +44,7 @@ class GalleryActivity : AppCompatActivity() {
         val simple = SimpleCursorAdapter(this, R.layout.style_of_gallery_list, mc, from, to, 0)
         galleryListView.adapter = simple
     }
+
     fun goBack(@Suppress("UNUSED_PARAMETER")view: View) {
         GoBack().goBack(this)
     }

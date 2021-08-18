@@ -25,6 +25,7 @@
             android:textColor="@color/white"
             android:backgroundTint="@color/black"
             android:iconTint="@color/white"
+            app:iconTint="@color/white"
             app:icon="@drawable/ic_action_name"
             app:iconGravity="textStart"
             app:iconSize="80sp"

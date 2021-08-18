@@ -10,7 +10,6 @@ import com.hos_dvk.easyphone.*
 import com.hos_dvk.easyphone.query.ToInternationalNumberPhone
 import com.hos_dvk.easyphone.widget.GoBack
 
-
 class DialerActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()

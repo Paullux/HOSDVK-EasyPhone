@@ -1,6 +1,5 @@
 package com.hos_dvk.easyphone.module_activity
 
-//import com.mancj.materialsearchbar.MaterialSearchBar
 import android.content.Intent
 import android.database.MatrixCursor
 import android.os.Build
@@ -22,7 +21,6 @@ import com.hos_dvk.easyphone.data_class.ContactDataClass
 import com.hos_dvk.easyphone.lastActivity
 import com.hos_dvk.easyphone.query.ContactQuery
 import com.hos_dvk.easyphone.widget.GoBack
-
 
 class ContactActivity : AppCompatActivity() {
     override fun onResume() {
@@ -56,72 +54,10 @@ class ContactActivity : AppCompatActivity() {
 
         val to = intArrayOf(R.id.profile_picture, R.id.person_name, R.id.person_number)
 
-        val simple = SimpleCursorAdapter(this, R.layout.style_of_text_list, mc, from, to, 0)
+        val simple = SimpleCursorAdapter(this, R.layout.style_of_contact_list, mc, from, to, 0)
         contactsListView.adapter = simple
-
-            //searchBar(contactsListView, contactsList, from, to)
     }
-    /**private fun searchBar(
-        contactsList: ListView,
-        contactsArray: MutableList<ContactDataClass>,
-        from: Array<String>,
-        to: IntArray,
-    ) {
-        var mc: MatrixCursor
-        val searchBar = findViewById<MaterialSearchBar>(R.id.search_bar).also {
-            it.setHint(getString(R.string.search))
-            it.setSpeechMode(false)
-            it.addTextChangeListener(object : TextWatcher {
-                override fun beforeTextChanged(charSequence: CharSequence?, start: Int, count: Int, after: Int) {
 
-                }
-                override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
-
-                }
-                override fun afterTextChanged(editable: Editable?) {
-                    if (editable.toString() != "") {
-                        mc = MatrixCursor(
-                            arrayOf(
-                                Phone._ID,
-                                Phone.PHOTO_URI,
-                                Phone.DISPLAY_NAME_PRIMARY,
-                                Phone.NUMBER,
-                            ), 16
-                        )
-                        for (contact in contactsArray) {
-                            if (contact.name.lowercase().contains(editable.toString().lowercase())) {
-                                val contactId: Int = (0..255).random()
-                                mc.addRow(arrayOf(contactId, contact.photoUri, contact.name, contact.number))
-                            }
-                        }
-                    } else {
-                        mc = MatrixCursor(
-                            arrayOf(
-                                Phone._ID,
-                                Phone.PHOTO_URI,
-                                Phone.DISPLAY_NAME_PRIMARY,
-                                Phone.NUMBER,
-                            ), 16
-                        )
-                        for (contact in contactsArray) {
-                            val contactId: Int = (0..255).random()
-                            mc.addRow(arrayOf(contactId, contact.photoUri, contact.name, contact.number))
-                        }
-                    }
-
-                    val simple = SimpleCursorAdapter(this@ContactActivity,
-                        R.layout.style_of_text_list, mc, from, to, 0)
-                    contactsList.adapter = simple
-                }
-            })
-        }
-        val constraintLayout =
-            ((searchBar.getChildAt(0) as CardView).getChildAt(0) as? ConstraintLayout)
-        val editTextView =
-            (constraintLayout?.getChildAt(2) as LinearLayout).getChildAt(1) as AppCompatEditText
-        editTextView.textSize = 35f
-        if (firstContacts) firstContacts = false
-    }**/
     @RequiresApi(Build.VERSION_CODES.M)
     fun defile(view: View) {
         val personName = view.findViewById<TextView>(R.id.person_name)
