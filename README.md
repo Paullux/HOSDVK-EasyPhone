@@ -16,7 +16,7 @@ Sur laquel il n'y a que les fonctions de bases d'un téléphone :
  * photos
  * et la possibilité de retourner sur le launcher de base du téléphone.
 
-[![Watch the video](videoPreview.png)](https://youtu.be/p9TJ00U1DWo)
+[![Watch the video](videoPreview.png)](https://youtu.be/5JRKCSUbZ9Y)
 
 Le code source est là : [Code Source](https://github.com/handyopensource/HOSDVK-EasyPhone)  
 L'app est sous licence GPL : [LICENCE](LICENSE_GPL.md)
