@@ -20,7 +20,8 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/white"
             android:textSize="40sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:paddingLeft="10dp"/>
 
 
         <TextView
@@ -37,7 +38,8 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/white"
             android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:paddingLeft="10dp" />
         <TextView
             android:id="@+id/message_number"
             android:layout_width="0dp"

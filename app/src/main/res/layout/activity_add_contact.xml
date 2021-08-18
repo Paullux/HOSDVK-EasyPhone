@@ -87,6 +87,7 @@
                 android:textColor="@color/white"
                 android:textSize="50sp"
                 android:textStyle="bold"
+                android:paddingLeft="10dp"
                 style="@style/my_stroke"/>
             <EditText
                 android:id="@+id/last_name"
@@ -99,6 +100,7 @@
                 android:textColor="@color/white"
                 android:textSize="50sp"
                 android:textStyle="bold"
+                android:paddingLeft="10dp"
                 style="@style/my_stroke"/>
             <Button
                 android:id="@+id/add_contact"

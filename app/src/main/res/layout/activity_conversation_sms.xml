@@ -75,6 +75,9 @@
                 android:textSize="40sp"
                 android:textStyle="bold"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
                 style="@style/my_stroke"/>
 
                 <Button
@@ -109,6 +112,9 @@
                 android:textSize="40sp"
                 android:textStyle="bold"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
                 style="@style/my_stroke" />
             <TextView
                 android:id="@+id/history"
@@ -123,6 +129,9 @@
                 android:textSize="40sp"
                 android:textStyle="bold"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:paddingLeft="10dp"
                 style="@style/my_stroke"/>
             <EditText
                 android:id="@+id/message_to_send"
@@ -140,6 +149,9 @@
                 android:textSize="40sp"
                 android:textStyle="bold"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
                 style="@style/my_stroke"/>
 
             <Button
