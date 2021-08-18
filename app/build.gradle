@@ -13,7 +13,7 @@ android {
         applicationId "com.hos_dvk.easyphone"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 3
+        versionCode 4
         versionName "0.1"
         manifestPlaceholders = [hostName:"www.handy-open-source.org"]
 
@@ -37,16 +37,6 @@ android {
             applicationIdSuffix = ""
         }
 
-        /**
-         * The `initWith` property allows you to copy configurations from other build types,
-         * then configure only the settings you want to change. This one copies the debug build
-         * type, and then changes the manifest placeholder and application ID.
-         */
-        /**create("staging") {
-            initWith(getByName("debug"))
-            manifestPlaceholders["hostName"] = "www.handy-open-source.org"
-            applicationIdSuffix = ""
-        } **/
     }
     // Specifies one flavor dimension.
     flavorDimensions "version"
@@ -86,7 +76,6 @@ dependencies {
     implementation "androidx.core:core-ktx:1.6.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.21"
     implementation "com.google.android.material:material:1.4.0"
-    //implementation 'com.github.mancj:MaterialSearchBar:0.8.5'
     implementation 'com.gitlab.developerdeveloperdeveloper:androidutilslibrary:1.0.0'
     implementation 'io.michaelrocks:libphonenumber-android:8.12.29'
 }
