@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.hos_dvk.easyphone.*
 import com.hos_dvk.easyphone.data_class.ContactDataClass
 import com.hos_dvk.easyphone.query.ContactQuery
-import com.hos_dvk.easyphone.widget.GoBack
 
 class RealCallActivity : AppCompatActivity() {
     override fun onResume() {
@@ -73,6 +72,6 @@ class RealCallActivity : AppCompatActivity() {
         startActivity(intent)
     }
     fun goBack(@Suppress("UNUSED_PARAMETER")view: View) {
-        GoBack().goBack(this)
+        this.finish()
     }
 }

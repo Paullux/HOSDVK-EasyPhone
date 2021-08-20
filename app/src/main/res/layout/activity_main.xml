@@ -122,7 +122,7 @@
             <Button
                 android:id="@+id/applications_in_phone"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 android:background="@color/hos_purple"
                 android:text="@string/go_to_other_launcher"
                 android:autoSizeTextType="uniform"
@@ -135,10 +135,32 @@
                 app:backgroundTint="@color/hos_purple"
                 app:iconTint="@color/white"
                 app:iconGravity="top"
-                app:autoSizeMaxTextSize="100sp"
+                app:autoSizeMaxTextSize="40sp"
                 app:icon="@drawable/ic_settings"
                 app:iconSize="40sp"
                 app:iconTintMode="src_in" />
+
+            <Button
+                android:id="@+id/settings_of_phone"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:background="@color/purple_500"
+                android:text="@string/go_to_systems_settings"
+                android:autoSizeTextType="uniform"
+                android:maxLines="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                android:onClick="systemSettings"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/purple_500"
+                app:iconTint="@color/white"
+                app:iconGravity="top"
+                app:autoSizeMaxTextSize="40sp"
+                app:icon="@drawable/ic_settings"
+                app:iconSize="40sp"
+                app:iconTintMode="src_in" />
+
 
         </LinearLayout>
     </ScrollView>

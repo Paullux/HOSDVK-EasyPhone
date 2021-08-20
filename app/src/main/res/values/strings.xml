@@ -6,7 +6,8 @@
     <string name="module_sms">SMS</string>
     <string name="module_email">E-MAIL</string>
     <string name="module_photo">PHOTOS</string>
-    <string name="go_to_other_launcher">RETOURNER SUR LE LAUNCHER PAR DÉFAUT</string>
+    <string name="go_to_other_launcher">RETOURNER SUR L\'INTERFACE PAR DÉFAUT</string>
+    <string name="go_to_systems_settings">PARAMÈTRES SYSTEME</string>
     <string name="module_real_call">CHOIX</string>
     <string name="module_gallery">GALERIE</string>
     <string name="module_empty">VIDE</string>

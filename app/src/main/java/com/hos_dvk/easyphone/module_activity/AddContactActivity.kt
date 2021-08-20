@@ -13,7 +13,6 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.hos_dvk.easyphone.NUMBER_TO_CALL
 import com.hos_dvk.easyphone.number
-import com.hos_dvk.easyphone.widget.GoBack
 
 class AddContactActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
@@ -107,7 +106,6 @@ class AddContactActivity : AppCompatActivity() {
     }
 
     fun goBack(@Suppress("UNUSED_PARAMETER")view: View) {
-        GoBack().goBack(this)
+        this.finish()
     }
-
 }

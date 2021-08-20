@@ -33,6 +33,29 @@ class CameraQuery {
                     break
                 }
             }
+            if (packageNameCamera == "") {
+                for (packageInfo in pkgAppsList) {
+                    val appPackageName: String =  packageInfo.activityInfo.packageName
+
+                    if (appPackageName.lowercase().contains("camera") && !appPackageName.lowercase().endsWith("service")) {
+                        packageNameCamera = appPackageName
+                        break
+                    }
+                }
+
+                if (packageNameCamera == "") {
+                    val packages =
+                        context.packageManager.getInstalledApplications(PackageManager.GET_META_DATA)
+
+                    for (packageInfo in packages) {
+                        val appPackageName: String = packageInfo.packageName
+                        if (appPackageName.lowercase().contains("camera") && !appPackageName.lowercase().endsWith("service")) {
+                            packageNameCamera = appPackageName
+                            break
+                        }
+                    }
+                }
+            }
         }
 
         return packageNameCamera

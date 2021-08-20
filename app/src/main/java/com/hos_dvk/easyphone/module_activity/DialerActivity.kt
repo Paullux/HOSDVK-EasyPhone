@@ -8,7 +8,6 @@ import com.ddd.androidutils.DoubleClick
 import com.ddd.androidutils.DoubleClickListener
 import com.hos_dvk.easyphone.*
 import com.hos_dvk.easyphone.query.ToInternationalNumberPhone
-import com.hos_dvk.easyphone.widget.GoBack
 
 class DialerActivity : AppCompatActivity() {
     override fun onStart() {
@@ -120,6 +119,6 @@ class DialerActivity : AppCompatActivity() {
     }
 
     fun goBack(@Suppress("UNUSED_PARAMETER")view: View) {
-        GoBack().goBack(this)
+        this.finish()
     }
 }

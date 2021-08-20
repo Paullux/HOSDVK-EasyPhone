@@ -1,9 +1,9 @@
 package com.hos_dvk.easyphone.module_activity
 
-import android.content.BroadcastReceiver
-import android.content.Context
+import android.app.PendingIntent
+import android.content.ContentValues
 import android.content.Intent
-import android.content.IntentFilter
+import android.net.Uri
 import android.os.Build
 import android.provider.Telephony
 import android.telephony.SmsManager
@@ -13,16 +13,13 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import com.hos_dvk.easyphone.CONTACT_TO_SMS
-import com.hos_dvk.easyphone.NUMBER_TO_CALL
-import com.hos_dvk.easyphone.R
+import com.hos_dvk.easyphone.*
 import com.hos_dvk.easyphone.data_class.ContactDataClass
 import com.hos_dvk.easyphone.data_class.SmsDataClass
-import com.hos_dvk.easyphone.number
 import com.hos_dvk.easyphone.query.ContactQuery
 import com.hos_dvk.easyphone.query.SmsQuery
 import com.hos_dvk.easyphone.query.ToInternationalNumberPhone
-import com.hos_dvk.easyphone.widget.GoBack
+
 
 class SmsConversationActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
@@ -56,27 +53,9 @@ class SmsConversationActivity : AppCompatActivity() {
         receiveSMS()
     }
     private fun receiveSMS() {
-        val br = object: BroadcastReceiver() {
-            override fun onReceive(context: Context?, intent: Intent?) {
-                for (sms in Telephony.Sms.Intents.getMessagesFromIntent(intent)) {
-                    findContactName()
-                    val contactName = findViewById<TextView>(R.id.recipient)
-                    val nameOfSms = findViewById<TextView>(R.id.phone_number_to_send_sms).text.toString()
-                    val address = ToInternationalNumberPhone().transform(sms.originatingAddress!!, context)
-                    if (nameOfSms == address) {
-                        val messageToSms = findViewById<TextView>(R.id.history)
-                        messageToSms.text = getString(R.string.historic_message_other,
-                            messageToSms.text.toString(),
-                            contactName.text.toString(),
-                            sms.displayMessageBody.toString())
-                        val scrollAmount =
-                            messageToSms.layout.getLineTop(messageToSms.lineCount) - messageToSms.height
-                        messageToSms.scrollTo(0, scrollAmount)
-                    }
-                }
-            }
-        }
-        registerReceiver(br, IntentFilter("android.provider.Telephony.SMS_RECEIVED"))
+        contactName = findViewById<TextView>(R.id.recipient)
+        nameOfSms = findViewById<TextView>(R.id.phone_number_to_send_sms)
+        messageToSms = findViewById<TextView>(R.id.history)
     }
 
     fun addContact(@Suppress("UNUSED_PARAMETER")view: View) {
@@ -97,8 +76,41 @@ class SmsConversationActivity : AppCompatActivity() {
         number = findViewById<TextView>(R.id.phone_number_to_send_sms).text.toString()
         val messageSms = findViewById<EditText>(R.id.message_to_send)
         messageSms.movementMethod = ScrollingMovementMethod()
-        val sms = SmsManager.getDefault()
-        sms.sendTextMessage(number, "ME", messageSms.text.toString(), null, null)
+        val smsManager = SmsManager.getDefault()
+        val preIntent = Intent("SMS_SENT")
+        val sentIntent =
+            PendingIntent.getBroadcast(
+                applicationContext,
+                0,
+                preIntent,
+                PendingIntent.FLAG_ONE_SHOT
+            )
+        val preIntent2 = Intent("SMS_DELIVERY")
+        val deliveryIntent =
+            PendingIntent.getBroadcast(
+                applicationContext,
+                0,
+                preIntent2,
+                PendingIntent.FLAG_ONE_SHOT
+            )
+        smsManager.sendTextMessage(number,
+            "ME",
+            messageSms.text.toString(),
+            sentIntent,
+            deliveryIntent)
+
+        val values = ContentValues()
+        values.put(Telephony.TextBasedSmsColumns.ADDRESS, number)
+        values.put(Telephony.TextBasedSmsColumns.DATE, System.currentTimeMillis())
+        values.put(Telephony.TextBasedSmsColumns.BODY, messageSms.text.toString())
+        values.put(
+            Telephony.TextBasedSmsColumns.TYPE,
+            Telephony.TextBasedSmsColumns.MESSAGE_TYPE_SENT
+        )
+
+        // Push row into the SMS table
+        this.contentResolver.insert(Uri.parse("content://sms"), values)
+
         val historyMessage = findViewById<TextView>(R.id.history)
         historyMessage.movementMethod = ScrollingMovementMethod()
         historyMessage.text = getString(R.string.historic_message_me,historyMessage.text.toString(), messageSms.text.toString())
@@ -107,7 +119,7 @@ class SmsConversationActivity : AppCompatActivity() {
         messageSms.text = null
     }
 
-    private fun findContactName () {
+    fun findContactName () {
         val contactName = findViewById<TextView>(R.id.recipient)
         number = findViewById<TextView>(R.id.phone_number_to_send_sms).text.toString()
         val contactsList: MutableList<ContactDataClass> =
@@ -122,6 +134,6 @@ class SmsConversationActivity : AppCompatActivity() {
         }
     }
     fun goBack(@Suppress("UNUSED_PARAMETER")view: View) {
-        GoBack().goBack(this)
+        this.finish()
     }
 }

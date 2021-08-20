@@ -42,83 +42,85 @@ class SmsQuery {
 
         val contactsList: MutableList<ContactDataClass> =
             ContactQuery().getAll(contentResolver, context)
-        when (order) {
-            " ASC" -> {
-                if (positionCursor > 0) {
-                    cursor.move(positionCursor)
-                } else {
-                    cursor.moveToFirst()
+        if (cursor.count != 0) {
+            when (order) {
+                " ASC" -> {
+                    if (positionCursor > 0) {
+                        cursor.move(positionCursor)
+                    } else {
+                        cursor.moveToFirst()
+                    }
+
+                    do {
+                        val id: Int? =
+                            cursor.getInt(cursor.getColumnIndex(Telephony.Sms._ID))
+
+                        var address: String? =
+                            cursor.getString(cursor.getColumnIndex(Telephony.Sms.ADDRESS))
+
+                        if (address!!.matches("-?\\d+(\\.\\d+)?".toRegex()))
+                            address = ToInternationalNumberPhone().transform(address, context)
+
+                        val messageData: String? =
+                            cursor.getString(cursor.getColumnIndex(Telephony.Sms.BODY))
+
+                        val date: Date? =
+                            Date(cursor.getLong(cursor.getColumnIndex(Telephony.Sms.DATE)))
+
+                        val type: Int? = cursor.getInt(cursor.getColumnIndex(Telephony.Sms.TYPE))
+
+                        var name = address
+                        for (contact in contactsList) {
+                            for (numberContact in contact.number.split(", ").toTypedArray()) {
+                                if (numberContact == address)
+                                    name = contact.name
+                            }
+                        }
+                        if (!conversationsSms.containsKey(name)) {
+                            conversationsSms[name!!] = mutableListOf()
+                        }
+                        smsData = SmsDataClass(id!!, address, messageData, date, type, name)
+                        conversationsSms[name]?.add(smsData)
+                    } while (cursor.moveToNext())
                 }
+                " DESC" -> {
+                    cursor.moveToFirst()
+                    do {
+                        val id: Int? =
+                            cursor.getInt(cursor.getColumnIndex(Telephony.Sms._ID))
 
-                do {
-                    val id: Int =
-                        cursor.getInt(cursor.getColumnIndex(Telephony.Sms._ID))
+                        var address: String? =
+                            cursor.getString(cursor.getColumnIndex(Telephony.Sms.ADDRESS))
 
-                    var address: String =
-                        cursor.getString(cursor.getColumnIndex(Telephony.Sms.ADDRESS))
+                        if (address!!.matches("-?\\d+(\\.\\d+)?".toRegex()))
+                            address = ToInternationalNumberPhone().transform(address, context)
 
-                    if (address.matches("-?\\d+(\\.\\d+)?".toRegex()))
-                        address = ToInternationalNumberPhone().transform(address, context)
+                        val messageData: String? =
+                            cursor.getString(cursor.getColumnIndex(Telephony.Sms.BODY))
 
-                    val messageData: String =
-                        cursor.getString(cursor.getColumnIndex(Telephony.Sms.BODY))
+                        val date: Date? =
+                            Date(cursor.getLong(cursor.getColumnIndex(Telephony.Sms.DATE)))
 
-                    val date =
-                        Date(cursor.getLong(cursor.getColumnIndex(Telephony.Sms.DATE)))
+                        val type: Int? = cursor.getInt(cursor.getColumnIndex(Telephony.Sms.TYPE))
 
-                    val type = cursor.getInt(cursor.getColumnIndex(Telephony.Sms.TYPE))
-
-                    var name = address
-                    for (contact in contactsList) {
-                        for (numberContact in contact.number.split(", ").toTypedArray()) {
-                            if (numberContact == address)
-                                name = contact.name
+                        var name = address
+                        for (contact in contactsList) {
+                            for (numberContact in contact.number.split(", ").toTypedArray()) {
+                                if (numberContact == address)
+                                    name = contact.name
+                            }
                         }
-                    }
-                    if (!conversationsSms.containsKey(name)) {
-                        conversationsSms[name] = mutableListOf()
-                    }
-                    smsData = SmsDataClass(id, address, messageData, date, type, name)
-                    conversationsSms[name]?.add(smsData)
-                } while (cursor.moveToNext())
-            }
-            " DESC" -> {
-                cursor.moveToFirst()
-                do {
-                    val id: Int =
-                        cursor.getInt(cursor.getColumnIndex(Telephony.Sms._ID))
-
-                    var address: String =
-                        cursor.getString(cursor.getColumnIndex(Telephony.Sms.ADDRESS))
-
-                    if (address.matches("-?\\d+(\\.\\d+)?".toRegex()))
-                        address = ToInternationalNumberPhone().transform(address, context)
-
-                    val messageData: String =
-                        cursor.getString(cursor.getColumnIndex(Telephony.Sms.BODY))
-
-                    val date =
-                        Date(cursor.getLong(cursor.getColumnIndex(Telephony.Sms.DATE)))
-
-                    val type = cursor.getInt(cursor.getColumnIndex(Telephony.Sms.TYPE))
-
-                    var name = address
-                    for (contact in contactsList) {
-                        for (numberContact in contact.number.split(", ").toTypedArray()) {
-                            if (numberContact == address)
-                                name = contact.name
+                        if (!conversationsSms.containsKey(name)) {
+                            conversationsSms[name!!] = mutableListOf()
                         }
-                    }
-                    if (!conversationsSms.containsKey(name)) {
-                        conversationsSms[name] = mutableListOf()
-                    }
-                    smsData = SmsDataClass(id, address, messageData, date, type, name)
-                    conversationsSms[name]?.add(smsData)
-                    cursor.moveToNext()
-                } while (cursor.position <= 500 && cursor.position < cursor.count)
-            }
-            else -> {
-                println("error")
+                        smsData = SmsDataClass(id!!, address, messageData, date, type, name)
+                        conversationsSms[name]?.add(smsData)
+                        cursor.moveToNext()
+                    } while (cursor.position <= 500 && cursor.position < cursor.count)
+                }
+                else -> {
+                    println("error")
+                }
             }
         }
         cursor.close()

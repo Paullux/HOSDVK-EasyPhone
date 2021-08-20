@@ -13,7 +13,6 @@ import androidx.core.view.iterator
 import com.hos_dvk.easyphone.*
 import com.hos_dvk.easyphone.data_class.SmsDataClass
 import com.hos_dvk.easyphone.query.SmsQuery
-import com.hos_dvk.easyphone.widget.GoBack
 
 class SmsListActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
@@ -90,6 +89,6 @@ class SmsListActivity : AppCompatActivity() {
         startActivity(realSms)
     }
     fun goBack(@Suppress("UNUSED_PARAMETER")view: View) {
-        GoBack().goBack(this)
+        this.finish()
     }
 }

@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.hos_dvk.easyphone.R
 import com.hos_dvk.easyphone.data_class.PhotoDataClass
 import com.hos_dvk.easyphone.query.PhotoQuery
-import com.hos_dvk.easyphone.widget.GoBack
 
 class GalleryActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
@@ -46,6 +45,6 @@ class GalleryActivity : AppCompatActivity() {
     }
 
     fun goBack(@Suppress("UNUSED_PARAMETER")view: View) {
-        GoBack().goBack(this)
+        this.finish()
     }
 }

@@ -20,7 +20,6 @@ import com.hos_dvk.easyphone.R
 import com.hos_dvk.easyphone.data_class.ContactDataClass
 import com.hos_dvk.easyphone.lastActivity
 import com.hos_dvk.easyphone.query.ContactQuery
-import com.hos_dvk.easyphone.widget.GoBack
 
 class ContactActivity : AppCompatActivity() {
     override fun onResume() {
@@ -119,6 +118,6 @@ class ContactActivity : AppCompatActivity() {
     }
 
     fun goBack(@Suppress("UNUSED_PARAMETER")view: View) {
-        GoBack().goBack(this)
+        this.finish()
     }
 }

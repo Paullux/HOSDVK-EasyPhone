@@ -6,7 +6,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.hos_dvk.easyphone.R
 import com.hos_dvk.easyphone.query.CameraQuery
-import com.hos_dvk.easyphone.widget.GoBack
 
 class PhotoChoiceActivity : AppCompatActivity() {
     override fun onResume() {
@@ -34,6 +33,6 @@ class PhotoChoiceActivity : AppCompatActivity() {
     }
 
     fun goBack(@Suppress("UNUSED_PARAMETER")view: View) {
-        GoBack().goBack(this)
+        this.finish()
     }
 }
