@@ -1,0 +1,6 @@
+Vous êtes ou vous connaissez des personnes agées / malvoyantes / handicapées. En effets, nous avons créer une application, qui a peut vous intéresser. <i>Easy Phone</i> vous offre les fonctions de bases d'un téléphone de manière à simplifier votre vie, avec des grandes polices de caractère etc, ainsi sur l'application vous trouverez les applications de base :
+ * appel
+ * contact
+ * sms
+ * photos
+ * et la possibilité de retourner sur le launcher de base du téléphone.

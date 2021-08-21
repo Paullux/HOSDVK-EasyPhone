@@ -1,0 +1,7 @@
+You are or you know elderly / visually impaired / disabled people. We have developed a mobile application, which may interest you. <i>Easy Phone</i> offers the basic functions of a phone in a way to ease their lives, using larger font sizes etc:
+
+* call
+* contact
+* sms
+* photos
+* and the possibility to return to the basic launcher of the phone.
