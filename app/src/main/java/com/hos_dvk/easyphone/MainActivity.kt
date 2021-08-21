@@ -55,6 +55,8 @@ class MainActivity : AppCompatActivity() {
         val requestReadExternalStoragePermission = Manifest.permission.READ_EXTERNAL_STORAGE
         val requestWriteExternalStoragePermission = Manifest.permission.WRITE_EXTERNAL_STORAGE
         val requestCameraPermission = Manifest.permission.CAMERA
+        val requestWakeLockPermission = Manifest.permission.WAKE_LOCK
+        val requestReceiveBootCompletedPermission = Manifest.permission.RECEIVE_BOOT_COMPLETED
         val checkValReadContact = checkSelfPermission(requiredReadContactPermission)
         val checkValWriteContact = checkSelfPermission(requiredWriteContactPermission)
         val checkValReadSms = checkSelfPermission(requiredReadSmsPermission)
@@ -65,6 +67,8 @@ class MainActivity : AppCompatActivity() {
         val checkValWriteExternalStorage =
             checkSelfPermission(requestWriteExternalStoragePermission)
         val checkValCamera = checkSelfPermission(requestCameraPermission)
+        val checkValWakeLock = checkSelfPermission(requestWakeLockPermission)
+        val checkValReceiveBootCompleted = checkSelfPermission(requestReceiveBootCompletedPermission)
         if (checkValReadContact == PackageManager.PERMISSION_GRANTED &&
             checkValWriteContact == PackageManager.PERMISSION_GRANTED &&
             checkValReadSms == PackageManager.PERMISSION_GRANTED &&
@@ -73,7 +77,10 @@ class MainActivity : AppCompatActivity() {
             checkValCall == PackageManager.PERMISSION_GRANTED &&
             checkValReadExternalStorage == PackageManager.PERMISSION_GRANTED &&
             checkValWriteExternalStorage == PackageManager.PERMISSION_GRANTED &&
-            checkValCamera == PackageManager.PERMISSION_GRANTED && appDefaultSMS
+            checkValCamera == PackageManager.PERMISSION_GRANTED &&
+            checkValWakeLock == PackageManager.PERMISSION_GRANTED &&
+            checkValReceiveBootCompleted == PackageManager.PERMISSION_GRANTED &&
+            appDefaultSMS
         ) {
             Toast.makeText(
                 this,
@@ -91,7 +98,9 @@ class MainActivity : AppCompatActivity() {
                 Manifest.permission.SEND_SMS,
                 Manifest.permission.RECEIVE_SMS,
                 Manifest.permission.CALL_PHONE,
-                Manifest.permission.CAMERA
+                Manifest.permission.CAMERA,
+                Manifest.permission.WAKE_LOCK,
+                Manifest.permission.RECEIVE_BOOT_COMPLETED
             )
 
             if (!hasPermissions(this, *permissions)) {

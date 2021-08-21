@@ -13,6 +13,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     
     <uses-feature android:name="android.hardware.camera"
         android:required="true" />
@@ -63,8 +65,10 @@
         </provider>
         <!-- BroadcastReceiver that listens for incoming SMS messages -->
         <receiver android:name=".widget.SmsReceiver"
-            android:permission="android.permission.BROADCAST_SMS">
-            <intent-filter>
+            android:permission="android.permission.BROADCAST_SMS"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter android:priority="1">
                 <action android:name="android.provider.Telephony.SMS_DELIVER" />
             </intent-filter>
         </receiver>
