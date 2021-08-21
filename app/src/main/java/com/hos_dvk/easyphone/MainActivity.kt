@@ -54,7 +54,6 @@ class MainActivity : AppCompatActivity() {
         val requiredCallPermission = Manifest.permission.CALL_PHONE
         val requestReadExternalStoragePermission = Manifest.permission.READ_EXTERNAL_STORAGE
         val requestWriteExternalStoragePermission = Manifest.permission.WRITE_EXTERNAL_STORAGE
-        val requestCameraPermission = Manifest.permission.CAMERA
         val requestWakeLockPermission = Manifest.permission.WAKE_LOCK
         val requestReceiveBootCompletedPermission = Manifest.permission.RECEIVE_BOOT_COMPLETED
         val checkValReadContact = checkSelfPermission(requiredReadContactPermission)
@@ -66,7 +65,6 @@ class MainActivity : AppCompatActivity() {
         val checkValReadExternalStorage = checkSelfPermission(requestReadExternalStoragePermission)
         val checkValWriteExternalStorage =
             checkSelfPermission(requestWriteExternalStoragePermission)
-        val checkValCamera = checkSelfPermission(requestCameraPermission)
         val checkValWakeLock = checkSelfPermission(requestWakeLockPermission)
         val checkValReceiveBootCompleted = checkSelfPermission(requestReceiveBootCompletedPermission)
         if (checkValReadContact == PackageManager.PERMISSION_GRANTED &&
@@ -77,7 +75,6 @@ class MainActivity : AppCompatActivity() {
             checkValCall == PackageManager.PERMISSION_GRANTED &&
             checkValReadExternalStorage == PackageManager.PERMISSION_GRANTED &&
             checkValWriteExternalStorage == PackageManager.PERMISSION_GRANTED &&
-            checkValCamera == PackageManager.PERMISSION_GRANTED &&
             checkValWakeLock == PackageManager.PERMISSION_GRANTED &&
             checkValReceiveBootCompleted == PackageManager.PERMISSION_GRANTED &&
             appDefaultSMS
@@ -98,7 +95,6 @@ class MainActivity : AppCompatActivity() {
                 Manifest.permission.SEND_SMS,
                 Manifest.permission.RECEIVE_SMS,
                 Manifest.permission.CALL_PHONE,
-                Manifest.permission.CAMERA,
                 Manifest.permission.WAKE_LOCK,
                 Manifest.permission.RECEIVE_BOOT_COMPLETED
             )

@@ -19,8 +19,9 @@ class MmsReceiver: BroadcastReceiver() {
                 val address =
                     ToInternationalNumberPhone().transform(sms.originatingAddress!!, context)
                 if (nameOfSmsHere == address) {
+                    val smsData = sms.displayMessageBody.toString()
                     messageToSms?.text =
-                        "${messageToSms?.text.toString()}\n---${contactName?.text.toString()}---\n${sms.displayMessageBody.toString()}"
+                        "${messageToSms?.text.toString()}\n---${contactName?.text.toString()}---\n$smsData"
                     val scrollAmount =
                         messageToSms?.layout?.getLineTop(messageToSms!!.lineCount)
                             ?.minus(messageToSms!!.height)

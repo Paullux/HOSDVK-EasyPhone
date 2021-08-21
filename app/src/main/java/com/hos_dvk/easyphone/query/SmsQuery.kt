@@ -62,7 +62,7 @@ class SmsQuery {
                             address = ToInternationalNumberPhone().transform(address, context)
 
                         val messageData: String? =
-                            cursor.getString(cursor.getColumnIndex(Telephony.Sms.BODY))
+                            cursor.getString(cursor.getColumnIndex(Telephony.Sms.BODY)).toString()
 
                         val date: Date? =
                             Date(cursor.getLong(cursor.getColumnIndex(Telephony.Sms.DATE)))
@@ -96,7 +96,7 @@ class SmsQuery {
                             address = ToInternationalNumberPhone().transform(address, context)
 
                         val messageData: String? =
-                            cursor.getString(cursor.getColumnIndex(Telephony.Sms.BODY))
+                            cursor.getString(cursor.getColumnIndex(Telephony.Sms.BODY)).toString()
 
                         val date: Date? =
                             Date(cursor.getLong(cursor.getColumnIndex(Telephony.Sms.DATE)))
