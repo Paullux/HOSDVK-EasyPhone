@@ -191,8 +191,10 @@ class MainActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     fun goToOthersLaunchers(@Suppress("UNUSED_PARAMETER") view: View) {
-        val callHomeSettingIntent = Intent(Settings.ACTION_HOME_SETTINGS)
-        startActivity(callHomeSettingIntent)
+        packageManager.clearPackagePreferredActivities(packageName)
+        val i = Intent(Intent.ACTION_MAIN)
+        i.addCategory(Intent.CATEGORY_HOME)
+        startActivity(i)
     }
 
     fun systemSettings(@Suppress("UNUSED_PARAMETER") view: View) {
