@@ -2,10 +2,8 @@ package com.hos_dvk.easyphone.module_activity
 
 import android.content.Intent
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.hos_dvk.easyphone.R
-import com.hos_dvk.easyphone.query.CameraQuery
 
 class PhotoChoiceActivity : AppCompatActivity() {
     override fun onResume() {
@@ -20,16 +18,12 @@ class PhotoChoiceActivity : AppCompatActivity() {
     }
 
     fun chooseCamera(@Suppress("UNUSED_PARAMETER")view: View) {
-        val packageNameCamera = CameraQuery().getPackageName(this)
-        if (packageNameCamera != "") {
-            val launchIntent = packageManager.getLaunchIntentForPackage(packageNameCamera)
-            startActivity(launchIntent)
-        } else {
-            Toast.makeText(
-                this,
-                getString(R.string.not_detect_cam_app), Toast.LENGTH_LONG
-            ).show()
-        }
+        var intent: Intent? = Intent("android.media.action.IMAGE_CAPTURE")
+        startActivity(
+            packageManager.getLaunchIntentForPackage(
+                intent!!.resolveActivity(packageManager).packageName
+            )
+        )
     }
 
     fun goBack(@Suppress("UNUSED_PARAMETER")view: View) {
