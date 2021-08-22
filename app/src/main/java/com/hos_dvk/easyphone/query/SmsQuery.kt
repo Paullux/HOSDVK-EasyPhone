@@ -130,7 +130,7 @@ class SmsQuery {
             var conversationMessageData = ""
             var previousType: Int? = null
             for (message in messages) {
-                val formatDate = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
+                val formatDate = SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
                 val date = formatDate.format(message.date)
                 when (previousType) {
                     Telephony.Sms.MESSAGE_TYPE_INBOX -> {

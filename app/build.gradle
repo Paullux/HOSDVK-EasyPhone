@@ -13,7 +13,7 @@ android {
         applicationId "com.hos_dvk.easyphone"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 10
+        versionCode 11
         versionName "0.1"
         manifestPlaceholders = [hostName:"www.handy-open-source.org"]
 
