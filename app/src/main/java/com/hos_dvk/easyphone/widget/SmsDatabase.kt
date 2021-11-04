@@ -1,12 +1,6 @@
 package com.hos_dvk.easyphone.widget
 
-import android.content.ContentResolver
-import android.content.ContentValues
-import android.net.Uri
-import android.provider.Telephony
-import android.telephony.SmsMessage
-
-class SmsDatabase {
+/**class SmsDatabase {
     fun putSmsToDatabase(contentResolver: ContentResolver, sms: SmsMessage) {
         // Create SMS row
         val values = ContentValues()
@@ -24,4 +18,4 @@ class SmsDatabase {
         // Push row into the SMS table
         contentResolver.insert(Uri.parse("content://sms"), values)
     }
-}
+}**/

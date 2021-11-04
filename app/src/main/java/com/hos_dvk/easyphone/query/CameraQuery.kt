@@ -1,10 +1,6 @@
 package com.hos_dvk.easyphone.query
 
-import android.content.Context
-import android.content.Intent
-import android.content.pm.PackageManager
-
-class CameraQuery {
+/**class CameraQuery {
     fun getPackageName(context: Context): String {
 
         var packageNameCamera = ""
@@ -60,4 +56,4 @@ class CameraQuery {
 
         return packageNameCamera
     }
-}
+}**/

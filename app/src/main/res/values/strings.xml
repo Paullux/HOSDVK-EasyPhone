@@ -4,6 +4,7 @@
     <string name="module_dialer">APPEL</string>
     <string name="module_contacts">CONTACTS</string>
     <string name="module_sms">SMS</string>
+    <string name="Google_About_SMS">Aujourd\'hui la politique de Google sur le Play Store interdit l\'accès aux SMS</string>
     <string name="module_email">E-MAIL</string>
     <string name="module_photo">PHOTOS</string>
     <string name="go_to_other_launcher">RETOURNER SUR L\'INTERFACE PAR DÉFAUT</string>

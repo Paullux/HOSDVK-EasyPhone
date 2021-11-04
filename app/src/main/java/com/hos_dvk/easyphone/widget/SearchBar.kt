@@ -32,7 +32,7 @@ class SearchBar : LinearLayout {
         init(attrs)
     }
 
-    fun init(attrs: AttributeSet?) {
+    private fun init(attrs: AttributeSet?) {
         inputText = findViewById(attrs?.getAttributeNameResource(R.attr.inputView) ?: 0)
         resultView = findViewById(attrs?.getAttributeNameResource(R.attr.resultView) ?: 0)
         val elementView = attrs?.getAttributeNameResource(R.attr.elementView)

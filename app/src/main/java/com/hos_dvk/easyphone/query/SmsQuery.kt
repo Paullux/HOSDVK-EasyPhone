@@ -1,19 +1,10 @@
 package com.hos_dvk.easyphone.query
 
-import android.content.ContentResolver
-import android.content.Context
-import android.database.Cursor
-import android.os.Build
-import android.provider.Telephony
-import androidx.annotation.RequiresApi
-import com.hos_dvk.easyphone.data_class.ContactDataClass
-import com.hos_dvk.easyphone.data_class.SmsDataClass
-import java.text.SimpleDateFormat
 import java.util.*
 
 
-class SmsQuery {
-    @RequiresApi(Build.VERSION_CODES.O)
+/**class SmsQuery {
+    /**@RequiresApi(Build.VERSION_CODES.O)
     fun getAll(
         contentResolver: ContentResolver,
         context: Context, order: String,
@@ -185,4 +176,4 @@ class SmsQuery {
         }
         return smsList
     }
-}
+}**/

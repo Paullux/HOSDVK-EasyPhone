@@ -6,10 +6,10 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" tools:node="remove"/>
+    <uses-permission android:name="android.permission.READ_SMS" tools:node="remove"/>
+    <uses-permission android:name="android.permission.SEND_SMS" tools:node="remove"/>
+    <uses-permission android:name="android.permission.WRITE_SMS" tools:node="remove"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -43,13 +43,13 @@
         <activity android:name=".module_activity.DialerActivity"/>
         <activity android:name=".module_activity.RealCallActivity"/>
         <activity android:name=".module_activity.AddContactActivity"/>
-        <activity android:name=".module_activity.SmsListActivity"
+        <!--<activity android:name=".module_activity.SmsListActivity" />
             android:exported="true">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
                 <action android:name="android.provider.Telephony.SMS_SENT" />
             </intent-filter>
-        </activity>
+        </activity>-->
         <activity android:name=".module_activity.GalleryActivity"/>
         <activity android:name=".module_activity.PhotoChoiceActivity">
         </activity>
@@ -63,42 +63,42 @@
                 android:resource="@xml/file_paths" />
         </provider>
         <!-- BroadcastReceiver that listens for incoming SMS messages -->
-        <receiver android:name=".widget.SmsReceiver"
+        <!--<receiver android:name=".widget.SmsReceiver"
             android:permission="android.permission.BROADCAST_SMS"
             android:enabled="true"
             android:exported="true">
             <intent-filter android:priority="1">
                 <action android:name="android.provider.Telephony.SMS_DELIVER" />
             </intent-filter>
-        </receiver>
+        </receiver>-->
 
         <!-- BroadcastReceiver that listens for incoming MMS messages -->
-        <receiver android:name=".widget.MmsReceiver"
+        <!--<receiver android:name=".widget.MmsReceiver"
             android:permission="android.permission.BROADCAST_WAP_PUSH">
             <intent-filter>
                 <action android:name="android.provider.Telephony.WAP_PUSH_DELIVER" />
                 <data android:mimeType="application/vnd.wap.mms-message" />
             </intent-filter>
-        </receiver>
+        </receiver>-->
 
         <!-- Activity that allows the user to send new SMS/MMS messages -->
-        <activity android:name=".module_activity.SmsConversationActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.SEND" />
-                <action android:name="android.intent.action.SENDTO" />
-                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
-                <action android:name="android.provider.Telephony.SMS_SENT" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="sms" />
-                <data android:scheme="smsto" />
-                <data android:scheme="mms" />
-                <data android:scheme="mmsto" />
-            </intent-filter>
-        </activity>
+        <!--<activity android:name=".module_activity.SmsConversationActivity" />
+        <intent-filter>
+            <action android:name="android.intent.action.SEND" />
+            <action android:name="android.intent.action.SENDTO" />
+            <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            <action android:name="android.provider.Telephony.SMS_SENT" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="sms" />
+            <data android:scheme="smsto" />
+            <data android:scheme="mms" />
+            <data android:scheme="mmsto" />
+        </intent-filter>
+    </activity> -->
 
         <!-- Service that delivers messages from the phone "quick response" -->
-        <service android:name=".module_activity.SmsConversationActivity"
+        <!--<service android:name=".module_activity.SmsConversationActivity"
             android:permission="android.permission.SEND_RESPOND_VIA_MESSAGE"
             android:exported="true" >
             <intent-filter>
@@ -109,7 +109,7 @@
                 <data android:scheme="mms" />
                 <data android:scheme="mmsto" />
             </intent-filter>
-        </service>
+        </service>-->
     </application>
     <queries>
         <intent>

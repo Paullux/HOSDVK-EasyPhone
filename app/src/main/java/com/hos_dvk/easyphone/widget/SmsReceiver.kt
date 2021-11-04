@@ -1,23 +1,7 @@
 package com.hos_dvk.easyphone.widget
 
-import android.app.PendingIntent
-import android.app.TaskStackBuilder
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.os.Build
-import android.provider.Settings
-import android.provider.Telephony
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
-import com.hos_dvk.easyphone.*
-import com.hos_dvk.easyphone.data_class.ContactDataClass
-import com.hos_dvk.easyphone.module_activity.SmsConversationActivity
-import com.hos_dvk.easyphone.query.ContactQuery
-import com.hos_dvk.easyphone.query.ToInternationalNumberPhone
 
-
-open class SmsReceiver: BroadcastReceiver() {
+/**open class SmsReceiver: BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         var name = "Inconnu"
         val contactsList: MutableList<ContactDataClass> =
@@ -76,4 +60,4 @@ open class SmsReceiver: BroadcastReceiver() {
             }
         }
     }
-}
+}**/

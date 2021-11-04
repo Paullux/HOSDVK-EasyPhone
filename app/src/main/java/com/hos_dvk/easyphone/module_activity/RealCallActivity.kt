@@ -57,14 +57,18 @@ class RealCallActivity : AppCompatActivity() {
             getString(R.string.sms,  number),
             Toast.LENGTH_LONG
         ).show()
-        val requiredPermission = Manifest.permission.RECEIVE_SMS
+        /**val requiredPermission = Manifest.permission.RECEIVE_SMS
         val checkVal = checkSelfPermission(requiredPermission)
         if (checkVal == PackageManager.PERMISSION_GRANTED) {
             val realSms = Intent(this, SmsConversationActivity::class.java).apply {
                 putExtra(CONTACT_TO_SMS, number)
             }
             startActivity(realSms)
-        }
+        }**/
+        val smsIntent = Intent(Intent.ACTION_VIEW)
+        smsIntent.data = Uri.parse("sms:")
+        smsIntent.putExtra("address", number)
+        startActivity(smsIntent)
     }
 
     private fun passCall(number: String) {

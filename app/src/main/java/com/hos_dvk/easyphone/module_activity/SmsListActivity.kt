@@ -1,21 +1,7 @@
 package com.hos_dvk.easyphone.module_activity
 
-import android.content.Intent
-import android.database.MatrixCursor
-import android.os.Build
-import android.view.View
-import android.widget.ListView
-import android.widget.SimpleCursorAdapter
-import android.widget.TextView
-import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.iterator
-import com.hos_dvk.easyphone.*
-import com.hos_dvk.easyphone.data_class.SmsDataClass
-import com.hos_dvk.easyphone.query.SmsQuery
-
-class SmsListActivity : AppCompatActivity() {
-    @RequiresApi(Build.VERSION_CODES.O)
+/**class SmsListActivity : AppCompatActivity() {
+   @RequiresApi(Build.VERSION_CODES.O)
     override fun onResume() {
         super.onResume()
         setContentView(R.layout.activity_list_sms)
@@ -91,4 +77,4 @@ class SmsListActivity : AppCompatActivity() {
     fun goBack(@Suppress("UNUSED_PARAMETER")view: View) {
         this.finish()
     }
-}
+}**/

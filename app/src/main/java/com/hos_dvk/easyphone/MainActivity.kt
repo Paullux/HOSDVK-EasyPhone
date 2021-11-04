@@ -3,7 +3,6 @@ package com.hos_dvk.easyphone
 import android.Manifest
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.role.RoleManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -11,7 +10,6 @@ import android.media.AudioAttributes
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
-import android.provider.Telephony
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -20,7 +18,6 @@ import androidx.core.app.ActivityCompat
 import com.hos_dvk.easyphone.module_activity.ContactActivity
 import com.hos_dvk.easyphone.module_activity.DialerActivity
 import com.hos_dvk.easyphone.module_activity.PhotoChoiceActivity
-import com.hos_dvk.easyphone.module_activity.SmsListActivity
 
 
 
@@ -35,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         createNotificationChannel()
 
         //------------------Permissions------------------------------
-        var appDefaultSMS = false
+        /**var appDefaultSMS = false
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             if (Telephony.Sms.getDefaultSmsPackage(this) != null) {
                 appDefaultSMS = (Telephony.Sms.getDefaultSmsPackage(this) == packageName)
@@ -45,12 +42,12 @@ class MainActivity : AppCompatActivity() {
             if (roleManager.isRoleAvailable(RoleManager.ROLE_SMS)) {
                 appDefaultSMS = roleManager.isRoleHeld(RoleManager.ROLE_SMS)
             }
-        }
+        }**/
         val requiredReadContactPermission = Manifest.permission.READ_CONTACTS
         val requiredWriteContactPermission = Manifest.permission.WRITE_CONTACTS
-        val requiredReadSmsPermission = Manifest.permission.READ_SMS
-        val requiredReceiveSmsPermission = Manifest.permission.RECEIVE_SMS
-        val requiredSendSmsPermission = Manifest.permission.SEND_SMS
+        //val requiredReadSmsPermission = Manifest.permission.READ_SMS
+        //val requiredReceiveSmsPermission = Manifest.permission.RECEIVE_SMS
+        //val requiredSendSmsPermission = Manifest.permission.SEND_SMS
         val requiredCallPermission = Manifest.permission.CALL_PHONE
         val requestReadExternalStoragePermission = Manifest.permission.READ_EXTERNAL_STORAGE
         val requestWriteExternalStoragePermission = Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -58,9 +55,9 @@ class MainActivity : AppCompatActivity() {
         val requestReceiveBootCompletedPermission = Manifest.permission.RECEIVE_BOOT_COMPLETED
         val checkValReadContact = checkSelfPermission(requiredReadContactPermission)
         val checkValWriteContact = checkSelfPermission(requiredWriteContactPermission)
-        val checkValReadSms = checkSelfPermission(requiredReadSmsPermission)
-        val checkValReceiveSms = checkSelfPermission(requiredReceiveSmsPermission)
-        val checkValSendSms = checkSelfPermission(requiredSendSmsPermission)
+        //val checkValReadSms = checkSelfPermission(requiredReadSmsPermission)
+        //val checkValReceiveSms = checkSelfPermission(requiredReceiveSmsPermission)
+        //val checkValSendSms = checkSelfPermission(requiredSendSmsPermission)
         val checkValCall = checkSelfPermission(requiredCallPermission)
         val checkValReadExternalStorage = checkSelfPermission(requestReadExternalStoragePermission)
         val checkValWriteExternalStorage =
@@ -69,15 +66,15 @@ class MainActivity : AppCompatActivity() {
         val checkValReceiveBootCompleted = checkSelfPermission(requestReceiveBootCompletedPermission)
         if (checkValReadContact == PackageManager.PERMISSION_GRANTED &&
             checkValWriteContact == PackageManager.PERMISSION_GRANTED &&
-            checkValReadSms == PackageManager.PERMISSION_GRANTED &&
-            checkValReceiveSms == PackageManager.PERMISSION_GRANTED &&
-            checkValSendSms == PackageManager.PERMISSION_GRANTED &&
+            //checkValReadSms == PackageManager.PERMISSION_GRANTED &&
+            //checkValReceiveSms == PackageManager.PERMISSION_GRANTED &&
+            //checkValSendSms == PackageManager.PERMISSION_GRANTED &&
             checkValCall == PackageManager.PERMISSION_GRANTED &&
             checkValReadExternalStorage == PackageManager.PERMISSION_GRANTED &&
             checkValWriteExternalStorage == PackageManager.PERMISSION_GRANTED &&
             checkValWakeLock == PackageManager.PERMISSION_GRANTED &&
-            checkValReceiveBootCompleted == PackageManager.PERMISSION_GRANTED &&
-            appDefaultSMS
+            checkValReceiveBootCompleted == PackageManager.PERMISSION_GRANTED
+            //&& appDefaultSMS
         ) {
             Toast.makeText(
                 this,
@@ -91,9 +88,9 @@ class MainActivity : AppCompatActivity() {
                 Manifest.permission.WRITE_CONTACTS,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_SMS,
-                Manifest.permission.SEND_SMS,
-                Manifest.permission.RECEIVE_SMS,
+                //Manifest.permission.READ_SMS,
+                //Manifest.permission.SEND_SMS,
+                //Manifest.permission.RECEIVE_SMS,
                 Manifest.permission.CALL_PHONE,
                 Manifest.permission.WAKE_LOCK,
                 Manifest.permission.RECEIVE_BOOT_COMPLETED
@@ -102,7 +99,7 @@ class MainActivity : AppCompatActivity() {
             if (!hasPermissions(this, *permissions)) {
                 ActivityCompat.requestPermissions(this, permissions, permissionAll)
             } else {
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+                /**if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
                     val intent = Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT)
                     intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME, packageName)
                     startActivityForResult(intent, 45)
@@ -111,7 +108,7 @@ class MainActivity : AppCompatActivity() {
                     val roleRequestIntent =
                         roleManager.createRequestRoleIntent(RoleManager.ROLE_SMS)
                     startActivityForResult(roleRequestIntent, 45)
-                }
+                }**/
             }
         }
     }
@@ -169,7 +166,7 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
     fun sms(@Suppress("UNUSED_PARAMETER") view: View) {
         Toast.makeText(this, getString(R.string.module_sms), Toast.LENGTH_LONG).show()
-        val requiredPermissionReceive = Manifest.permission.RECEIVE_SMS
+        /**val requiredPermissionReceive = Manifest.permission.RECEIVE_SMS
         val requiredPermissionSend = Manifest.permission.SEND_SMS
         val requiredPermissionRead = Manifest.permission.READ_SMS
         val checkValReceived = checkSelfPermission(requiredPermissionReceive)
@@ -184,7 +181,10 @@ class MainActivity : AppCompatActivity() {
                 getString(R.string.refuse_contact),
                 Toast.LENGTH_LONG
             ).show()
-        }
+        }**/
+        val smsIntent = Intent(Intent.ACTION_MAIN)
+        smsIntent.addCategory(Intent.CATEGORY_APP_MESSAGING)
+        startActivity(smsIntent)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -229,7 +229,7 @@ class MainActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             1 -> {
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+                /**if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
                     val intent = Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT)
                     intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME, packageName)
                     startActivityForResult(intent, 45)
@@ -238,7 +238,7 @@ class MainActivity : AppCompatActivity() {
                     val roleRequestIntent =
                         roleManager.createRequestRoleIntent(RoleManager.ROLE_SMS)
                     startActivityForResult(roleRequestIntent, 45)
-                }
+                }**/
             }
         }
     }
@@ -247,6 +247,3 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 }
-
-
-

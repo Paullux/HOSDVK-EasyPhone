@@ -9,8 +9,7 @@ import com.hos_dvk.easyphone.R
 
 class Keyboard : LinearLayout {
     var inputView: View? = let {
-        val parent = this.parent
-        when (parent) {
+        when (val parent = this.parent) {
             is View -> parent
             else -> null
         }

@@ -1,27 +1,7 @@
 package com.hos_dvk.easyphone.module_activity
 
-import android.app.PendingIntent
-import android.content.ContentValues
-import android.content.Intent
-import android.net.Uri
-import android.os.Build
-import android.provider.Telephony
-import android.telephony.SmsManager
-import android.text.method.ScrollingMovementMethod
-import android.view.View
-import android.widget.EditText
-import android.widget.TextView
-import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
-import com.hos_dvk.easyphone.*
-import com.hos_dvk.easyphone.data_class.ContactDataClass
-import com.hos_dvk.easyphone.data_class.SmsDataClass
-import com.hos_dvk.easyphone.query.ContactQuery
-import com.hos_dvk.easyphone.query.SmsQuery
-import com.hos_dvk.easyphone.query.ToInternationalNumberPhone
 
-
-class SmsConversationActivity : AppCompatActivity() {
+/**class SmsConversationActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onResume() {
         super.onResume()
@@ -136,4 +116,4 @@ class SmsConversationActivity : AppCompatActivity() {
     fun goBack(@Suppress("UNUSED_PARAMETER")view: View) {
         this.finish()
     }
-}
+}**/
