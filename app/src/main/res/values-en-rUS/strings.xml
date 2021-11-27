@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">Easy-Phone</string>
+    <!-- MODULES -->
+    <string name="module_dialer">DIALER</string>
+    <string name="module_contacts">CONTACTS</string>
+    <string name="module_sms">SMS</string>
+    <string name="module_email">E-MAIL</string>
+    <string name="module_photo">PHOTOS</string>
+    <string name="go_to_other_launcher">RETURN TO THE DEFAULT INTERFACE</string>
+    <string name="go_to_systems_settings">SYSTEM SETTINGS</string>
+    <string name="module_real_call">CALL</string>
+    <string name="module_gallery">GALLERY</string>
+    <string name="module_empty">EMPTY</string>
+    <string name="button_gallery">Find a photo</string>
+    <!-- Variable -->
+    <string name="test_name">Name</string>
+    <string name="apps_name">Apps name</string>
+    <string name="test_number">06 78 90 12 34</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_number">Number&#8230;</string>
+    <string name="call">Call a %1$s</string>
+    <string name="sms">Send an SMS to %1$s</string>
+    <string name="sms_with_out_variable">Send an SMS</string>
+    <string name="search">Find&#8230;</string>
+    <!-- hint SMS-->
+    <string name="phone_number_send_sms">N° contact</string>
+    <string name="phone_text_sms_send">Your message&#8230;</string>
+    <string name="send">Send</string>
+    <string name="nom_contact_sms">Unknown</string>
+    <string name="history_hint">History</string>
+    <string name="historic_message_me">%1s\n ---My--- \n%2s</string>
+    <string name="historic_message_other">%1s\n---%2s--- \n%3s</string>
+    <!-- Permission -->
+    <!-- CALL -->
+    <string name="refuse_call">You have denied Easy-Phone access to make calls through the telephone</string>
+    <string name="call_perm">Permission to make phone calls</string>
+    <string name="could_call_perm">Please allow permission to make calls through the phone.</string>
+    <string name="could_read_external_storage_perm">Please allow access to storage on the phone.</string>
+    <string name="could_camera_perm">Please allow access to the phone's camera.</string>
+    <string name="your_number">Number</string>
+    <string name="add_number">%1$s%2$s</string>
+    <!--CHOICE CAMERA-->
+    <string name="gallery">Gallery</string>
+    <string name="camera">Camera</string>
+    <string name="photo_taking">Make a photo</string>
+    <string name="not_detect_cam_app">Camera app not detected</string>
+    <!-- CONTACT -->
+    <string name="refuse_contact">You have denied Easy-Phone access to the phone's contacts</string>
+    <string name="contact_perm">Permission to access contacts</string>
+    <string name="could_contact_perm">Please allow access to the phone contacts.</string>
+    <!-- SMS -->
+    <string name="refuse_sms">You have denied Easy-Phone access to the phone's text messages</string>
+    <string name="sms_perm">Permission to access SMS</string>
+    <string name="could_call_sms">Please allow access to the phone text messages.</string>
+    <string name="me">Me</string>
+    <string name="sms_preview">SMS Preview</string>
+    <!-- ADD CONTACT -->
+    <string name="add_contact">ADD CONTACT</string>
+    <string name="cancel">CANCEL</string>
+    <string name="add">ADD</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="contact_added">Contact added</string>
+    <string name="accept_contact_write">You have accepted to add the contacts, press ADD again to save your contact.</string>
+    <string name="refuse_contact_write">You denied access to save contact.</string>
+    <string name="accept_permission">Welcome, allow app permissions</string>
+    <string name="refuse_permission">Restart the app, you refused the permissions</string>
+</resources>
